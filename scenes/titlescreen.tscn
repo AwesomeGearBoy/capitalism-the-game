@@ -38,10 +38,10 @@ theme_override_font_sizes/font_size = 80
 text = "QUIT"
 
 [node name="Version" type="Label" parent="." index="3"]
-offset_left = 429.178
-offset_top = 291.56
-offset_right = 495.178
-offset_bottom = 314.56
+offset_left = 385.09
+offset_top = 289.187
+offset_right = 451.09
+offset_bottom = 312.187
 text = "ver.0.0.0"
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

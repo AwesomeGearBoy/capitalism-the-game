@@ -22,6 +22,10 @@ window/size/viewport_height=810
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
 
+[editor]
+
+movie_writer/fps=120
+
 [input]
 
 esc={

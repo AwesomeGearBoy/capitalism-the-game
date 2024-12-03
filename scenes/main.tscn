@@ -11,13 +11,21 @@ script = ExtResource("1_vcd71")
 
 [node name="Backdrop" parent="." instance=ExtResource("1_s1lcf")]
 
-[node name="RevanueButton" type="Button" parent="."]
+[node name="RevenueButton" type="Button" parent="."]
 offset_left = 27.0
 offset_top = 167.0
 offset_right = 936.0
 offset_bottom = 786.0
-theme_override_font_sizes/font_size = 150
-text = "COLLECT REVENUE"
+theme_override_colors/font_disabled_color = Color(0.607843, 0.45098, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.607843, 0.45098, 0, 1)
+theme_override_colors/font_hover_color = Color(0.607843, 0.45098, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.607843, 0.45098, 0, 1)
+theme_override_colors/font_focus_color = Color(0.607843, 0.45098, 0, 1)
+theme_override_colors/font_color = Color(0.607106, 0.44993, 5.77569e-07, 1)
+theme_override_font_sizes/font_size = 113
+text = "$$ 
+COLLECT REVENUE
+$$"
 autowrap_mode = 3
 
 [node name="UpgradeLevel" type="Button" parent="."]
@@ -118,18 +126,19 @@ text = "LUCK LEVEL: 0"
 visible = false
 
 [node name="Label" type="Label" parent="Help"]
-offset_left = -172.0
-offset_top = -173.0
-offset_right = 134.0
-offset_bottom = 160.0
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
 theme_override_font_sizes/font_size = 13
 text = "Hello! Welcome to Capitalism: The Game! This message exists to help you get started. Use money you earn from collecting revenue to upgrade your level. The higher your level, the more money you earn, but the more risk you take when you collect that revenue. If you have the money, buy warehouses that store stock that you can sell to people. The money will always come back to you when you collect revenue, which increases the amount of money you can earn significantly, without any added risk!"
 autowrap_mode = 3
 
 [node name="Menu" parent="." instance=ExtResource("2_4nb71")]
 visible = false
-position = Vector2(720, 409.5)
-scale = Vector2(1.45161, 1.26389)
 
+[connection signal="pressed" from="RevenueButton" to="." method="_on_revenue_button_pressed"]
+[connection signal="pressed" from="UpgradeLevel" to="." method="_on_upgrade_level_pressed"]
 [connection signal="pressed" from="Hint" to="." method="_on_hint_pressed"]
 [connection signal="play" from="Menu" to="." method="_on_menu_play"]
