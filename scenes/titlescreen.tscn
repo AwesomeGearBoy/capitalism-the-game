@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6wofbnlu72ed"]
+
+[ext_resource type="PackedScene" uid="uid://ry2gx0ka87xl" path="res://scenes/backdrop.tscn" id="1_4l4qo"]
+[ext_resource type="Script" path="res://scripts/titlescreen.gd" id="2_1bssa"]
+
+[node name="TitleScreen" instance=ExtResource("1_4l4qo")]
+script = ExtResource("2_1bssa")
+
+[node name="Title" type="Label" parent="." index="0"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -974.779
+offset_top = -191.077
+offset_right = -14.7787
+offset_bottom = -75.0768
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.787759, 0.787759, 0.787759, 1)
+theme_override_colors/font_shadow_color = Color(0.52549, 0.482353, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 85
+text = "CAPITALISM: THE GAME"
+
+[node name="PlayButton" type="Button" parent="." index="1"]
+offset_left = -339.623
+offset_top = -49.4505
+offset_right = -138.623
+offset_bottom = 68.5495
+theme_override_font_sizes/font_size = 80
+text = "PLAY"
+
+[node name="QuitButton" type="Button" parent="." index="2"]
+offset_left = -339.623
+offset_top = 77.1428
+offset_right = -139.623
+offset_bottom = 195.143
+theme_override_font_sizes/font_size = 80
+text = "QUIT"
+
+[node name="Version" type="Label" parent="." index="3"]
+offset_left = 429.178
+offset_top = 291.56
+offset_right = 495.178
+offset_bottom = 314.56
+text = "ver.0.0.0"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
