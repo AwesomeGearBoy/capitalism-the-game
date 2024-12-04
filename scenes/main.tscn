@@ -122,8 +122,263 @@ offset_bottom = 142.0
 theme_override_font_sizes/font_size = 30
 text = "LUCK LEVEL: 0"
 
+[node name="LostUncle" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="LostUncle"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "You lost an uncle you never really knew. Which is too bad, but at least you got some inheritance money!"
+autowrap_mode = 3
+
+[node name="VendingMachine" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="VendingMachine"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "You discover an old vending machine that somehow still accepts pennies. Oh heck yeah, baby."
+autowrap_mode = 3
+
+[node name="LawsuitWin" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="LawsuitWin"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "Uh oh!
+You got into a lawsuit...
+
+...
+
+And won!"
+autowrap_mode = 3
+
+[node name="RandomDude" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="RandomDude"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "A mysterious stranger randomly gives you a wad of cash. It's not suspicious where they got it from at all! 
+
+You take it happily."
+autowrap_mode = 3
+
+[node name="PennyRain" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="PennyRain"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "A rainstorm of pennies occurs directly over your house!
+
+Don't ask how, just be happy that it happened.
+
+I mean, it's normal for pennies to fall directly out of the sky, right?"
+autowrap_mode = 3
+
+[node name="CatVideo" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="CatVideo"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "A cat video you uplaoded went viral.
+
+Yep. That's pretty cool."
+autowrap_mode = 3
+
+[node name="TvFame" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="TvFame"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "A local TV station decided to feature you as \"Entreprenuer of the Year!\"
+
+Fame and fortune follow soon after."
+autowrap_mode = 3
+
+[node name="FindMotivation" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="FindMotivation"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "A motivational speaker charges you some money to only tell you to believe in yourself.
+
+I mean, it works, but now you're  little bit poorer.
+
+Just believe in yourself, I guess?"
+autowrap_mode = 3
+
+[node name="LawsuitLoss" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="LawsuitLoss"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "Uh oh!
+You got into a lawsuit...
+
+...
+
+And lost..."
+autowrap_mode = 3
+
+[node name="DogBurial" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="DogBurial"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "Your dog somehow got to your savings and buried them.
+
+You dug everywhere in your backyard.
+
+Thought you found them once, but it was a rock.
+
+You never saw those savings again."
+autowrap_mode = 3
+
+[node name="CashFire" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="CashFire"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "You accidently set your cash pile on fire whilst trying to light a candle.
+
+What a waste of money!"
+autowrap_mode = 3
+
+[node name="GlitterMess" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="GlitterMess"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "You accidently bought 1'000 packs of glitter instead of stock shares.
+
+Not only was this a waste of money, but the delivery guy dumped it straight into your living room.
+
+Now you need to clean up a sparkly mess..."
+autowrap_mode = 3
+
+[node name="RealEstate" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="RealEstate"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "You were just scammed by someone selling \"invisible real estate.\"
+
+You... probably should've seen that one coming."
+autowrap_mode = 3
+
+[node name="LemonadeStand" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="LemonadeStand"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "You attempted to open a lemonade stand and it causes a national shortage in lemons.
+
+Massive PR costs."
+autowrap_mode = 3
+
+[node name="ShinyPebbleCoin" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="ShinyPebbleCoin"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "You invested in a new crypto currency known as ShinyPebbleCoin!
+
+It's now worth less than an actual shiny pebble."
+autowrap_mode = 3
+
+[node name="RosesRed" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+scale = Vector2(2.71, 2.025)
+
+[node name="Label" type="Label" parent="RosesRed"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "Roses are red...
+Violets are blue...
+I'm pretty poor...
+And now so are you..."
+autowrap_mode = 3
+
 [node name="Help" parent="." instance=ExtResource("3_n7en5")]
 visible = false
+scale = Vector2(2.71, 2.025)
 
 [node name="Label" type="Label" parent="Help"]
 offset_left = -176.0
@@ -140,5 +395,7 @@ visible = false
 
 [connection signal="pressed" from="RevenueButton" to="." method="_on_revenue_button_pressed"]
 [connection signal="pressed" from="UpgradeLevel" to="." method="_on_upgrade_level_pressed"]
+[connection signal="pressed" from="BuyWarehouse" to="." method="_on_buy_warehouse_pressed"]
+[connection signal="pressed" from="UpgradeLuck" to="." method="_on_upgrade_luck_pressed"]
 [connection signal="pressed" from="Hint" to="." method="_on_hint_pressed"]
 [connection signal="play" from="Menu" to="." method="_on_menu_play"]

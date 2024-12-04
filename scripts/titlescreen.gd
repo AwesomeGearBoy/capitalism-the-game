@@ -1,7 +1,7 @@
 extends Sprite2D
 
 var release = 0
-var update = 2
+var update = 3
 var bug_fixes = 0
 var version = str(release) + "." + str(update) + "." + str(bug_fixes)
 signal play

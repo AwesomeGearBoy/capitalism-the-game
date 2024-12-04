@@ -1,14 +1,16 @@
 extends Node
 
+# ====== NEED TO IMPLEMENT SILLY EVENTS NEXT ====== #
+
 var menu = true
 var game_running = true
 var money = 0
 var level = 1
-var warehouses = 50
+var warehouses = 0
 var luck_level = 0
-var level_cost = 200
-var wares_cost = 1500
-var luck_cost = 150000
+var level_cost = 125
+var wares_cost = 30000
+var luck_cost = 500000
 
 func _ready():
 	pass
@@ -39,7 +41,10 @@ func process_text():
 	$LuckLevel.text = "LUCK LEVEL: " + str(luck_level)
 	$LevelCost.text = "Cost: $" + str(level_cost)
 	$WaresCost.text = "Cost: $" + str(wares_cost)
-	$LuckCost.text = "Cost: $" + str(luck_cost)
+	if luck_level < 10:
+		$LuckCost.text = "Cost: $" + str(luck_cost)
+	else:
+		$LuckCost.text = "Cost: MAX LEVEL"
 
 func collect_revenue():
 	var random_amount = 0
@@ -67,21 +72,44 @@ func collect_revenue():
 	elif luck_level == 10:
 		random_amount = randi_range(300, 400)
 	
-	money += (random_amount + (warehouses * 200)) * level
+	money += (random_amount + (warehouses * 1000)) * level
+
+func upgrade_level():
+	if money >= level_cost:
+		money = money - level_cost
+		level = level + 1
+		if level <= 8:
+			level_cost = 125 * level
+		else:
+			level_cost = level_cost * 2
+
+func buy_warehouse():
+	if money >= wares_cost:
+		money = money - wares_cost
+		warehouses += 1
+		if warehouses == 0:
+			wares_cost = 30000
+		else:
+			wares_cost = (2000 * level) * warehouses
+
+func upgrade_luck():
+	if luck_level < 10:
+		if money >= luck_cost:
+			money = money - luck_cost
+			luck_level += 1
+			luck_cost = luck_cost * 2
 
 func _on_revenue_button_pressed():
 	collect_revenue()
 
 func _on_upgrade_level_pressed():
-	if money >= level_cost:
-		money = money - level_cost
-		level = level + 1
-		if level >= 1:
-			level_cost = level_cost * 2
-		elif level >= 25:
-			level_cost = level_cost * 3
-		elif level >= 50:
-			level_cost = level_cost * 4
+	upgrade_level()
+
+func _on_buy_warehouse_pressed():
+	buy_warehouse()
+
+func _on_upgrade_luck_pressed():
+	upgrade_luck()
 
 func _on_hint_pressed():
 	$Help.show()
