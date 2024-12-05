@@ -24,7 +24,7 @@ text = "CAPITALISM: THE GAME"
 [node name="PlayButton" type="Button" parent="." index="1"]
 offset_left = -340.0
 offset_top = -49.0
-offset_right = 363.0
+offset_right = -21.0
 offset_bottom = 69.0
 theme_override_font_sizes/font_size = 80
 text = "PLAY"
@@ -32,7 +32,7 @@ text = "PLAY"
 [node name="QuitButton" type="Button" parent="." index="2"]
 offset_left = -340.0
 offset_top = 77.0
-offset_right = 362.0
+offset_right = -21.0
 offset_bottom = 195.0
 theme_override_font_sizes/font_size = 80
 text = "QUIT"

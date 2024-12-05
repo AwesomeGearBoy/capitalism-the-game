@@ -122,19 +122,6 @@ offset_bottom = 142.0
 theme_override_font_sizes/font_size = 30
 text = "LUCK LEVEL: 0"
 
-[node name="LostUncle" parent="." instance=ExtResource("3_n7en5")]
-visible = false
-
-[node name="Label" type="Label" parent="LostUncle"]
-offset_left = -176.0
-offset_top = -175.0
-offset_right = 139.0
-offset_bottom = 163.0
-theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
-theme_override_font_sizes/font_size = 13
-text = "You lost an uncle you never really knew. Which is too bad, but at least you got some inheritance money!"
-autowrap_mode = 3
-
 [node name="VendingMachine" parent="." instance=ExtResource("3_n7en5")]
 visible = false
 
@@ -146,6 +133,19 @@ offset_bottom = 163.0
 theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
 theme_override_font_sizes/font_size = 13
 text = "You discover an old vending machine that somehow still accepts pennies. Oh heck yeah, baby."
+autowrap_mode = 3
+
+[node name="LostUncle" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="LostUncle"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "You lost an uncle you never really knew. Which is too bad, but at least you got some inheritance money!"
 autowrap_mode = 3
 
 [node name="LawsuitWin" parent="." instance=ExtResource("3_n7en5")]
@@ -240,27 +240,9 @@ theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
 theme_override_font_sizes/font_size = 13
 text = "A motivational speaker charges you some money to only tell you to believe in yourself.
 
-I mean, it works, but now you're  little bit poorer.
+I mean, it works, but now you're a little bit poorer.
 
 Just believe in yourself, I guess?"
-autowrap_mode = 3
-
-[node name="LawsuitLoss" parent="." instance=ExtResource("3_n7en5")]
-visible = false
-
-[node name="Label" type="Label" parent="LawsuitLoss"]
-offset_left = -176.0
-offset_top = -175.0
-offset_right = 139.0
-offset_bottom = 163.0
-theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
-theme_override_font_sizes/font_size = 13
-text = "Uh oh!
-You got into a lawsuit...
-
-...
-
-And lost..."
 autowrap_mode = 3
 
 [node name="DogBurial" parent="." instance=ExtResource("3_n7en5")]
@@ -295,6 +277,24 @@ theme_override_font_sizes/font_size = 13
 text = "You accidently set your cash pile on fire whilst trying to light a candle.
 
 What a waste of money!"
+autowrap_mode = 3
+
+[node name="LawsuitLoss" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="LawsuitLoss"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "Uh oh!
+You got into a lawsuit...
+
+...
+
+And lost..."
 autowrap_mode = 3
 
 [node name="GlitterMess" parent="." instance=ExtResource("3_n7en5")]
@@ -361,7 +361,6 @@ autowrap_mode = 3
 
 [node name="RosesRed" parent="." instance=ExtResource("3_n7en5")]
 visible = false
-scale = Vector2(2.71, 2.025)
 
 [node name="Label" type="Label" parent="RosesRed"]
 offset_left = -176.0
@@ -378,7 +377,6 @@ autowrap_mode = 3
 
 [node name="Help" parent="." instance=ExtResource("3_n7en5")]
 visible = false
-scale = Vector2(2.71, 2.025)
 
 [node name="Label" type="Label" parent="Help"]
 offset_left = -176.0
@@ -387,7 +385,9 @@ offset_right = 139.0
 offset_bottom = 163.0
 theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
 theme_override_font_sizes/font_size = 13
-text = "Hello! Welcome to Capitalism: The Game! This message exists to help you get started. Use money you earn from collecting revenue to upgrade your level. The higher your level, the more money you earn, but the more risk you take when you collect that revenue. If you have the money, buy warehouses that store stock that you can sell to people. The money will always come back to you when you collect revenue, which increases the amount of money you can earn significantly, without any added risk!"
+text = "Hello! Welcome to Capitalism: The Game! This message exists to help you get started. Use money you earn from collecting revenue to upgrade your level. The higher your level, the more money you earn, but the more risk you take when you collect that revenue. If you have the money, buy warehouses that store stock that you can sell to people. The money will always come back to you when you collect revenue, which increases the amount of money you can earn significantly, without any added risk!
+
+Also see README.md for more game info!"
 autowrap_mode = 3
 
 [node name="Menu" parent="." instance=ExtResource("2_4nb71")]

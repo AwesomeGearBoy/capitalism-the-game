@@ -1,26 +1,57 @@
 extends Node
 
-# ====== NEED TO IMPLEMENT SILLY EVENTS NEXT ====== #
-
 var menu = true
 var game_running = true
 var money = 0
 var level = 1
 var warehouses = 0
 var luck_level = 0
-var level_cost = 125
+var level_cost = 50
 var wares_cost = 30000
-var luck_cost = 500000
+var luck_cost = 1500125
+var save = SaveData.new()
+var key = KeyControl.new()
+const MONEY_SAVE_PATH = "res://save/1562345.dat"
+const LEVEL_SAVE_PATH = "res://save/9861230.dat"
+const WARES_SAVE_PATH = "res://save/2786531.dat"
+const LUCK_SAVE_PATH = "res://save/9074567.dat"
+const LEVEL_COST_SAVE_PATH = "res://save/1290348.dat"
+const WARES_COST_SAVE_PATH = "res://save/8675431.dat"
+const LUCK_COST_SAVE_PATH = "res://save/0128328.dat"
 
 func _ready():
-	pass
+	money = save.load_int(MONEY_SAVE_PATH)
+	if FileAccess.file_exists(LEVEL_SAVE_PATH):
+		level = save.load_int(LEVEL_SAVE_PATH)
+	else:
+		level = 1
+	warehouses = save.load_int(WARES_SAVE_PATH)
+	luck_level = save.load_int(LUCK_SAVE_PATH)
+	if FileAccess.file_exists(LEVEL_COST_SAVE_PATH):
+		level_cost = save.load_int(LEVEL_COST_SAVE_PATH)
+	else:
+		level_cost = 50
+	if FileAccess.file_exists(WARES_COST_SAVE_PATH):
+		wares_cost = save.load_int(WARES_COST_SAVE_PATH)
+	else:
+		wares_cost = 30000
+	if FileAccess.file_exists(LUCK_COST_SAVE_PATH):
+		luck_cost = save.load_int(LUCK_COST_SAVE_PATH)
+	else:
+		luck_cost = 1500125
 
 func _process(_delta):
 	menu_handling()
 	process_text()
+	save.save_var(MONEY_SAVE_PATH, money)
+	save.save_var(LEVEL_SAVE_PATH, level)
+	save.save_var(WARES_SAVE_PATH, warehouses)
+	save.save_var(LUCK_SAVE_PATH, luck_level)
+	save.save_var(LEVEL_COST_SAVE_PATH, level_cost)
+	save.save_var(WARES_COST_SAVE_PATH, wares_cost)
+	save.save_var(LUCK_COST_SAVE_PATH, luck_cost)
 
 func menu_handling():
-	var key = KeyControl.new()
 	if key.went_down("esc"):
 		menu = true
 	
@@ -73,13 +104,106 @@ func collect_revenue():
 		random_amount = randi_range(300, 400)
 	
 	money += (random_amount + (warehouses * 1000)) * level
+	check_for_event()
+
+func check_for_event():
+	var chance : int
+	if luck_level == 0 || luck_level == 1:
+		chance = randi_range(1, 40)
+	elif luck_level == 2 || luck_level == 3:
+		chance = randi_range(1, 35)
+	elif luck_level == 4 || luck_level == 5:
+		chance = randi_range(1, 30)
+	elif luck_level == 6 || luck_level == 7:
+		chance = randi_range(1, 25)
+	elif luck_level == 8 || luck_level == 9:
+		chance = randi_range(1, 20)
+	elif luck_level == 10:
+		chance = randi_range(1, 15)
+	
+	if chance == 1:
+		something_happened()
+
+func something_happened():
+	var chance = randi_range(1, 2)
+	if chance == 1:
+		good_event_happened()
+	elif chance == 2:
+		if luck_level != 10:
+			bad_event_happened()
+		elif luck_level == 10:
+			good_event_happened()
+
+func good_event_happened():
+	var event = randi_range(1, 7)
+	
+	if event == 1:
+		$VendingMachine.show()
+		good_effect(435, 565)
+	elif event == 2:
+		$LostUncle.show()
+		good_effect(1035, 1565)
+	elif event == 3:
+		$LawsuitWin.show()
+		good_effect(543, 2234)
+	elif event == 4:
+		$RandomDude.show()
+		good_effect(1567, 3045)
+	elif event == 5:
+		$PennyRain.show()
+		good_effect(5345, 6245)
+	elif event == 6:
+		$CatVideo.show()
+		good_effect(5999, 10086)
+	elif event == 7:
+		$TvFame.show()
+		good_effect(15065, 21085)
+
+func bad_event_happened():
+	var event = randi_range(1, 9)
+	
+	if event == 1:
+		$FindMotivation.show()
+		bad_effect(150, 250)
+	elif event == 2:
+		$DogBurial.show()
+		bad_effect(450, 655)
+	elif event == 3:
+		$CashFire.show()
+		bad_effect(450, 655)
+	elif event == 4:
+		$LawsuitLoss.show()
+		bad_effect(543, 2234)
+	elif event == 5:
+		$GlitterMess.show()
+		bad_effect(2500, 5000)
+	elif event == 6:
+		$RealEstate.show()
+		bad_effect(3065, 6025)
+	elif event == 7:
+		$LemonadeStand.show()
+		bad_effect(5085, 10025)
+	elif event == 8:
+		$ShinyPebbleCoin.show()
+		bad_effect(6045, 12070)
+	elif event == 9:
+		$RosesRed.show()
+		bad_effect(20000, 30000)
+
+func good_effect(origin : int, bound : int):
+	var random_amount = randi_range(origin, bound)
+	money += random_amount * level
+
+func bad_effect(origin : int, bound : int):
+	var random_amount = randi_range(origin, bound)
+	money -= random_amount * level
 
 func upgrade_level():
 	if money >= level_cost:
 		money = money - level_cost
 		level = level + 1
 		if level <= 8:
-			level_cost = 125 * level
+			level_cost = 50 * level
 		else:
 			level_cost = level_cost * 2
 
