@@ -1,55 +1,34 @@
 extends Node
 
-var menu = true
-var game_running = true
-var money = 0
-var level = 1
-var warehouses = 0
-var luck_level = 0
-var level_cost = 50
-var wares_cost = 30000
-var luck_cost = 1500125
-var save = SaveData.new()
-var key = KeyControl.new()
-const MONEY_SAVE_PATH = "res://save/1562345.dat"
-const LEVEL_SAVE_PATH = "res://save/9861230.dat"
-const WARES_SAVE_PATH = "res://save/2786531.dat"
-const LUCK_SAVE_PATH = "res://save/9074567.dat"
-const LEVEL_COST_SAVE_PATH = "res://save/1290348.dat"
-const WARES_COST_SAVE_PATH = "res://save/8675431.dat"
-const LUCK_COST_SAVE_PATH = "res://save/0128328.dat"
+var menu := true
+var game_running := true
+var game_load : bool
+var load_timeout = 0.0
+var money := 0
+var level := 1
+var warehouses := 0
+var luck_level := 0
+var level_cost := 50
+var wares_cost := 30000
+var luck_cost := 1500125
+var save := SaveData.new()
+var key := KeyControl.new()
+const MONEY_SAVE_PATH := "res://save/1562345.dat"
+const LEVEL_SAVE_PATH := "res://save/9861230.dat"
+const WARES_SAVE_PATH := "res://save/2786531.dat"
+const LUCK_SAVE_PATH := "res://save/9074567.dat"
+const LEVEL_COST_SAVE_PATH := "res://save/1290348.dat"
+const WARES_COST_SAVE_PATH := "res://save/8675431.dat"
+const LUCK_COST_SAVE_PATH := "res://save/0128328.dat"
 
 func _ready():
-	money = save.load_int(MONEY_SAVE_PATH)
-	if FileAccess.file_exists(LEVEL_SAVE_PATH):
-		level = save.load_int(LEVEL_SAVE_PATH)
-	else:
-		level = 1
-	warehouses = save.load_int(WARES_SAVE_PATH)
-	luck_level = save.load_int(LUCK_SAVE_PATH)
-	if FileAccess.file_exists(LEVEL_COST_SAVE_PATH):
-		level_cost = save.load_int(LEVEL_COST_SAVE_PATH)
-	else:
-		level_cost = 50
-	if FileAccess.file_exists(WARES_COST_SAVE_PATH):
-		wares_cost = save.load_int(WARES_COST_SAVE_PATH)
-	else:
-		wares_cost = 30000
-	if FileAccess.file_exists(LUCK_COST_SAVE_PATH):
-		luck_cost = save.load_int(LUCK_COST_SAVE_PATH)
-	else:
-		luck_cost = 1500125
+	load_data()
 
-func _process(_delta):
+func _process(delta):
 	menu_handling()
+	load_game(delta)
 	process_text()
-	save.save_var(MONEY_SAVE_PATH, money)
-	save.save_var(LEVEL_SAVE_PATH, level)
-	save.save_var(WARES_SAVE_PATH, warehouses)
-	save.save_var(LUCK_SAVE_PATH, luck_level)
-	save.save_var(LEVEL_COST_SAVE_PATH, level_cost)
-	save.save_var(WARES_COST_SAVE_PATH, wares_cost)
-	save.save_var(LUCK_COST_SAVE_PATH, luck_cost)
+	save_data()
 
 func menu_handling():
 	if key.went_down("esc"):
@@ -65,6 +44,22 @@ func menu_handling():
 	else:
 		game_running = false
 
+func load_game(delta):
+	load_timeout = load_timeout - 1 * delta
+	
+	if load_timeout > 0:
+		game_load = true
+	else:
+		game_load = false
+	
+	if load_timeout == 0:
+		load_timeout = 0
+	
+	if game_load:
+		$LoadingScreen.show()
+	elif !game_load:
+		$LoadingScreen.hide()
+
 func process_text():
 	$Money.text = "MONEY: $" + str(money)
 	$Level.text = "LEVEL: " + str(level)
@@ -76,6 +71,24 @@ func process_text():
 		$LuckCost.text = "Cost: $" + str(luck_cost)
 	else:
 		$LuckCost.text = "Cost: MAX LEVEL"
+
+func save_data():
+	save.save_var(MONEY_SAVE_PATH, money)
+	save.save_var(LEVEL_SAVE_PATH, level)
+	save.save_var(WARES_SAVE_PATH, warehouses)
+	save.save_var(LUCK_SAVE_PATH, luck_level)
+	save.save_var(LEVEL_COST_SAVE_PATH, level_cost)
+	save.save_var(WARES_COST_SAVE_PATH, wares_cost)
+	save.save_var(LUCK_COST_SAVE_PATH, luck_cost)
+
+func load_data():
+	money = save.load_int(MONEY_SAVE_PATH)
+	level = save.load_int(LEVEL_SAVE_PATH, 1)
+	warehouses = save.load_int(WARES_SAVE_PATH)
+	luck_level = save.load_int(LUCK_SAVE_PATH)
+	level_cost = save.load_int(LEVEL_COST_SAVE_PATH, 50)
+	wares_cost = save.load_int(WARES_COST_SAVE_PATH, 30000)
+	luck_cost = save.load_int(LUCK_COST_SAVE_PATH, 1500125)
 
 func collect_revenue():
 	var random_amount = 0
@@ -188,7 +201,7 @@ func bad_event_happened():
 		bad_effect(6045, 12070)
 	elif event == 9:
 		$RosesRed.show()
-		bad_effect(20000, 30000)
+		money = money * 0
 
 func good_effect(origin : int, bound : int):
 	var random_amount = randi_range(origin, bound)
@@ -240,3 +253,4 @@ func _on_hint_pressed():
 
 func _on_menu_play():
 	menu = false
+	load_timeout = randi_range(1.2, 3.3)

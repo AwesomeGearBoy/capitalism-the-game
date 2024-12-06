@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dawxowl20v2a5"]
+
+[ext_resource type="PackedScene" uid="uid://ry2gx0ka87xl" path="res://scenes/backdrop.tscn" id="1_4hq1x"]
+
+[node name="Backdrop" instance=ExtResource("1_4hq1x")]
+
+[node name="Loading" type="Label" parent="." index="0"]
+offset_left = -496.001
+offset_top = -324.0
+offset_right = 495.999
+offset_bottom = 317.0
+theme_override_font_sizes/font_size = 45
+text = "LOADING GAME...
+PLEASE WAIT AND CONTEMPLATE YOUR LIFE"
+horizontal_alignment = 1
+vertical_alignment = 1

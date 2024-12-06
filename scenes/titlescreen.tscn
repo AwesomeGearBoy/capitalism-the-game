@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6wofbnlu72ed"]
+[gd_scene load_steps=5 format=3 uid="uid://c6wofbnlu72ed"]
 
 [ext_resource type="PackedScene" uid="uid://ry2gx0ka87xl" path="res://scenes/backdrop.tscn" id="1_4l4qo"]
 [ext_resource type="Script" path="res://scripts/titlescreen.gd" id="2_1bssa"]
+[ext_resource type="Texture2D" uid="uid://f4k65gw5ctu7" path="res://assets/hint.png" id="3_lybh0"]
+[ext_resource type="PackedScene" uid="uid://bpi2jsm6pfcum" path="res://scenes/emptymessage.tscn" id="3_uemik"]
 
 [node name="TitleScreen" instance=ExtResource("1_4l4qo")]
 script = ExtResource("2_1bssa")
@@ -38,11 +40,51 @@ theme_override_font_sizes/font_size = 80
 text = "QUIT"
 
 [node name="Version" type="Label" parent="." index="3"]
-offset_left = 385.09
-offset_top = 289.187
-offset_right = 451.09
-offset_bottom = 312.187
+offset_left = -488.0
+offset_top = 289.0
+offset_right = 481.0
+offset_bottom = 312.0
 text = "ver.0.0.0"
+horizontal_alignment = 2
+
+[node name="SeeCredits" type="TextureButton" parent="." index="4"]
+offset_left = 430.556
+offset_top = 223.516
+offset_right = 482.556
+offset_bottom = 284.516
+texture_normal = ExtResource("3_lybh0")
+texture_pressed = ExtResource("3_lybh0")
+texture_hover = ExtResource("3_lybh0")
+texture_disabled = ExtResource("3_lybh0")
+texture_focused = ExtResource("3_lybh0")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Credits" parent="." index="5" instance=ExtResource("3_uemik")]
+visible = false
+position = Vector2(0.68888, -2.76923)
+scale = Vector2(1.88756, 1.60986)
+
+[node name="Label" type="Label" parent="Credits" index="1"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "================= CREDITS =================
+
+Game made and developed by:
+AwesomeGearBoy
+
+Game created using the Godot Game Engine (v4.3)
+
+The creator of this game does not want people to redistribute or sell as their own, nor modify and redistribute as their own. Please be mindful about these wishes and remember that although no asset in the game is trademarked, the game is still protected by copyright.
+
+Many hopes that you have plenty of fun on your adventure in Capitalism: The Game!"
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="SeeCredits" to="." method="_on_see_credits_pressed"]
