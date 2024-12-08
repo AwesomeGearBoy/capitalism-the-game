@@ -253,4 +253,5 @@ func _on_hint_pressed():
 
 func _on_menu_play():
 	menu = false
-	load_timeout = randi_range(1.2, 3.3)
+	# load_timeout = randi_range(1.2, 3.3)
+ load_timeout = 86400
