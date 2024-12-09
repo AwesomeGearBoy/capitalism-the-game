@@ -24,3 +24,7 @@
  - More grammer fixes
  - Actually exported the new updates! Sorry for the holdup, I did not know that I had to edit the `capitalism-game.exe` file after each update.
  - Planned to be last pre-release before full release.
+
+# CHANGELOG ver.1.0.0:
+ - Changed how data saving works; old game files will now be incompatable with full release going forward. Pre-release save files are only compatable with other pre-release save files.
+ - Removed `icon.svg` from project (finally).

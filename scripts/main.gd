@@ -1,4 +1,5 @@
 extends Node
+class_name Main
 
 var menu := true
 var game_running := true
@@ -13,13 +14,13 @@ var wares_cost := 30000
 var luck_cost := 1500125
 var save := SaveData.new()
 var key := KeyControl.new()
-const MONEY_SAVE_PATH := "res://save/1562345.dat"
-const LEVEL_SAVE_PATH := "res://save/9861230.dat"
-const WARES_SAVE_PATH := "res://save/2786531.dat"
-const LUCK_SAVE_PATH := "res://save/9074567.dat"
-const LEVEL_COST_SAVE_PATH := "res://save/1290348.dat"
-const WARES_COST_SAVE_PATH := "res://save/8675431.dat"
-const LUCK_COST_SAVE_PATH := "res://save/0128328.dat"
+const MONEY_SAVE_PATH := "res://save/n3jdheb.data"
+const LEVEL_SAVE_PATH := "res://save/l38fn5k.data"
+const WARES_SAVE_PATH := "res://save/pleo345.data"
+const LUCK_SAVE_PATH := "res://save/1452gdn.data"
+const LEVEL_COST_SAVE_PATH := "res://save/duio8fd.data"
+const WARES_COST_SAVE_PATH := "res://save/wuqi75g.data"
+const LUCK_COST_SAVE_PATH := "res://save/9o5dvj4.data"
 
 func _ready():
 	load_data()
