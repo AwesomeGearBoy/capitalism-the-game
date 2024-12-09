@@ -28,3 +28,4 @@
 # CHANGELOG ver.1.0.0:
  - Changed how data saving works; old game files will now be incompatable with full release going forward. Pre-release save files are only compatable with other pre-release save files.
  - Removed `icon.svg` from project (finally).
+ - Started on a little gift box as a gift for downloading the full release of the game. This should start to pave the way for future events and future gifts.
