@@ -16,5 +16,11 @@
  - Added credits.
  - Fixed grammer, spelling, and capitalization throughout the game because I can't English.
  - Created a loading screen to give variables and assets time to load fully.
- - Made RosesRed event get rid of all of your mnoney.
+ - Made RosesRed event get rid of all of your money.
  - Basic preparation for a full release.
+
+# CHANGELOG ver.0.5.1:
+ - More bug fixes
+ - More grammer fixes
+ - Actually exported the new updates! Sorry for the holdup, I did not know that I had to edit the `capitalism-game.exe` file after each update.
+ - Planned to be last pre-release before full release.

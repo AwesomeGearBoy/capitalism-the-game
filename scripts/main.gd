@@ -3,7 +3,7 @@ extends Node
 var menu := true
 var game_running := true
 var game_load : bool
-var load_timeout = 0.0
+var load_timeout := 0.0
 var money := 0
 var level := 1
 var warehouses := 0
@@ -91,7 +91,7 @@ func load_data():
 	luck_cost = save.load_int(LUCK_COST_SAVE_PATH, 1500125)
 
 func collect_revenue():
-	var random_amount = 0
+	var random_amount := 0
 	
 	if luck_level == 0:
 		random_amount = randi_range(200, 300)
@@ -138,7 +138,7 @@ func check_for_event():
 		something_happened()
 
 func something_happened():
-	var chance = randi_range(1, 2)
+	var chance := randi_range(1, 2)
 	if chance == 1:
 		good_event_happened()
 	elif chance == 2:
@@ -148,7 +148,7 @@ func something_happened():
 			good_event_happened()
 
 func good_event_happened():
-	var event = randi_range(1, 7)
+	var event := randi_range(1, 7)
 	
 	if event == 1:
 		$VendingMachine.show()
@@ -173,7 +173,7 @@ func good_event_happened():
 		good_effect(15065, 21085)
 
 func bad_event_happened():
-	var event = randi_range(1, 9)
+	var event := randi_range(1, 9)
 	
 	if event == 1:
 		$FindMotivation.show()
@@ -204,11 +204,11 @@ func bad_event_happened():
 		money = money * 0
 
 func good_effect(origin : int, bound : int):
-	var random_amount = randi_range(origin, bound)
+	var random_amount := randi_range(origin, bound)
 	money += random_amount * level
 
 func bad_effect(origin : int, bound : int):
-	var random_amount = randi_range(origin, bound)
+	var random_amount := randi_range(origin, bound)
 	money -= random_amount * level
 
 func upgrade_level():
@@ -253,5 +253,4 @@ func _on_hint_pressed():
 
 func _on_menu_play():
 	menu = false
-	# load_timeout = randi_range(1.2, 3.3)
- load_timeout = 86400
+	load_timeout = randi_range(1.2, 3.3)
