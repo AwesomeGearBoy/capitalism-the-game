@@ -34,6 +34,7 @@ func _process(delta):
 func menu_handling():
 	if key.went_down("esc"):
 		menu = true
+		load_timeout = randi_range(1.2, 3.3)
 	
 	if menu == true:
 		$Menu.show()
@@ -255,3 +256,6 @@ func _on_hint_pressed():
 func _on_menu_play():
 	menu = false
 	load_timeout = randi_range(1.2, 3.3)
+
+func _on_event_gift_collected():
+	money += 500000 * level

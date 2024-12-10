@@ -5,6 +5,7 @@ var collected_release_present = false
 var save = SaveData.new()
 const RELEASE_EVENT_SAVE_PATH = "res://save/r3lg1ft.data"
 signal play
+signal gift_collected
 
 func _ready():
 	collected_release_present = save.load_bool(RELEASE_EVENT_SAVE_PATH, false)
@@ -33,4 +34,4 @@ func _on_event_gift_pressed():
 	collected_release_present = true
 	save.save_var(RELEASE_EVENT_SAVE_PATH, collected_release_present)
 	$EventGiftMessage.show()
-	# Main.money = Main.money + 500000
+	gift_collected.emit()

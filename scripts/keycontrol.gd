@@ -17,3 +17,9 @@ func went_up(key : String) -> bool:
 		return true
 	else:
 		return false
+
+func any_down() -> bool:
+	if Input.is_anything_pressed():
+		return true
+	else:
+		return false

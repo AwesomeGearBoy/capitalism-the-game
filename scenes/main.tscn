@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ry2gx0ka87xl" path="res://scenes/backdrop.tscn" id="1_s1lcf"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_vcd71"]
-[ext_resource type="Texture2D" uid="uid://f4k65gw5ctu7" path="res://assets/hint.png" id="2_3ofbb"]
+[ext_resource type="Texture2D" uid="uid://domykc35fmee1" path="res://assets/hint.png" id="2_3ofbb"]
 [ext_resource type="PackedScene" uid="uid://c6wofbnlu72ed" path="res://scenes/titlescreen.tscn" id="2_4nb71"]
 [ext_resource type="PackedScene" uid="uid://bpi2jsm6pfcum" path="res://scenes/emptymessage.tscn" id="3_n7en5"]
 [ext_resource type="PackedScene" uid="uid://dawxowl20v2a5" path="res://scenes/loadingscreen.tscn" id="5_1mnjo"]
@@ -391,10 +391,9 @@ text = "Hello! Welcome to Capitalism: The Game! This message exists to help you 
 Also see README.md for more game info!"
 autowrap_mode = 3
 
-[node name="LoadingScreen" parent="." instance=ExtResource("5_1mnjo")]
-visible = false
-
 [node name="Menu" parent="." instance=ExtResource("2_4nb71")]
+
+[node name="LoadingScreen" parent="." instance=ExtResource("5_1mnjo")]
 visible = false
 
 [connection signal="pressed" from="RevenueButton" to="." method="_on_revenue_button_pressed"]
@@ -402,4 +401,5 @@ visible = false
 [connection signal="pressed" from="BuyWarehouse" to="." method="_on_buy_warehouse_pressed"]
 [connection signal="pressed" from="UpgradeLuck" to="." method="_on_upgrade_luck_pressed"]
 [connection signal="pressed" from="Hint" to="." method="_on_hint_pressed"]
+[connection signal="gift_collected" from="Menu" to="." method="_on_event_gift_collected"]
 [connection signal="play" from="Menu" to="." method="_on_menu_play"]

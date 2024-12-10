@@ -1,7 +1,7 @@
 extends Sprite2D
 
 func _process(_delta):
-	var key = KeyControl.new()
+	var key := KeyControl.new()
 	if key.went_down("esc"):
 		hide()
 

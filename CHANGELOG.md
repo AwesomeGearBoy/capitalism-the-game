@@ -26,6 +26,10 @@
  - Planned to be last pre-release before full release.
 
 # CHANGELOG ver.1.0.0:
- - Changed how data saving works; old game files will now be incompatable with full release going forward. Pre-release save files are only compatable with other pre-release save files.
+ - Changed how game saving works; old game files will now be incompatable with full release and going forward. Pre-release save files are only compatable with other pre-release save files.
  - Removed `icon.svg` from project (finally).
- - Started on a little gift box as a gift for downloading the full release of the game. This should start to pave the way for future events and future gifts.
+ - Simplified changing game version (for myself).
+ - Finished on a little gift box as a gift for downloading the full release of the game. This should start to pave the way for future events and future gifts.
+ - Did major bugtesting. `String` variables are incompatable with the `SaveData` class. I cannot save `String` variables, but I can load them. Everything else there works.
+ - Editted `KeyControl` class. I am now able to make it so that if anything is pressed, it will return `true`.
+ - First full release of the game! Here's to more in the future!
