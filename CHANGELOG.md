@@ -33,3 +33,6 @@
  - Did major bugtesting. `String` variables are incompatable with the `SaveData` class. I cannot save `String` variables, but I can load them. Everything else there works.
  - Editted `KeyControl` class. I am now able to make it so that if anything is pressed, it will return `true`.
  - First full release of the game! Here's to more in the future!
+
+# CHANGELOG ver.1.1.0:
+ - Adding auto mode, a mode that allows you to collect money when you are AFK

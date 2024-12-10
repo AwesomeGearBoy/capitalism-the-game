@@ -12,6 +12,14 @@ script = ExtResource("1_vcd71")
 
 [node name="Backdrop" parent="." instance=ExtResource("1_s1lcf")]
 
+[node name="AutoButton" type="Button" parent="."]
+offset_left = 27.0
+offset_top = 86.0
+offset_right = 193.0
+offset_bottom = 161.0
+theme_override_font_sizes/font_size = 23
+text = "AUTO: OFF"
+
 [node name="RevenueButton" type="Button" parent="."]
 offset_left = 27.0
 offset_top = 167.0
@@ -36,6 +44,16 @@ offset_right = 1431.0
 offset_bottom = 318.0
 theme_override_font_sizes/font_size = 60
 text = "UPGRADE LEVEL"
+
+[node name="UpgradeAuto" type="Button" parent="."]
+offset_left = 197.0
+offset_top = 86.0
+offset_right = 362.0
+offset_bottom = 161.0
+theme_override_font_sizes/font_size = 20
+text = "Upgrade Auto
+
+"
 
 [node name="BuyWarehouse" type="Button" parent="."]
 offset_left = 946.0
@@ -75,6 +93,13 @@ offset_bottom = 290.0
 theme_override_font_sizes/font_size = 20
 text = "Cost: $0"
 
+[node name="AutoCost" type="Label" parent="."]
+offset_left = 212.0
+offset_top = 128.0
+offset_right = 353.0
+offset_bottom = 151.0
+text = "Cost: $0"
+
 [node name="WaresCost" type="Label" parent="."]
 offset_left = 975.0
 offset_top = 528.0
@@ -100,26 +125,34 @@ theme_override_font_sizes/font_size = 30
 text = "MONEY: $0"
 
 [node name="Level" type="Label" parent="."]
-offset_left = 624.0
-offset_top = 36.0
-offset_right = 742.0
-offset_bottom = 78.0
+offset_left = 633.0
+offset_top = 14.0
+offset_right = 751.0
+offset_bottom = 56.0
 theme_override_font_sizes/font_size = 30
 text = "LEVEL: 0"
 
+[node name="AutoLevel" type="Label" parent="."]
+offset_left = 543.0
+offset_top = 45.0
+offset_right = 751.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 30
+text = "AUTO LEVEL: 0"
+
 [node name="Warehouses" type="Label" parent="."]
-offset_left = 507.0
-offset_top = 68.0
-offset_right = 742.0
-offset_bottom = 110.0
+offset_left = 516.0
+offset_top = 76.0
+offset_right = 751.0
+offset_bottom = 118.0
 theme_override_font_sizes/font_size = 30
 text = "WAREHOUSES: 0"
 
 [node name="LuckLevel" type="Label" parent="."]
-offset_left = 540.0
-offset_top = 100.0
-offset_right = 742.0
-offset_bottom = 142.0
+offset_left = 549.0
+offset_top = 107.0
+offset_right = 751.0
+offset_bottom = 149.0
 theme_override_font_sizes/font_size = 30
 text = "LUCK LEVEL: 0"
 
@@ -392,10 +425,12 @@ Also see README.md for more game info!"
 autowrap_mode = 3
 
 [node name="Menu" parent="." instance=ExtResource("2_4nb71")]
+visible = false
 
 [node name="LoadingScreen" parent="." instance=ExtResource("5_1mnjo")]
 visible = false
 
+[connection signal="pressed" from="AutoButton" to="." method="_on_auto_button_pressed"]
 [connection signal="pressed" from="RevenueButton" to="." method="_on_revenue_button_pressed"]
 [connection signal="pressed" from="UpgradeLevel" to="." method="_on_upgrade_level_pressed"]
 [connection signal="pressed" from="BuyWarehouse" to="." method="_on_buy_warehouse_pressed"]

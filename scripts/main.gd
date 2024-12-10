@@ -1,9 +1,12 @@
 extends Node
 class_name Main
 
+# ====== NEED TO ADD MORE VARIABLES FOR AUTO COST AND LEVEL AND IMPLEMENT THEM INTO THE GAME ====== #
+
 var menu := true
 var game_running := true
 var game_load : bool
+var auto_mode := false
 var load_timeout := 0.0
 var money := 0
 var level := 1
@@ -38,6 +41,7 @@ func menu_handling():
 	
 	if menu == true:
 		$Menu.show()
+		auto_mode = false
 	else:
 		$Menu.hide()
 	
@@ -65,6 +69,10 @@ func load_game(delta):
 func process_text():
 	$Money.text = "MONEY: $" + str(money)
 	$Level.text = "LEVEL: " + str(level)
+	if auto_mode:
+		$AutoButton.text = "AUTO: ON"
+	else:
+		$AutoButton.text = "AUTO: OFF"
 	$Warehouses.text = "WAREHOUSES: " + str(warehouses)
 	$LuckLevel.text = "LUCK LEVEL: " + str(luck_level)
 	$LevelCost.text = "Cost: $" + str(level_cost)
@@ -213,6 +221,12 @@ func bad_effect(origin : int, bound : int):
 	var random_amount := randi_range(origin, bound)
 	money -= random_amount * level
 
+func activate_auto():
+	if auto_mode:
+		auto_mode = false
+	elif !auto_mode:
+		auto_mode = true
+
 func upgrade_level():
 	if money >= level_cost:
 		money = money - level_cost
@@ -240,6 +254,9 @@ func upgrade_luck():
 
 func _on_revenue_button_pressed():
 	collect_revenue()
+
+func _on_auto_button_pressed():
+	activate_auto()
 
 func _on_upgrade_level_pressed():
 	upgrade_level()
