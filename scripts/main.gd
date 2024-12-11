@@ -1,27 +1,33 @@
 extends Node
 class_name Main
 
-# ====== NEED TO ADD MORE VARIABLES FOR AUTO COST AND LEVEL AND IMPLEMENT THEM INTO THE GAME ====== #
-
 var menu := true
 var game_running := true
 var game_load : bool
 var auto_mode := false
+
 var load_timeout := 0.0
+
 var money := 0
 var level := 1
+var auto_level := 0
 var warehouses := 0
 var luck_level := 0
 var level_cost := 50
+var auto_cost := 3000
 var wares_cost := 30000
 var luck_cost := 1500125
+
 var save := SaveData.new()
 var key := KeyControl.new()
+
 const MONEY_SAVE_PATH := "res://save/n3jdheb.data"
 const LEVEL_SAVE_PATH := "res://save/l38fn5k.data"
+const AUTO_LEVEL_SAVE_PATH := "res://save/f6hbs34.data"
 const WARES_SAVE_PATH := "res://save/pleo345.data"
 const LUCK_SAVE_PATH := "res://save/1452gdn.data"
 const LEVEL_COST_SAVE_PATH := "res://save/duio8fd.data"
+const AUTO_COST_SAVE_PATH := "res://save/u7yds34.data"
 const WARES_COST_SAVE_PATH := "res://save/wuqi75g.data"
 const LUCK_COST_SAVE_PATH := "res://save/9o5dvj4.data"
 
@@ -31,13 +37,28 @@ func _ready():
 func _process(delta):
 	menu_handling()
 	load_game(delta)
+	process_auto_money()
 	process_text()
 	save_data()
 
+func new_game():
+	money = 0
+	level = 1
+	auto_level = 0
+	warehouses = 0
+	luck_level = 0
+	level_cost = 50
+	auto_cost = 3000
+	wares_cost = 30000
+	luck_cost = 1500125
+	menu = false
+	load_timeout = randi_range(1.2, 3.3)
+
 func menu_handling():
-	if key.went_down("esc"):
-		menu = true
-		load_timeout = randi_range(1.2, 3.3)
+	if !menu:
+		if key.went_down("esc"):
+			menu = true
+			load_timeout = randi_range(1.2, 3.3)
 	
 	if menu == true:
 		$Menu.show()
@@ -66,17 +87,36 @@ func load_game(delta):
 	elif !game_load:
 		$LoadingScreen.hide()
 
+func process_auto_money():
+	if auto_mode:
+		money = money + auto_level
+
 func process_text():
 	$Money.text = "MONEY: $" + str(money)
 	$Level.text = "LEVEL: " + str(level)
-	if auto_mode:
-		$AutoButton.text = "AUTO: ON"
-	else:
-		$AutoButton.text = "AUTO: OFF"
+	$AutoLevel.text = "AUTO LEVEL: " + str(auto_level)
 	$Warehouses.text = "WAREHOUSES: " + str(warehouses)
 	$LuckLevel.text = "LUCK LEVEL: " + str(luck_level)
 	$LevelCost.text = "Cost: $" + str(level_cost)
 	$WaresCost.text = "Cost: $" + str(wares_cost)
+	
+	if auto_mode:
+		$AutoButton.text = "AUTO: ON"
+	else:
+		$AutoButton.text = "AUTO: OFF"
+	
+	if auto_level == 0:
+		$AutoButton.hide()
+	else:
+		$AutoButton.show()
+	
+	if auto_level == 0:
+		$AutoCost.text = "Buy: $" + str(auto_cost)
+	elif auto_level < 35:
+		$AutoCost.text = "Cost: $" + str(auto_cost)
+	else:
+		$AutoCost.text = "Cost: MAX LEVEL"
+	
 	if luck_level < 10:
 		$LuckCost.text = "Cost: $" + str(luck_cost)
 	else:
@@ -85,18 +125,22 @@ func process_text():
 func save_data():
 	save.save_var(MONEY_SAVE_PATH, money)
 	save.save_var(LEVEL_SAVE_PATH, level)
+	save.save_var(AUTO_LEVEL_SAVE_PATH, auto_level)
 	save.save_var(WARES_SAVE_PATH, warehouses)
 	save.save_var(LUCK_SAVE_PATH, luck_level)
 	save.save_var(LEVEL_COST_SAVE_PATH, level_cost)
+	save.save_var(AUTO_COST_SAVE_PATH, auto_cost)
 	save.save_var(WARES_COST_SAVE_PATH, wares_cost)
 	save.save_var(LUCK_COST_SAVE_PATH, luck_cost)
 
 func load_data():
-	money = save.load_int(MONEY_SAVE_PATH)
+	money = save.load_int(MONEY_SAVE_PATH, 0)
 	level = save.load_int(LEVEL_SAVE_PATH, 1)
-	warehouses = save.load_int(WARES_SAVE_PATH)
-	luck_level = save.load_int(LUCK_SAVE_PATH)
+	auto_level = save.load_int(AUTO_LEVEL_SAVE_PATH, 0)
+	warehouses = save.load_int(WARES_SAVE_PATH, 0)
+	luck_level = save.load_int(LUCK_SAVE_PATH, 0)
 	level_cost = save.load_int(LEVEL_COST_SAVE_PATH, 50)
+	auto_cost = save.load_int(AUTO_COST_SAVE_PATH, 3000)
 	wares_cost = save.load_int(WARES_COST_SAVE_PATH, 30000)
 	luck_cost = save.load_int(LUCK_COST_SAVE_PATH, 1500125)
 
@@ -236,6 +280,18 @@ func upgrade_level():
 		else:
 			level_cost = level_cost * 2
 
+func upgrade_auto():
+	if auto_level < 35:
+		if money >= auto_cost:
+			money = money - auto_cost
+			auto_level = auto_level + 1
+			if auto_level == 1:
+				auto_cost = 25
+			elif auto_level < 15:
+				auto_cost = 25 * auto_level
+			elif auto_level >= 15:
+				auto_cost = auto_cost * 2
+
 func buy_warehouse():
 	if money >= wares_cost:
 		money = money - wares_cost
@@ -261,6 +317,9 @@ func _on_auto_button_pressed():
 func _on_upgrade_level_pressed():
 	upgrade_level()
 
+func _on_upgrade_auto_pressed():
+	upgrade_auto()
+
 func _on_buy_warehouse_pressed():
 	buy_warehouse()
 
@@ -269,6 +328,9 @@ func _on_upgrade_luck_pressed():
 
 func _on_hint_pressed():
 	$Help.show()
+
+func _on_menu_new_game():
+	new_game()
 
 func _on_menu_play():
 	menu = false

@@ -35,4 +35,6 @@
  - First full release of the game! Here's to more in the future!
 
 # CHANGELOG ver.1.1.0:
- - Adding auto mode, a mode that allows you to collect money when you are AFK
+ - Added auto mode, a new game mode that allows you to collect money when you are AFK!
+ - You can now create new games within the game itself.
+ - Fixed bug where title screen reloads if you press `esc`.

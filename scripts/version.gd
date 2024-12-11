@@ -1,7 +1,7 @@
 class_name GameVersion
 
 var release := 1
-var update := 0
+var update := 1
 var bug_fixes := 0
 
 func get_version():

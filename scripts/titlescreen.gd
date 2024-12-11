@@ -1,22 +1,29 @@
 extends Sprite2D
 class_name TitleScreen
 
-var collected_release_present = false
+var collected_event_present = true
 var save = SaveData.new()
-const RELEASE_EVENT_SAVE_PATH = "res://save/r3lg1ft.data"
+var EVENT_GIFT_SAVE_PATH = "res://save/"
 signal play
+signal new_game
 signal gift_collected
 
 func _ready():
-	collected_release_present = save.load_bool(RELEASE_EVENT_SAVE_PATH, false)
+	pass
 
 func _process(_delta):
-	if collected_release_present:
+	if collected_event_present:
 		$EventGift.hide()
 	else:
 		$EventGift.show()
 	var system = GameVersion.new()
 	$Version.text = system.get_version()
+
+func _on_new_game_pressed():
+	$NewGameWarning.show()
+
+func _on_yes_pressed():
+	new_game.emit()
 
 func _on_play_button_pressed():
 	play.emit()
@@ -31,7 +38,5 @@ func _on_see_warning_pressed():
 	$Warning.show()
 
 func _on_event_gift_pressed():
-	collected_release_present = true
-	save.save_var(RELEASE_EVENT_SAVE_PATH, collected_release_present)
 	$EventGiftMessage.show()
 	gift_collected.emit()
