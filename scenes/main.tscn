@@ -72,6 +72,14 @@ offset_bottom = 794.0
 theme_override_font_sizes/font_size = 60
 text = "UPGRADE LUCK"
 
+[node name="Salvage" type="Button" parent="."]
+offset_left = 946.0
+offset_top = 16.0
+offset_right = 1206.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 35
+text = "SALVAGE"
+
 [node name="Hint" type="TextureButton" parent="."]
 offset_left = 1338.0
 offset_top = 7.0
@@ -155,6 +163,13 @@ offset_right = 751.0
 offset_bottom = 149.0
 theme_override_font_sizes/font_size = 30
 text = "LUCK LEVEL: 0"
+
+[node name="MessageMode" type="Label" parent="."]
+offset_left = 18.0
+offset_top = 53.0
+offset_right = 162.0
+offset_bottom = 76.0
+text = "HIDE POP-UPS: ON"
 
 [node name="VendingMachine" parent="." instance=ExtResource("3_n7en5")]
 visible = false
@@ -409,6 +424,39 @@ I'm pretty poor...
 And now so are you..."
 autowrap_mode = 3
 
+[node name="SalvageMessage" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="SalvageMessage"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 10
+text = "Are you sure you want to salvage? Salvaging is very good for upgrading everything. By salvaging you will obtain the following:
+ - $100000 per level gained
+ - $50000 per warehouse bought
+ - $75000 per auto level gained
+ - $500000 per luck level gained
+
+However, you will lose:
+ - All levels (level, auto, luck)
+ - All warehouses
+
+But will keep:
+ - All of your money + money gained from salvage.
+
+Click the salvage button to salvage, or just close this message to cancel."
+autowrap_mode = 3
+
+[node name="ConfirmSalvage" type="Button" parent="SalvageMessage"]
+offset_left = -174.17
+offset_top = 127.407
+offset_right = -96.1697
+offset_bottom = 158.407
+text = "SALVAGE"
+
 [node name="Help" parent="." instance=ExtResource("3_n7en5")]
 visible = false
 
@@ -436,7 +484,9 @@ visible = false
 [connection signal="pressed" from="UpgradeAuto" to="." method="_on_upgrade_auto_pressed"]
 [connection signal="pressed" from="BuyWarehouse" to="." method="_on_buy_warehouse_pressed"]
 [connection signal="pressed" from="UpgradeLuck" to="." method="_on_upgrade_luck_pressed"]
+[connection signal="pressed" from="Salvage" to="." method="_on_salvage_pressed"]
 [connection signal="pressed" from="Hint" to="." method="_on_hint_pressed"]
+[connection signal="pressed" from="SalvageMessage/ConfirmSalvage" to="." method="_on_confirm_salvage_pressed"]
 [connection signal="gift_collected" from="Menu" to="." method="_on_event_gift_collected"]
 [connection signal="new_game" from="Menu" to="." method="_on_menu_new_game"]
 [connection signal="play" from="Menu" to="." method="_on_menu_play"]

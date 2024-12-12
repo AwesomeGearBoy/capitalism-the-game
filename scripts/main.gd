@@ -3,8 +3,9 @@ class_name Main
 
 var menu := true
 var game_running := true
-var game_load : bool
 var auto_mode := false
+var hide_messages := false
+var game_load : bool
 
 var load_timeout := 0.0
 
@@ -36,6 +37,7 @@ func _ready():
 
 func _process(delta):
 	menu_handling()
+	handle_message_mode()
 	load_game(delta)
 	process_auto_money()
 	process_text()
@@ -70,6 +72,12 @@ func menu_handling():
 		game_running = true
 	else:
 		game_running = false
+
+func handle_message_mode():
+	if key.went_down("F3") && !hide_messages:
+		hide_messages = true
+	elif key.went_down("F3") && hide_messages:
+		hide_messages = false
 
 func load_game(delta):
 	load_timeout = load_timeout - 1 * delta
@@ -121,6 +129,11 @@ func process_text():
 		$LuckCost.text = "Cost: $" + str(luck_cost)
 	else:
 		$LuckCost.text = "Cost: MAX LEVEL"
+	
+	if hide_messages:
+		$MessageMode.show()
+	else:
+		$MessageMode.hide()
 
 func save_data():
 	save.save_var(MONEY_SAVE_PATH, money)
@@ -205,56 +218,72 @@ func good_event_happened():
 	var event := randi_range(1, 7)
 	
 	if event == 1:
-		$VendingMachine.show()
+		if !hide_messages:
+			$VendingMachine.show()
 		good_effect(435, 565)
 	elif event == 2:
-		$LostUncle.show()
+		if !hide_messages:
+			$LostUncle.show()
 		good_effect(1035, 1565)
 	elif event == 3:
-		$LawsuitWin.show()
+		if !hide_messages:
+			$LawsuitWin.show()
 		good_effect(543, 2234)
 	elif event == 4:
-		$RandomDude.show()
+		if !hide_messages:
+			$RandomDude.show()
 		good_effect(1567, 3045)
 	elif event == 5:
-		$PennyRain.show()
+		if !hide_messages:
+			$PennyRain.show()
 		good_effect(5345, 6245)
 	elif event == 6:
-		$CatVideo.show()
+		if !hide_messages:
+			$CatVideo.show()
 		good_effect(5999, 10086)
 	elif event == 7:
-		$TvFame.show()
+		if !hide_messages:
+			$TvFame.show()
 		good_effect(15065, 21085)
 
 func bad_event_happened():
 	var event := randi_range(1, 9)
 	
 	if event == 1:
-		$FindMotivation.show()
+		if !hide_messages:
+			$FindMotivation.show()
 		bad_effect(150, 250)
 	elif event == 2:
-		$DogBurial.show()
+		if !hide_messages:
+			$DogBurial.show()
 		bad_effect(450, 655)
 	elif event == 3:
-		$CashFire.show()
+		if !hide_messages:
+			$CashFire.show()
 		bad_effect(450, 655)
 	elif event == 4:
-		$LawsuitLoss.show()
+		if !hide_messages:
+			$LawsuitLoss.show()
 		bad_effect(543, 2234)
 	elif event == 5:
-		$GlitterMess.show()
+		if !hide_messages:
+			$GlitterMess.show()
 		bad_effect(2500, 5000)
 	elif event == 6:
-		$RealEstate.show()
+		if !hide_messages:
+			$RealEstate.show()
 		bad_effect(3065, 6025)
 	elif event == 7:
-		$LemonadeStand.show()
+		if !hide_messages:
+			$LemonadeStand.show()
 		bad_effect(5085, 10025)
 	elif event == 8:
-		$ShinyPebbleCoin.show()
+		if !hide_messages:
+			$ShinyPebbleCoin.show()
 		bad_effect(6045, 12070)
 	elif event == 9:
-		$RosesRed.show()
+		if !hide_messages:
+			$RosesRed.show()
 		money = money * 0
 
 func good_effect(origin : int, bound : int):
@@ -308,26 +337,55 @@ func upgrade_luck():
 			luck_level += 1
 			luck_cost = luck_cost * 2
 
+func salvage():
+	money += level * 100000
+	money += auto_level * 25000
+	money += warehouses * 50000
+	money += luck_level * 500000
+	
+	level = 1
+	auto_level = 0
+	warehouses = 0
+	luck_level = 0
+	level_cost = 50
+	auto_cost = 3000
+	wares_cost = 30000
+	luck_cost = 1500125
+
 func _on_revenue_button_pressed():
-	collect_revenue()
+	if !menu:
+		collect_revenue()
 
 func _on_auto_button_pressed():
-	activate_auto()
+	if !menu:
+		activate_auto()
 
 func _on_upgrade_level_pressed():
-	upgrade_level()
+	if !menu:
+		upgrade_level()
 
 func _on_upgrade_auto_pressed():
-	upgrade_auto()
+	if !menu:
+		upgrade_auto()
 
 func _on_buy_warehouse_pressed():
-	buy_warehouse()
+	if !menu:
+		buy_warehouse()
 
 func _on_upgrade_luck_pressed():
-	upgrade_luck()
+	if !menu:
+		upgrade_luck()
+
+func _on_salvage_pressed():
+	if !menu:
+		$SalvageMessage.show()
+
+func _on_confirm_salvage_pressed():
+	salvage()
 
 func _on_hint_pressed():
-	$Help.show()
+	if !menu:
+		$Help.show()
 
 func _on_menu_new_game():
 	new_game()

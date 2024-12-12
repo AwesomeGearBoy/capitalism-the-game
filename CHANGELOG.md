@@ -38,3 +38,4 @@
  - Added auto mode, a new game mode that allows you to collect money when you are AFK!
  - You can now create new games within the game itself.
  - Fixed bug where title screen reloads if you press `esc`.
+ - Restructured Menu screen.

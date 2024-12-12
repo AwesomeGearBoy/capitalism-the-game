@@ -1,9 +1,9 @@
 extends Sprite2D
 class_name TitleScreen
 
-var collected_event_present = true
-var save = SaveData.new()
-var EVENT_GIFT_SAVE_PATH = "res://save/"
+var collected_event_present := true
+var save := SaveData.new()
+var EVENT_GIFT_SAVE_PATH := "res://save/"
 signal play
 signal new_game
 signal gift_collected
@@ -18,6 +18,10 @@ func _process(_delta):
 		$EventGift.show()
 	var system = GameVersion.new()
 	$Version.text = system.get_version()
+
+func settings_handling():
+	$SettingsScreen.show()
+	$SettingsScreen.hide()
 
 func _on_new_game_pressed():
 	$NewGameWarning.show()
