@@ -1,5 +1,4 @@
 extends Node
-class_name Main
 
 var menu := true
 var game_running := true
