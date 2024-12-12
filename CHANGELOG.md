@@ -39,3 +39,4 @@
  - You can now create new games within the game itself.
  - Fixed bug where title screen reloads if you press `esc`.
  - Restructured Menu screen.
+ - Added Salvaging, allowing for more upgrading!
