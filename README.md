@@ -8,18 +8,13 @@ However, collecting revanue has a risk to it. Every time you collect revanue, th
 
 What do warehouses do? They increase the amount of money you earn when collecting revanue without increasing risk! The amount of warehouses you own does not affect the strength of the effects on you. The cost for the warehouses is dependant on how many you own and what level you are at.
 
-# DELETING SAVE FILES
-Want to begin again? Start over? Sure, no problem.
+Going AFK? That's fine, go ahead and activate Auto Mode!
 
-You may notice that there is no option in-game for starting all over again. Don't worry, you can still start over.
-
-Go into your files explorer and locate the game files. Head over to the `save` folder. Select every file inside of this folder and remove them in some way (moving them somewhere else, deleting them, etc). They will be made again the next time the game is run, and you will be able to start again as all the old data is gone.
-
-*Note: Do NOT delete or move the `save` folder. Only delete or move files within the folder. Also, accidental not deleting or moving every file when they need to be moved may affect gameplay permanently, and may ruin your game. AwesomeGearBoy is not responsible for and can not fix games that are corrupted.*
+Tired of what you got? Salvage it all for more money!
 
 # MOVING SAVE DATA TO NEW VERSIONS OF THE GAME
 If there is an update to the game (which there could be in the future), and you want to keep your old save data for the new update, simply move the files from the `save` folder in the old version to the `save` folder in the new version. This should successfully move your save data from one game to the next. The new update to the game should take in this data as save data.
 
-*Note: Again, do NOT delete or move the `save` folder. Only delete or move files within the folder. Also, accidental not deleting or moving every file when they need to be moved may affect gameplay permanently, and may ruin your game. AwesomeGearBoy is not responsible for and can not fix games that are corrupted.*
+*Note: Do NOT delete or move the `save` folder. Only delete or move files within the folder. Also, accidental not deleting or moving every file when they need to be moved may affect gameplay permanently, and may ruin your game. AwesomeGearBoy is not responsible for and can not fix games that are corrupted.*
 
 ### HAVE FUN!!
