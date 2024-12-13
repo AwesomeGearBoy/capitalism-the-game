@@ -342,11 +342,13 @@ func upgrade_luck():
 			luck_cost = luck_cost * 2
 
 func salvage():
+	$SalvageMessage.hide()
 	money += level * 100000
 	money += auto_level * 25000
 	money += warehouses * 50000
 	money += luck_level * 500000
 	
+	auto_mode = false
 	level = 1
 	auto_level = 0
 	warehouses = 0

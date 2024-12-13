@@ -43,3 +43,8 @@
 
 # CHANGELOG ver.1.1.1:
  - Bug fixes and actually exported update!
+
+# CHANGELOG ver.1.1.2:
+ - Bug fixes mostly
+ - Increased game's framerate from 120 FPS to 300 FPS. This will increase the use for auto mode, as auto mode increases the money you have once per frame.
+ - Can now store String data types (sorta)!

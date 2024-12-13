@@ -4,6 +4,10 @@ func save_var(file_path : String, variable):
 	var file := FileAccess.open(file_path, FileAccess.WRITE)
 	file.store_string(str(variable))
 
+func save_string(file_path : String, string : String):
+	var file := FileAccess.open(file_path, FileAccess.WRITE)
+	file.store_line(string)
+
 func load_int(file_path : String, default_value : int = 0) -> int:
 	if FileAccess.file_exists(file_path):
 		var file := FileAccess.open(file_path, FileAccess.READ)

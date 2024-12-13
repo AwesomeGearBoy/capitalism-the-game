@@ -19,14 +19,11 @@ func _process(_delta):
 	var system = GameVersion.new()
 	$Version.text = system.get_version()
 
-func settings_handling():
-	$SettingsScreen.show()
-	$SettingsScreen.hide()
-
 func _on_new_game_pressed():
 	$NewGameWarning.show()
 
 func _on_yes_pressed():
+	$NewGameWarning.hide()
 	new_game.emit()
 
 func _on_play_button_pressed():

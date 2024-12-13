@@ -24,7 +24,7 @@ window/stretch/aspect="ignore"
 
 [editor]
 
-movie_writer/fps=120
+movie_writer/fps=300
 
 [input]
 
