@@ -40,3 +40,6 @@
  - Fixed bug where title screen reloads if you press `esc`.
  - Restructured Menu screen.
  - Added Salvaging, allowing for more upgrading!
+
+# CHANGELOG ver.1.1.1:
+ - Bug fixes and actually exported update!
