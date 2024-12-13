@@ -107,6 +107,11 @@ func process_text():
 	$LevelCost.text = "Cost: $" + str(level_cost)
 	$WaresCost.text = "Cost: $" + str(wares_cost)
 	
+	if level < 15:
+		$Salvage.hide()
+	else:
+		$Salvage.show()
+	
 	if auto_mode:
 		$AutoButton.text = "AUTO: ON"
 	else:
