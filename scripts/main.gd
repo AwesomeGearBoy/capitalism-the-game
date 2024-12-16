@@ -402,3 +402,13 @@ func _on_menu_play():
 
 func _on_event_gift_collected():
 	money += 500000 * level
+
+func _on_menu_button_pressed():
+	load_timeout = randi_range(1.2, 3.3)
+	menu = true
+
+func _on_hide_popups_pressed():
+	if hide_messages:
+		hide_messages = false
+	elif !hide_messages:
+		hide_messages = true
