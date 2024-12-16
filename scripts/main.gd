@@ -5,6 +5,10 @@ var game_running := true
 var auto_mode := false
 var hide_messages := false
 var game_load : bool
+var unlocked_auto_mode := false
+var unlocked_wares := false
+var unlocked_luck := false
+var unlocked_stock_market := false
 
 var load_timeout := 0.0
 
@@ -21,6 +25,10 @@ var luck_cost := 1500125
 var save := SaveData.new()
 var key := KeyControl.new()
 
+const UNLOCKED_AUTO_MODE_SAVE_PATH := "res://save/67ifvtq.data"
+const UNLOCKED_WARES_SAVE_PATH := "res://save/e73gqfb.data"
+const UNLOCKED_LUCK_SAVE_PATH := "res://save/84tfg39.data"
+const UNLOCKED_STOCK_MARKET_SAVE_PATH := "res://save/d686fty.data"
 const MONEY_SAVE_PATH := "res://save/n3jdheb.data"
 const LEVEL_SAVE_PATH := "res://save/l38fn5k.data"
 const AUTO_LEVEL_SAVE_PATH := "res://save/f6hbs34.data"
@@ -40,9 +48,15 @@ func _process(delta):
 	load_game(delta)
 	process_auto_money()
 	process_text()
+	button_handling()
+	unlock_stuff()
 	save_data()
 
 func new_game():
+	unlocked_auto_mode = false
+	unlocked_wares = false
+	unlocked_luck = false
+	unlocked_stock_market = false
 	money = 0
 	level = 1
 	auto_level = 0
@@ -107,21 +121,6 @@ func process_text():
 	$LevelCost.text = "Cost: $" + str(level_cost)
 	$WaresCost.text = "Cost: $" + str(wares_cost)
 	
-	if level < 15:
-		$Salvage.hide()
-	else:
-		$Salvage.show()
-	
-	if auto_mode:
-		$AutoButton.text = "AUTO: ON"
-	else:
-		$AutoButton.text = "AUTO: OFF"
-	
-	if auto_level == 0:
-		$AutoButton.hide()
-	else:
-		$AutoButton.show()
-	
 	if auto_level == 0:
 		$AutoCost.text = "Buy: $" + str(auto_cost)
 	elif auto_level < 35:
@@ -139,7 +138,66 @@ func process_text():
 	else:
 		$MessageMode.hide()
 
+func button_handling():
+	if unlocked_auto_mode:
+		$UpgradeAuto.show()
+		$AutoCost.show()
+	else:
+		$UpgradeAuto.hide()
+		$AutoCost.hide()
+	
+	if unlocked_wares:
+		$BuyWarehouse.show()
+		$WaresCost.show()
+	else:
+		$BuyWarehouse.hide()
+		$WaresCost.hide()
+	
+	if unlocked_luck:
+		$UpgradeLuck.show()
+		$LuckCost.show()
+	else:
+		$UpgradeLuck.hide()
+		$LuckCost.hide()
+	
+	if unlocked_stock_market:
+		$StockMarketButton.show()
+	else:
+		$StockMarketButton.hide()
+	
+	if level < 20:
+		$Salvage.hide()
+	else:
+		$Salvage.show()
+	
+	if auto_mode:
+		$AutoButton.text = "AUTO: ON"
+	else:
+		$AutoButton.text = "AUTO: OFF"
+	
+	if auto_level == 0:
+		$AutoButton.hide()
+	else:
+		$AutoButton.show()
+
+func unlock_stuff():
+	if level >= 5:
+		unlocked_auto_mode = true
+	
+	if level >= 15:
+		unlocked_wares = true
+	
+	if level >= 20:
+		unlocked_luck = true
+	
+	#if level < 30:
+		#unlocked_stock_market = true
+
 func save_data():
+	save.save_var(UNLOCKED_AUTO_MODE_SAVE_PATH, unlocked_auto_mode)
+	save.save_var(UNLOCKED_WARES_SAVE_PATH, unlocked_wares)
+	save.save_var(UNLOCKED_LUCK_SAVE_PATH, unlocked_luck)
+	save.save_var(UNLOCKED_STOCK_MARKET_SAVE_PATH, unlocked_stock_market)
 	save.save_var(MONEY_SAVE_PATH, money)
 	save.save_var(LEVEL_SAVE_PATH, level)
 	save.save_var(AUTO_LEVEL_SAVE_PATH, auto_level)
@@ -151,6 +209,10 @@ func save_data():
 	save.save_var(LUCK_COST_SAVE_PATH, luck_cost)
 
 func load_data():
+	unlocked_auto_mode = save.load_bool(UNLOCKED_AUTO_MODE_SAVE_PATH, false)
+	unlocked_wares = save.load_bool(UNLOCKED_WARES_SAVE_PATH, false)
+	unlocked_luck = save.load_bool(UNLOCKED_LUCK_SAVE_PATH, false)
+	unlocked_stock_market = save.load_bool(UNLOCKED_STOCK_MARKET_SAVE_PATH, false)
 	money = save.load_int(MONEY_SAVE_PATH, 0)
 	level = save.load_int(LEVEL_SAVE_PATH, 1)
 	auto_level = save.load_int(AUTO_LEVEL_SAVE_PATH, 0)
@@ -343,10 +405,7 @@ func upgrade_luck():
 
 func salvage():
 	$SalvageMessage.hide()
-	money += level * 100000
-	money += auto_level * 25000
-	money += warehouses * 50000
-	money += luck_level * 500000
+	money += ((warehouses * 75000) + (auto_level * 35000) * (level * (luck_level + 1)))
 	
 	auto_mode = false
 	level = 1

@@ -48,3 +48,9 @@
  - Bug fixes mostly
  - Increased game's framerate from 120 FPS to 300 FPS. This will increase the use for auto mode, as auto mode increases the money you have once per frame.
  - Can now store String data types (sorta)!
+
+# CHANGELOG ver.1.2.0:
+ - Balanced out game, making certain things obtainable through level up.
+ - Changed salvaging mechanics; should give more money now.
+ - `savedata.gd` is updated to maximize efficiency, allowing for loading of data type `String` and also maximizes efficiency of loading `boolean` data types.
+ - Going to add a stock market.

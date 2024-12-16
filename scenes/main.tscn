@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://hkwnmy1glpiv"]
+[gd_scene load_steps=8 format=3 uid="uid://hkwnmy1glpiv"]
 
 [ext_resource type="PackedScene" uid="uid://ry2gx0ka87xl" path="res://scenes/backdrop.tscn" id="1_s1lcf"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_vcd71"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c6wofbnlu72ed" path="res://scenes/titlescreen.tscn" id="2_4nb71"]
 [ext_resource type="PackedScene" uid="uid://bpi2jsm6pfcum" path="res://scenes/emptymessage.tscn" id="3_n7en5"]
 [ext_resource type="PackedScene" uid="uid://dawxowl20v2a5" path="res://scenes/loadingscreen.tscn" id="5_1mnjo"]
+[ext_resource type="Texture2D" uid="uid://cn0t8ffgvmxb1" path="res://assets/black.png" id="5_va8hs"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_vcd71")
@@ -72,7 +73,7 @@ offset_bottom = 615.0
 theme_override_font_sizes/font_size = 50
 text = "UPGRADE LUCK"
 
-[node name="StockMarket" type="Button" parent="."]
+[node name="StockMarketButton" type="Button" parent="."]
 offset_left = 945.0
 offset_top = 627.0
 offset_right = 1431.0
@@ -496,6 +497,124 @@ theme_override_font_sizes/font_size = 13
 text = "Hello! Welcome to Capitalism: The Game! This message exists to help you get started. Use money you earn from collecting revenue to upgrade your level. The higher your level, the more money you earn, but the more risk you take when you collect that revenue. If you have the money, buy warehouses that store stock that you can sell to people. The money will always come back to you when you collect revenue, which increases the amount of money you can earn significantly, without any added risk!
 
 Also see README.md for more game info!"
+autowrap_mode = 3
+
+[node name="StockTitle" type="Sprite2D" parent="."]
+position = Vector2(724.5, 406)
+scale = Vector2(5.43098, 4.77647)
+texture = ExtResource("5_va8hs")
+
+[node name="Welcome" type="Label" parent="StockTitle"]
+offset_left = -133.0
+offset_top = -82.0
+offset_right = 132.0
+offset_bottom = -66.0
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "welcome to"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="StockTitle"]
+offset_left = -133.954
+offset_top = -69.9261
+offset_right = 132.046
+offset_bottom = -27.9261
+theme_override_colors/font_color = Color(0, 0.517593, 3.85046e-07, 1)
+theme_override_font_sizes/font_size = 30
+text = ">> S.T.O.C.K <<"
+horizontal_alignment = 1
+
+[node name="OnlyProgram" type="Label" parent="StockTitle"]
+offset_left = -135.059
+offset_top = -31.1946
+offset_right = 130.941
+offset_bottom = -17.1946
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "(the only program to use for stock market purposes)"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DollarSigns" type="Label" parent="StockTitle"]
+offset_left = -133.033
+offset_top = -24.7044
+offset_right = 131.967
+offset_bottom = 24.2956
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "$$$$"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClickBelow" type="Label" parent="StockTitle"]
+offset_left = -133.586
+offset_top = 21.3547
+offset_right = 132.414
+offset_bottom = 33.3547
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "click button below to continue"
+horizontal_alignment = 1
+
+[node name="Enter" type="Button" parent="StockTitle"]
+offset_left = -56.4355
+offset_top = 41.0345
+offset_right = 54.5645
+offset_bottom = 66.0345
+theme_override_font_sizes/font_size = 12
+text = "ENTER S.T.O.C.K"
+
+[node name="StockMarket" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(724.75, 406)
+scale = Vector2(5.42929, 4.77647)
+texture = ExtResource("5_va8hs")
+
+[node name="Money" type="Label" parent="StockMarket"]
+offset_left = -131.0
+offset_top = -85.0
+offset_right = -74.0
+offset_bottom = -73.0
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 9
+text = "money = $0"
+
+[node name="Stock" type="Label" parent="StockMarket"]
+offset_left = -131.463
+offset_top = -73.0665
+offset_right = -91.4628
+offset_bottom = -60.0665
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 9
+text = "stock = 0"
+
+[node name="StockPrice" type="Label" parent="StockMarket"]
+offset_left = -131.094
+offset_top = -61.3424
+offset_right = -62.0944
+offset_bottom = -46.3424
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 9
+text = "stock_price = $0"
+
+[node name="StockVersion" type="Label" parent="StockMarket"]
+offset_left = -133.0
+offset_top = 73.0
+offset_right = 131.0
+offset_bottom = 85.0
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "S.T.O.C.K system ver.1.298.98"
+horizontal_alignment = 2
+
+[node name="LikeToDo" type="Label" parent="StockMarket"]
+offset_left = -131.0
+offset_top = -37.0
+offset_right = 74.0
+offset_bottom = -22.0
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 9
+text = "what task do you wish to complete?"
 autowrap_mode = 3
 
 [node name="Menu" parent="." instance=ExtResource("2_4nb71")]
