@@ -564,6 +564,16 @@ offset_bottom = 66.0345
 theme_override_font_sizes/font_size = 12
 text = "ENTER S.T.O.C.K"
 
+[node name="BachIndustries" type="Label" parent="StockTitle"]
+offset_left = 104.125
+offset_top = 61.9704
+offset_right = 130.125
+offset_bottom = 82.9704
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 6
+text = "Ba. Inc. 
+est. 3026"
+
 [node name="StockMarket" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(724.75, 406)
@@ -597,6 +607,15 @@ theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
 theme_override_font_sizes/font_size = 9
 text = "stock_price = $0"
 
+[node name="StockSellingPrice" type="Label" parent="StockMarket"]
+offset_left = -131.279
+offset_top = -47.9434
+offset_right = 11.7213
+offset_bottom = -33.9434
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 9
+text = "stock_selling_price = $0"
+
 [node name="StockVersion" type="Label" parent="StockMarket"]
 offset_left = -133.0
 offset_top = 73.0
@@ -604,18 +623,54 @@ offset_right = 131.0
 offset_bottom = 85.0
 theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "S.T.O.C.K system ver.1.298.98"
+text = "S.T.O.C.K system ver.1.987.9875"
 horizontal_alignment = 2
 
 [node name="LikeToDo" type="Label" parent="StockMarket"]
-offset_left = -131.0
-offset_top = -37.0
-offset_right = 74.0
-offset_bottom = -22.0
+offset_left = -130.91
+offset_top = -22.6108
+offset_right = 74.0897
+offset_bottom = -7.61084
 theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
 theme_override_font_sizes/font_size = 9
 text = "what task do you wish to complete?"
 autowrap_mode = 3
+
+[node name="BreakingNews" type="Label" parent="StockMarket"]
+offset_left = -131.0
+offset_top = 17.0
+offset_right = 130.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(1, 0, 0.0901961, 1)
+theme_override_font_sizes/font_size = 8
+text = "PROGRAM ERR: java.lang.personIsTooRich
+System crashing in 10 seconds
+final String LOCAL = \"Local man is too rich; breaking economy. The world can't handle it. Goodbye, sweet Earth. - Mr. Bachman\""
+autowrap_mode = 3
+
+[node name="BuyStock" type="Button" parent="StockMarket"]
+offset_left = -131.279
+offset_top = -6.90887
+offset_right = -46.2787
+offset_bottom = 15.0911
+theme_override_font_sizes/font_size = 10
+text = "BUY STOCK"
+
+[node name="SellStock" type="Button" parent="StockMarket"]
+offset_left = -44.1586
+offset_top = -6.90887
+offset_right = 40.8414
+offset_bottom = 15.0911
+theme_override_font_sizes/font_size = 10
+text = "SELL STOCK"
+
+[node name="QuitProgram" type="Button" parent="StockMarket"]
+offset_left = 42.0405
+offset_top = -6.90887
+offset_right = 127.04
+offset_bottom = 15.0911
+theme_override_font_sizes/font_size = 10
+text = "QUIT PROGRAM"
 
 [node name="Menu" parent="." instance=ExtResource("2_4nb71")]
 visible = false
