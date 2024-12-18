@@ -500,6 +500,7 @@ Also see README.md for more game info!"
 autowrap_mode = 3
 
 [node name="StockTitle" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(724.5, 406)
 scale = Vector2(5.43098, 4.77647)
 texture = ExtResource("5_va8hs")
@@ -581,40 +582,40 @@ scale = Vector2(5.42929, 4.77647)
 texture = ExtResource("5_va8hs")
 
 [node name="Money" type="Label" parent="StockMarket"]
-offset_left = -131.0
-offset_top = -85.0
-offset_right = -74.0
-offset_bottom = -73.0
+offset_left = -131.463
+offset_top = -77.4631
+offset_right = -74.4629
+offset_bottom = -65.4631
 theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
-theme_override_font_sizes/font_size = 9
-text = "money = $0"
+theme_override_font_sizes/font_size = 7
+text = "int money = 0"
 
 [node name="Stock" type="Label" parent="StockMarket"]
-offset_left = -131.463
-offset_top = -73.0665
-offset_right = -91.4628
-offset_bottom = -60.0665
+offset_left = -131.094
+offset_top = -67.8325
+offset_right = -90.0945
+offset_bottom = -54.8325
 theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
-theme_override_font_sizes/font_size = 9
-text = "stock = 0"
+theme_override_font_sizes/font_size = 7
+text = "int stock = 0"
 
 [node name="StockPrice" type="Label" parent="StockMarket"]
-offset_left = -131.094
-offset_top = -61.3424
-offset_right = -62.0944
-offset_bottom = -46.3424
+offset_left = -130.91
+offset_top = -58.8301
+offset_right = -61.9107
+offset_bottom = -43.8301
 theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
-theme_override_font_sizes/font_size = 9
-text = "stock_price = $0"
+theme_override_font_sizes/font_size = 7
+text = "int stockPrice = 0"
 
 [node name="StockSellingPrice" type="Label" parent="StockMarket"]
 offset_left = -131.279
-offset_top = -47.9434
-offset_right = 11.7213
-offset_bottom = -33.9434
+offset_top = -50.0369
+offset_right = 11.7216
+offset_bottom = -36.0369
 theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
-theme_override_font_sizes/font_size = 9
-text = "stock_selling_price = $0"
+theme_override_font_sizes/font_size = 7
+text = "int stockSellingPrice = 0"
 
 [node name="StockVersion" type="Label" parent="StockMarket"]
 offset_left = -133.0
@@ -622,55 +623,82 @@ offset_top = 73.0
 offset_right = 131.0
 offset_bottom = 85.0
 theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
-theme_override_font_sizes/font_size = 8
-text = "S.T.O.C.K system ver.1.987.9875"
+theme_override_font_sizes/font_size = 7
+text = "S.T.O.C.K system v1.722.2008"
 horizontal_alignment = 2
 
 [node name="LikeToDo" type="Label" parent="StockMarket"]
-offset_left = -130.91
-offset_top = -22.6108
-offset_right = 74.0897
-offset_bottom = -7.61084
+offset_left = -130.726
+offset_top = -24.4951
+offset_right = 74.2736
+offset_bottom = -9.49512
 theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 7
 text = "what task do you wish to complete?"
 autowrap_mode = 3
 
-[node name="BreakingNews" type="Label" parent="StockMarket"]
-offset_left = -131.0
-offset_top = 17.0
-offset_right = 130.0
-offset_bottom = 74.0
+[node name="SystemError" type="Label" parent="StockMarket"]
+visible = false
+offset_left = -130.726
+offset_top = 30.1478
+offset_right = 132.274
+offset_bottom = 79.1478
 theme_override_colors/font_color = Color(1, 0, 0.0901961, 1)
-theme_override_font_sizes/font_size = 8
-text = "PROGRAM ERR: java.lang.personIsTooRich
+theme_override_font_sizes/font_size = 6
+text = "SYSTEM ERR: java.lang.personIsTooRich
 System crashing in 10 seconds
-final String LOCAL = \"Local man is too rich; breaking economy. The world can't handle it. Goodbye, sweet Earth. - Mr. Bachman\""
+final String LOCAL = \"Local man is too rich; breaking economy. The world can't handle it. Goodbye, sweet Earth. See you on the other side. - Mr. Bachman\""
 autowrap_mode = 3
 
 [node name="BuyStock" type="Button" parent="StockMarket"]
-offset_left = -131.279
-offset_top = -6.90887
-offset_right = -46.2787
-offset_bottom = 15.0911
-theme_override_font_sizes/font_size = 10
+offset_left = -130.726
+offset_top = -12.7709
+offset_right = -53.7261
+offset_bottom = 8.22906
+theme_override_font_sizes/font_size = 9
 text = "BUY STOCK"
 
 [node name="SellStock" type="Button" parent="StockMarket"]
-offset_left = -44.1586
-offset_top = -6.90887
-offset_right = 40.8414
-offset_bottom = 15.0911
-theme_override_font_sizes/font_size = 10
+offset_left = -53.1838
+offset_top = -12.7709
+offset_right = 23.8162
+offset_bottom = 8.22906
+theme_override_font_sizes/font_size = 9
 text = "SELL STOCK"
 
 [node name="QuitProgram" type="Button" parent="StockMarket"]
-offset_left = 42.0405
-offset_top = -6.90887
-offset_right = 127.04
-offset_bottom = 15.0911
-theme_override_font_sizes/font_size = 10
+offset_left = 24.9112
+offset_top = -12.5616
+offset_right = 101.911
+offset_bottom = 8.43842
+theme_override_font_sizes/font_size = 9
 text = "QUIT PROGRAM"
+
+[node name="Button" type="Button" parent="StockMarket"]
+offset_left = -131.279
+offset_top = 8.58374
+offset_right = 28.7213
+offset_bottom = 30.5837
+theme_override_font_sizes/font_size = 9
+text = "EXCHANGE  STOCK FOR AUTO LEV."
+
+[node name="StockMarketStatus" type="Label" parent="StockMarket"]
+offset_left = -130.726
+offset_top = -85.6281
+offset_right = -18.7261
+offset_bottom = -74.6281
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 7
+text = "String marketStatus = \"status\""
+
+[node name="AutoLevel" type="Label" parent="StockMarket"]
+offset_left = -130.726
+offset_top = -41.4532
+offset_right = -71.7261
+offset_bottom = -30.4532
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 7
+text = "int autoLevel = 0"
 
 [node name="Menu" parent="." instance=ExtResource("2_4nb71")]
 visible = false
@@ -684,6 +712,7 @@ visible = false
 [connection signal="pressed" from="UpgradeAuto" to="." method="_on_upgrade_auto_pressed"]
 [connection signal="pressed" from="BuyWarehouse" to="." method="_on_buy_warehouse_pressed"]
 [connection signal="pressed" from="UpgradeLuck" to="." method="_on_upgrade_luck_pressed"]
+[connection signal="pressed" from="StockMarketButton" to="." method="_on_stock_market_button_pressed"]
 [connection signal="pressed" from="Salvage" to="." method="_on_salvage_pressed"]
 [connection signal="pressed" from="HidePopups" to="." method="_on_hide_popups_pressed"]
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

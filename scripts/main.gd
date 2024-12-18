@@ -1,6 +1,7 @@
 extends Node
 
 var menu := true
+var stock := false
 var game_running := true
 var auto_mode := false
 var hide_messages := false
@@ -419,38 +420,53 @@ func salvage():
 
 func _on_revenue_button_pressed():
 	if !menu:
-		collect_revenue()
+		if !stock:
+			collect_revenue()
 
 func _on_auto_button_pressed():
 	if !menu:
-		activate_auto()
+		if !stock:
+			activate_auto()
 
 func _on_upgrade_level_pressed():
 	if !menu:
-		upgrade_level()
+		if !stock:
+			upgrade_level()
 
 func _on_upgrade_auto_pressed():
 	if !menu:
-		upgrade_auto()
+		if !stock:
+			upgrade_auto()
 
 func _on_buy_warehouse_pressed():
 	if !menu:
-		buy_warehouse()
+		if !stock:
+			buy_warehouse()
 
 func _on_upgrade_luck_pressed():
 	if !menu:
-		upgrade_luck()
+		if !stock:
+			upgrade_luck()
+
+func _on_stock_market_button_pressed():
+	if !menu:
+		if !stock:
+			stock = true
+			$StockTitle.show()
+			$StockMarket.show() ### <---------- LEFT OFF HERE
 
 func _on_salvage_pressed():
 	if !menu:
-		$SalvageMessage.show()
+		if !stock:
+			$SalvageMessage.show()
 
 func _on_confirm_salvage_pressed():
 	salvage()
 
 func _on_hint_pressed():
 	if !menu:
-		$Help.show()
+		if !stock:
+			$Help.show()
 
 func _on_menu_new_game():
 	new_game()
@@ -460,14 +476,18 @@ func _on_menu_play():
 	load_timeout = randi_range(1.2, 3.3)
 
 func _on_event_gift_collected():
-	money += 500000 * level
+	pass
 
 func _on_menu_button_pressed():
-	load_timeout = randi_range(1.2, 3.3)
-	menu = true
+	if !menu:
+		if !stock:
+			load_timeout = randi_range(1.2, 3.3)
+			menu = true
 
 func _on_hide_popups_pressed():
-	if hide_messages:
-		hide_messages = false
-	elif !hide_messages:
-		hide_messages = true
+	if !menu:
+		if !stock:
+			if hide_messages:
+				hide_messages = false
+			elif !hide_messages:
+				hide_messages = true

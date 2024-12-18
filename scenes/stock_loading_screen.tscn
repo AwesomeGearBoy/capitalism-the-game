@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://bboyki73fpt34"]
+
+[ext_resource type="Texture2D" uid="uid://cn0t8ffgvmxb1" path="res://assets/black.png" id="1_ywbpc"]
+
+[node name="StockLoadingScreen" type="Sprite2D"]
+position = Vector2(723.125, 405.25)
+scale = Vector2(5.36616, 4.76177)
+texture = ExtResource("1_ywbpc")
+
+[node name="Loading" type="Label" parent="."]
+offset_left = -133.0
+offset_top = -86.0
+offset_right = -55.0
+offset_bottom = -75.0
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 7
+text = "systems loading..."
+
+[node name="Loading2" type="Label" parent="."]
+offset_left = -133.0
+offset_top = -78.0
+offset_right = -17.0
+offset_bottom = -67.0
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 7
+text = "creating button-click functions..."
