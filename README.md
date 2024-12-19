@@ -12,6 +12,8 @@ Going AFK? That's fine, go ahead and activate Auto Mode!
 
 Tired of what you got? Salvage it all for more money!
 
+The stock market is constantly changing, use it as a way to earn more money!
+
 # MOVING SAVE DATA TO NEW VERSIONS OF THE GAME
 If there is an update to the game (which there could be in the future), and you want to keep your old save data for the new update, simply move the files from the `save` folder in the old version to the `save` folder in the new version. This should successfully move your save data from one game to the next. The new update to the game should take in this data as save data.
 

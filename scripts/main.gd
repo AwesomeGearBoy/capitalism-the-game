@@ -1,17 +1,21 @@
 extends Node
 
 var menu := true
-var stock := false
+var stock_running := false
 var game_running := true
 var auto_mode := false
 var hide_messages := false
 var game_load : bool
+var stock_load : bool
+var stock_exit : bool
 var unlocked_auto_mode := false
 var unlocked_wares := false
 var unlocked_luck := false
 var unlocked_stock_market := false
 
 var load_timeout := 0.0
+var stock_load_timeout := 0.0
+var stock_exit_timeout := 0.0
 
 var money := 0
 var level := 1
@@ -22,6 +26,11 @@ var level_cost := 50
 var auto_cost := 3000
 var wares_cost := 30000
 var luck_cost := 1500125
+var stock := 0
+var stock_price : int
+var stock_selling_price : int
+
+var stock_status := "decent"
 
 var save := SaveData.new()
 var key := KeyControl.new()
@@ -39,14 +48,18 @@ const LEVEL_COST_SAVE_PATH := "res://save/duio8fd.data"
 const AUTO_COST_SAVE_PATH := "res://save/u7yds34.data"
 const WARES_COST_SAVE_PATH := "res://save/wuqi75g.data"
 const LUCK_COST_SAVE_PATH := "res://save/9o5dvj4.data"
+const STOCK_SAVE_PATH := "res://save/64739gb.data"
 
 func _ready():
 	load_data()
+	randomize_stock_status()
 
 func _process(delta):
 	menu_handling()
 	handle_message_mode()
 	load_game(delta)
+	load_stock(delta)
+	exit_stock(delta)
 	process_auto_money()
 	process_text()
 	button_handling()
@@ -67,14 +80,16 @@ func new_game():
 	auto_cost = 3000
 	wares_cost = 30000
 	luck_cost = 1500125
+	stock = 0
 	menu = false
-	load_timeout = randi_range(1.2, 3.3)
+	randomize_stock_status()
+	start_load_game()
 
 func menu_handling():
 	if !menu:
 		if key.went_down("esc"):
 			menu = true
-			load_timeout = randi_range(1.2, 3.3)
+			start_load_game()
 	
 	if menu == true:
 		$Menu.show()
@@ -92,6 +107,77 @@ func handle_message_mode():
 		hide_messages = true
 	elif key.went_down("F3") && hide_messages:
 		hide_messages = false
+
+func randomize_stock_status():
+	var randomize_status := randi_range(1, 5)
+	
+	if randomize_status == 1:
+		stock_status = "amazing"
+	elif randomize_status == 2:
+		stock_status = "good"
+	elif randomize_status == 3:
+		stock_status = "decent"
+	elif randomize_status == 4:
+		stock_status = "bad"
+	elif randomize_status == 5:
+		stock_status = "terrible"
+	
+	if stock_status == "amazing":
+		stock_price = randi_range(150, 1050)
+		stock_selling_price = randi_range(300000, 1500000)
+	elif stock_status == "good":
+		stock_price = randi_range(2500, 8500)
+		stock_selling_price = randi_range(50000, 150000)
+	elif stock_status == "decent":
+		stock_price = randi_range(10250, 12500)
+		stock_selling_price = randi_range(10250, 12500)
+	elif stock_status == "bad":
+		stock_price = randi_range(50000, 150000)
+		stock_selling_price = randi_range(2500, 8500)
+	elif stock_status == "terrible":
+		stock_price = randi_range(300000, 1500000)
+		stock_selling_price = randi_range(150, 1050)
+
+func start_load_game():
+	load_timeout = randi_range(1.2, 3.3)
+
+func start_load_stock():
+	stock_load_timeout = randi_range(1.2, 3.3)
+
+func start_exit_stock():
+	stock_exit_timeout = randi_range(1.2, 3.3)
+
+func load_stock(delta):
+	stock_load_timeout = stock_load_timeout - 1 * delta
+	
+	if stock_load_timeout > 0:
+		stock_load = true
+	else:
+		stock_load = false
+	
+	if stock_load_timeout == 0:
+		stock_load_timeout = 0
+	
+	if stock_load:
+		$StockLoadingScreen.show()
+	elif !stock_load:
+		$StockLoadingScreen.hide()
+
+func exit_stock(delta):
+	stock_exit_timeout = stock_exit_timeout - 1 * delta
+	
+	if stock_exit_timeout > 0:
+		stock_exit = true
+	else:
+		stock_exit = false
+	
+	if stock_exit_timeout == 0:
+		stock_exit_timeout = 0
+	
+	if stock_exit:
+		$StockExitingScreen.show()
+	elif !stock_exit:
+		$StockExitingScreen.hide()
 
 func load_game(delta):
 	load_timeout = load_timeout - 1 * delta
@@ -121,6 +207,14 @@ func process_text():
 	$LuckLevel.text = "LUCK LEVEL: " + str(luck_level)
 	$LevelCost.text = "Cost: $" + str(level_cost)
 	$WaresCost.text = "Cost: $" + str(wares_cost)
+	
+	$StockMarket/StockMarketStatus.text = "marketStatus = \"" + stock_status + "\""
+	$StockMarket/Money.text = "money = " + str(money)
+	$StockMarket/Stock.text = "stock = " + str(stock)
+	$StockMarket/StockPrice.text = "stockPrice = " + str(stock_price)
+	$StockMarket/StockSellingPrice.text = "stockSellingPrice = " + str(stock_selling_price)
+	$StockMarket/AutoLevel.text = "autoLevel = " + str(auto_level)
+	
 	
 	if auto_level == 0:
 		$AutoCost.text = "Buy: $" + str(auto_cost)
@@ -191,8 +285,8 @@ func unlock_stuff():
 	if level >= 20:
 		unlocked_luck = true
 	
-	#if level < 30:
-		#unlocked_stock_market = true
+	if level >= 30:
+		unlocked_stock_market = true
 
 func save_data():
 	save.save_var(UNLOCKED_AUTO_MODE_SAVE_PATH, unlocked_auto_mode)
@@ -208,6 +302,7 @@ func save_data():
 	save.save_var(AUTO_COST_SAVE_PATH, auto_cost)
 	save.save_var(WARES_COST_SAVE_PATH, wares_cost)
 	save.save_var(LUCK_COST_SAVE_PATH, luck_cost)
+	save.save_var(STOCK_SAVE_PATH, stock)
 
 func load_data():
 	unlocked_auto_mode = save.load_bool(UNLOCKED_AUTO_MODE_SAVE_PATH, false)
@@ -223,6 +318,7 @@ func load_data():
 	auto_cost = save.load_int(AUTO_COST_SAVE_PATH, 3000)
 	wares_cost = save.load_int(WARES_COST_SAVE_PATH, 30000)
 	luck_cost = save.load_int(LUCK_COST_SAVE_PATH, 1500125)
+	stock = save.load_int(STOCK_SAVE_PATH, 0)
 
 func collect_revenue():
 	var random_amount := 0
@@ -251,6 +347,7 @@ func collect_revenue():
 		random_amount = randi_range(300, 400)
 	
 	money += (random_amount + (warehouses * 1000)) * level
+	randomize_stock_status()
 	check_for_event()
 
 func check_for_event():
@@ -404,9 +501,24 @@ func upgrade_luck():
 			luck_level += 1
 			luck_cost = luck_cost * 2
 
+func buy_stock():
+	if money >= stock_price:
+		money = money - stock_price
+		stock = stock + 1
+
+func sell_stock():
+	if stock >= 1:
+		stock = stock - 1
+		money = money + stock_selling_price
+
+func exchange_stock():
+	if stock >= 1:
+		stock = stock - 1
+		auto_level = auto_level + 1
+
 func salvage():
 	$SalvageMessage.hide()
-	money += ((warehouses * 75000) + (auto_level * 35000) * (level * (luck_level + 1)))
+	money += ((warehouses * 75000) + (auto_level * 35000) + (stock * 15000) * (level * (luck_level + 1)))
 	
 	auto_mode = false
 	level = 1
@@ -420,44 +532,63 @@ func salvage():
 
 func _on_revenue_button_pressed():
 	if !menu:
-		if !stock:
+		if !stock_running:
 			collect_revenue()
 
 func _on_auto_button_pressed():
 	if !menu:
-		if !stock:
+		if !stock_running:
 			activate_auto()
 
 func _on_upgrade_level_pressed():
 	if !menu:
-		if !stock:
+		if !stock_running:
 			upgrade_level()
 
 func _on_upgrade_auto_pressed():
 	if !menu:
-		if !stock:
+		if !stock_running:
 			upgrade_auto()
 
 func _on_buy_warehouse_pressed():
 	if !menu:
-		if !stock:
+		if !stock_running:
 			buy_warehouse()
 
 func _on_upgrade_luck_pressed():
 	if !menu:
-		if !stock:
+		if !stock_running:
 			upgrade_luck()
 
 func _on_stock_market_button_pressed():
 	if !menu:
-		if !stock:
-			stock = true
+		if !stock_running:
+			stock_running = true
 			$StockTitle.show()
-			$StockMarket.show() ### <---------- LEFT OFF HERE
+			$StockMarket.show()
+			start_load_stock()
+
+func _on_enter_pressed():
+	$StockTitle.hide()
+	start_load_stock()
+
+func _on_buy_stock_pressed():
+	buy_stock()
+
+func _on_sell_stock_pressed():
+	sell_stock()
+
+func _on_exchange_pressed():
+	exchange_stock()
+
+func _on_quit_program_pressed():
+	$StockMarket.hide()
+	stock_running = false
+	start_exit_stock()
 
 func _on_salvage_pressed():
 	if !menu:
-		if !stock:
+		if !stock_running:
 			$SalvageMessage.show()
 
 func _on_confirm_salvage_pressed():
@@ -465,7 +596,7 @@ func _on_confirm_salvage_pressed():
 
 func _on_hint_pressed():
 	if !menu:
-		if !stock:
+		if !stock_running:
 			$Help.show()
 
 func _on_menu_new_game():
@@ -473,20 +604,20 @@ func _on_menu_new_game():
 
 func _on_menu_play():
 	menu = false
-	load_timeout = randi_range(1.2, 3.3)
+	start_load_game()
 
 func _on_event_gift_collected():
 	pass
 
 func _on_menu_button_pressed():
 	if !menu:
-		if !stock:
-			load_timeout = randi_range(1.2, 3.3)
+		if !stock_running:
+			start_load_game()
 			menu = true
 
 func _on_hide_popups_pressed():
 	if !menu:
-		if !stock:
+		if !stock_running:
 			if hide_messages:
 				hide_messages = false
 			elif !hide_messages:

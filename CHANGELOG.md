@@ -53,4 +53,4 @@
  - Balanced out game, making certain things obtainable through level up.
  - Changed salvaging mechanics; should give more money now.
  - `savedata.gd` is updated to maximize efficiency, allowing for loading of data type `String` and also maximizes efficiency of loading `boolean` data types.
- - Going to add a stock market.
+ - Added S.T.O.C.K program, for all of your stock market needs (unlocked at level 30)!
