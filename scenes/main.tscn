@@ -611,10 +611,10 @@ theme_override_font_sizes/font_size = 9
 text = "SELL STOCK"
 
 [node name="Exchange" type="Button" parent="StockMarket"]
-offset_left = -131.279
-offset_top = 8.58373
-offset_right = 28.7213
-offset_bottom = 30.5837
+offset_left = -131.0
+offset_top = 9.0
+offset_right = 102.0
+offset_bottom = 31.0
 theme_override_font_sizes/font_size = 9
 text = "EXCHANGE  STOCK FOR AUTO LEV."
 

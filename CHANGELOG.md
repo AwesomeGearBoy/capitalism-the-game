@@ -54,3 +54,8 @@
  - Changed salvaging mechanics; should give more money now.
  - `savedata.gd` is updated to maximize efficiency, allowing for loading of data type `String` and also maximizes efficiency of loading `boolean` data types.
  - Added S.T.O.C.K program, for all of your stock market needs (unlocked at level 30)!
+
+# CHANGELOG ver.1.2.1:
+ - Fixed bug where auto mode still runs while S.T.O.C.K is running.
+ - Actually allowed secret to happen in S.T.O.C.K System...
+ - Fixed formatting in S.T.O.C.K System.

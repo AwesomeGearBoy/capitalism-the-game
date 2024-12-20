@@ -8,6 +8,7 @@ var hide_messages := false
 var game_load : bool
 var stock_load : bool
 var stock_exit : bool
+var err_too_rich := false
 var unlocked_auto_mode := false
 var unlocked_wares := false
 var unlocked_luck := false
@@ -16,6 +17,7 @@ var unlocked_stock_market := false
 var load_timeout := 0.0
 var stock_load_timeout := 0.0
 var stock_exit_timeout := 0.0
+var err_timeout := 0.0
 
 var money := 0
 var level := 1
@@ -34,6 +36,7 @@ var stock_status := "decent"
 
 var save := SaveData.new()
 var key := KeyControl.new()
+var version := GameVersion.new()
 
 const UNLOCKED_AUTO_MODE_SAVE_PATH := "res://save/67ifvtq.data"
 const UNLOCKED_WARES_SAVE_PATH := "res://save/e73gqfb.data"
@@ -65,6 +68,7 @@ func _process(delta):
 	button_handling()
 	unlock_stuff()
 	save_data()
+	err_crash(delta)
 
 func new_game():
 	unlocked_auto_mode = false
@@ -87,9 +91,10 @@ func new_game():
 
 func menu_handling():
 	if !menu:
-		if key.went_down("esc"):
-			menu = true
-			start_load_game()
+		if !err_too_rich:
+			if key.went_down("esc"):
+				menu = true
+				start_load_game()
 	
 	if menu == true:
 		$Menu.show()
@@ -197,7 +202,8 @@ func load_game(delta):
 
 func process_auto_money():
 	if auto_mode:
-		money = money + auto_level
+		if !stock_running:
+			money = money + auto_level
 
 func process_text():
 	$Money.text = "MONEY: $" + str(money)
@@ -214,6 +220,7 @@ func process_text():
 	$StockMarket/StockPrice.text = "stockPrice = " + str(stock_price)
 	$StockMarket/StockSellingPrice.text = "stockSellingPrice = " + str(stock_selling_price)
 	$StockMarket/AutoLevel.text = "autoLevel = " + str(auto_level)
+	$StockMarket/StockVersion.text = version.get_stock_version()
 	
 	
 	if auto_level == 0:
@@ -505,6 +512,26 @@ func buy_stock():
 	if money >= stock_price:
 		money = money - stock_price
 		stock = stock + 1
+		check_for_err()
+
+func check_for_err():
+	var event = randi_range(1, 4096)
+	
+	if event == 1:
+		err_happened()
+
+func err_happened():
+	$StockMarket/SystemError.show()
+	err_timeout = 10.0
+	err_too_rich = true
+
+func err_crash(delta):
+	if err_too_rich:
+		err_timeout = err_timeout - 1 * delta
+		
+		if err_timeout <= 0:
+			save.save_var(MONEY_SAVE_PATH, 0)
+			get_tree().quit()
 
 func sell_stock():
 	if stock >= 1:
@@ -573,18 +600,22 @@ func _on_enter_pressed():
 	start_load_stock()
 
 func _on_buy_stock_pressed():
-	buy_stock()
+	if !err_too_rich:
+		buy_stock()
 
 func _on_sell_stock_pressed():
-	sell_stock()
+	if !err_too_rich:
+		sell_stock()
 
 func _on_exchange_pressed():
-	exchange_stock()
+	if !err_too_rich:
+		exchange_stock()
 
 func _on_quit_program_pressed():
-	$StockMarket.hide()
-	stock_running = false
-	start_exit_stock()
+	if !err_too_rich:
+		$StockMarket.hide()
+		stock_running = false
+		start_exit_stock()
 
 func _on_salvage_pressed():
 	if !menu:
