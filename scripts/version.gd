@@ -9,4 +9,4 @@ func get_version() -> String:
 	return version
 
 func get_stock_version(release : int = 1, month : int = 7, day : int = 22, year : int = 2008) -> String:
-	return "S.T.O.C.K v" + str(release) + "." + str(month) + "." + str(year)
+	return "S.T.O.C.K v" + str(release) + "." + str(month) + str(day) + "." + str(year)
