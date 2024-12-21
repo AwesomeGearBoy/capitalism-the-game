@@ -59,3 +59,6 @@
  - Fixed bug where auto mode still runs while S.T.O.C.K is running.
  - Actually allowed secret to happen in S.T.O.C.K System...
  - Fixed formatting in S.T.O.C.K System.
+
+# CHANGELOG ver.1.2.2:
+ - Fixed bug that didn't show full S.T.O.C.K version.
