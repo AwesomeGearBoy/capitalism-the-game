@@ -1,5 +1,4 @@
 extends Sprite2D
-class_name TitleScreen
 
 var collected_event_present := true
 var save := SaveData.new()

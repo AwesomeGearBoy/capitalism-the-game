@@ -2,7 +2,7 @@ class_name GameVersion
 
 var release := 1
 var update := 2
-var bug_fixes := 1
+var bug_fixes := 3
 
 func get_version() -> String:
 	var version := "ver." + str(release) + "." + str(update) + "." + str(bug_fixes)

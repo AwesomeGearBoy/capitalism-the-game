@@ -62,3 +62,6 @@
 
 # CHANGELOG ver.1.2.2:
  - Fixed bug that didn't show full S.T.O.C.K version.
+
+# CHANGELOG ver.1.2.3:
+ - Made source code more organized.
