@@ -1,4 +1,4 @@
-package console.uncolored;
+package AwesomeGearBoy.lib;
 import java.io.*;
 
 /**
@@ -23,6 +23,7 @@ import java.io.*;
  * <p>
  * Enjoy the easy way to writing and reading from file!
  */
+
 public class SaveData {
     /**
      * Saves a String data type to a file.
