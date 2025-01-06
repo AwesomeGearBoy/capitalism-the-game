@@ -20,6 +20,8 @@ package AwesomeGearBoy.lib;
  * <p>This will print out a message saying "Hello, World!"
  * <p>Only difference is that it will be yellow with a black background.
  * <p>Enjoy!
+ * 
+ * <p>ALL ASSETS IN THIS LIBRARY WERE CODED BY AND BELONG TO AWESOMEGEARBOY AND ARE PROTECTED BY COPYRIGHT.
 */
 
 public class AnsiColors {

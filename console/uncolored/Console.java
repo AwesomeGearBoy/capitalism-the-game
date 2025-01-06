@@ -1,8 +1,10 @@
-package console.uncolored;
+package uncolored;
 import java.util.*;
+import AwesomeGearBoy.lib.SaveData;
 
 /**
  * <p>Console program for Capitalism: The Game
+ * <p>Changes save data files to bugtest
  * <p>Since ver.1.3.0
  */
 
@@ -11,7 +13,6 @@ public class Console {
         boolean consoleRunning = true;
         String command;
         Scanner input = new Scanner(System.in);
-        SaveData save = new SaveData();
 
         final String UNLOCKED_AUTO_MODE_SAVE_PATH = "save/67ifvtq.data";
         final String UNLOCKED_WARES_SAVE_PATH = "save/e73gqfb.data";
@@ -33,174 +34,101 @@ public class Console {
             command = input.nextLine();
             int output = getOutput(command);
 
-            String userInput;
-            int userInt;
             switch (output) {
                 case 0:
                     break;
                 case 1:
-                    System.out.println("Set unlocked_auto_mode to what (true/false)?");
-
-                    do {
-                        System.out.print("Enter input: ");
-                        userInput = input.nextLine();
-                        if (!userInput.equals("true") && !userInput.equals("false")) {
-                            System.out.println("ERROR: Invalid input. Boolean must be equal to either \"true\" or \"false\"");
-                        }
-                    } while (!userInput.equals("true") && !userInput.equals("false"));
-
-                    if (userInput.equals("true")) {
-                        save.saveBoolean(UNLOCKED_AUTO_MODE_SAVE_PATH, true);
-                        System.out.println("Set unlocked_auto_mode to \"true\"");
-                    } else {
-                        save.saveBoolean(UNLOCKED_AUTO_MODE_SAVE_PATH, false);
-                        System.out.println("Set unlocked_auto_mode to \"false\"");
-                    }
-
+                    setBoolTo("unlocked_auto_mode", UNLOCKED_AUTO_MODE_SAVE_PATH, input);
                     break;
                 case 2:
-                    System.out.println("Set unlocked_wares to what (true/false)?");
-
-                    do {
-                        System.out.print("Enter input: ");
-                        userInput = input.nextLine();
-                        if (!userInput.equals("true") && !userInput.equals("false")) {
-                            System.out.println("ERROR: Invalid input. Boolean must be equal to either \"true\" or \"false\"");
-                        }
-                    } while (!userInput.equals("true") && !userInput.equals("false"));
-
-                    if (userInput.equals("true")) {
-                        save.saveBoolean(UNLOCKED_WARES_SAVE_PATH, true);
-                        System.out.println("Set unlocked_wares to \"true\"");
-                    } else {
-                        save.saveBoolean(UNLOCKED_WARES_SAVE_PATH, false);
-                        System.out.println("Set unlocked_wares to \"false\"");
-                    }
-
+                    setBoolTo("unlocked_wares", UNLOCKED_WARES_SAVE_PATH, input);
                     break;
                 case 3:
-                    System.out.println("Set unlocked_luck to what (true/false)?");
-
-                    do {
-                        System.out.print("Enter input: ");
-                        userInput = input.nextLine();
-                        if (!userInput.equals("true") && !userInput.equals("false")) {
-                            System.out.println("ERROR: Invalid input. Boolean must be equal to either \"true\" or \"false\"");
-                        }
-                    } while (!userInput.equals("true") && !userInput.equals("false"));
-
-                    if (userInput.equals("true")) {
-                        save.saveBoolean(UNLOCKED_LUCK_SAVE_PATH, true);
-                        System.out.println("Set unlocked_luck to \"true\"");
-                    } else {
-                        save.saveBoolean(UNLOCKED_LUCK_SAVE_PATH, false);
-                        System.out.println("Set unlocked_luck to \"false\"");
-                    }
-
+                    setBoolTo("unlocked_luck", UNLOCKED_LUCK_SAVE_PATH, input);
                     break;
                 case 4:
-                    System.out.println("Set unlocked_stock_market to what (true/false)?");
-
-                    do {
-                        System.out.print("Enter input: ");
-                        userInput = input.nextLine();
-                        if (!userInput.equals("true") && !userInput.equals("false")) {
-                            System.out.println("ERROR: Invalid input. Boolean must be equal to either \"true\" or \"false\"");
-                        }
-                    } while (!userInput.equals("true") && !userInput.equals("false"));
-
-                    if (userInput.equals("true")) {
-                        save.saveBoolean(UNLOCKED_STOCK_MARKET_SAVE_PATH, true);
-                        System.out.println("Set unlocked_stock_market to \"true\"");
-                    } else {
-                        save.saveBoolean(UNLOCKED_LUCK_SAVE_PATH, false);
-                        System.out.println("Set unlocked_stock_market to \"false\"");
-                    }
-
+                    setBoolTo("unlocked_stock_market", UNLOCKED_STOCK_MARKET_SAVE_PATH, input);
                     break;
                 case 5:
-                    userInt = -1325476980;
-
-                    do {
-                        System.out.print("Set money to: ");
-                        if (input.hasNextInt()) {
-                            userInt = input.nextInt();
-                        } else {
-                            System.out.println("ERROR: Input must be in form \"integer\"");
-                        }
-                    } while (userInt == -1325476980);
-
-                    System.out.println("Saved money as: " + userInt);
-                    save.saveInt(MONEY_SAVE_PATH, userInt);
-                    input.nextLine();
+                    setIntTo("money", MONEY_SAVE_PATH, input);
                     break;
                 case 6:
-                    userInt = -1325476980;
-
-                    do {
-                        System.out.print("Set level to: ");
-                        if (input.hasNextInt()) {
-                            userInt = input.nextInt();
-                        } else {
-                            System.out.println("ERROR: Input must be in form \"integer\"");
-                        }
-                    } while (userInt == -1325476980);
-
-                    System.out.println("Saved level as: " + userInt);
-                    save.saveInt(LEVEL_SAVE_PATH, userInt);
-                    input.nextLine();
+                    setIntTo("level", LEVEL_SAVE_PATH, input);
                     break;
                 case 7:
-                    userInt = -1325476980;
-
-                    do {
-                        System.out.print("Set auto_level to: ");
-                        if (input.hasNextInt()) {
-                            userInt = input.nextInt();
-                        } else {
-                            System.out.println("ERROR: Input must be in form \"integer\"");
-                        }
-                    } while (userInt == -1325476980);
-
-                    System.out.println("Saved auto_level as: " + userInt);
-                    save.saveInt(AUTO_LEVEL_SAVE_PATH, userInt);
-                    input.nextLine();
+                    setIntTo("auto_level", AUTO_LEVEL_SAVE_PATH, input);
                     break;
                 case 8:
-                    userInt = -1325476980;
-
-                    do {
-                        System.out.print("Set warehouses to: ");
-                        if (input.hasNextInt()) {
-                            userInt = input.nextInt();
-                        } else {
-                            System.out.println("ERROR: Input must be in form \"integer\"");
-                        }
-                    } while (userInt == -1325476980);
-
-                    System.out.println("Saved warehouses as: " + userInt);
-                    save.saveInt(WARES_SAVE_PATH, userInt);
-                    input.nextLine();
+                    setIntTo("warehouses", WARES_SAVE_PATH, input);
                     break;
                 case 9:
-                    userInt = -1325476980;
-
-                    do {
-                        System.out.print("Set luck_level to: ");
-                        if (input.hasNextInt()) {
-                            userInt = input.nextInt();
-                        } else {
-                            System.out.println("ERROR: Input must be in form \"integer\"");
-                        }
-                    } while (userInt == -1325476980);
-
-                    System.out.println("Saved luck_level as: " + userInt);
-                    save.saveInt(LUCK_SAVE_PATH, userInt);
-                    input.nextLine();
+                    setIntTo("luck_level", LUCK_SAVE_PATH, input);
                     break;
                 case 10:
-                    /// LEFT OFF HERE
-                    /// GOING TO BE LEVEL COST
+                    setIntTo("level_cost", LEVEL_COST_SAVE_PATH, input);
+                    break;
+                case 11:
+                    setIntTo("auto_cost", AUTO_COST_SAVE_PATH, input);
+                    break;
+                case 12:
+                    setIntTo("wares_cost", WARES_COST_SAVE_PATH, input);
+                    break;
+                case 13:
+                    setIntTo("luck_cost", LUCK_COST_SAVE_PATH, input);
+                    break;
+                case 14:
+                    setIntTo("stock", STOCK_SAVE_PATH, input);
+                    break;
+                case 15:
+                    addTo("money", MONEY_SAVE_PATH, input);
+                    break;
+                case 16:
+                    addTo("level", LEVEL_SAVE_PATH, input);
+                    break;
+                case 17:
+                    addTo("auto_level", AUTO_LEVEL_SAVE_PATH, input);
+                    break;
+                case 18:
+                    addTo("warehouses", WARES_SAVE_PATH, input);
+                    break;
+                case 19:
+                    addTo("luck_level", LUCK_SAVE_PATH, input);
+                    break;
+                case 20:
+                    addTo("level_cost", LEVEL_COST_SAVE_PATH, input);
+                    break;
+                case 21:
+                    addTo("auto_cost", AUTO_COST_SAVE_PATH, input);
+                    break;
+                case 22:
+                    addTo("wares_cost", WARES_COST_SAVE_PATH, input);
+                    break;
+                case 23:
+                    addTo("luck_cost", LUCK_COST_SAVE_PATH, input);
+                    break;
+                case 24:
+                    addTo("stock", STOCK_SAVE_PATH, input);
+                    break;
+                case 25:
+                    /// money
+                case 26:
+                    /// level
+                case 27:
+                    /// auto level
+                case 28:
+                    /// warehouses
+                case 29:
+                    /// luck level
+                case 30:
+                    /// level cost
+                case 31:
+                    /// auto cost
+                case 32:
+                    /// wares cost
+                case 33:
+                    /// level cost
+                case 34:
+                    /// stock
                 default:
                     System.out.println("ERROR: Something went wrong.");
                     break;
@@ -237,9 +165,88 @@ public class Console {
             return 13;
         } else if (command.equals("/set stock")) {
             return 14;
+        } else if (command.equals("/add money")) {
+            return 15;
+        } else if (command.equals("/add level")) {
+            return 16;
+        } else if (command.equals("/add auto_level")) {
+            return 17;
+        } else if (command.equals("/add warehouses")) {
+            return 18;
+        } else if (command.equals("/add luck_level")) {
+            return 19;
+        } else if (command.equals("/add level_cost")) {
+            return 20;
+        } else if (command.equals("/add auto_cost")) {
+            return 21;
+        } else if (command.equals("/add wares_cost")) {
+            return 22;
+        } else if (command.equals("/add luck_cost")) {
+            return 23;
+        } else if (command.equals("/add stock")) {
+            return 24;
         } else {
             System.out.println("ERROR: \"" + command + "\" is not a valid command. Please enter a valid command.");
             return 0;
         }
+    }
+
+    public static void setBoolTo(String varID, String savePath, Scanner input) {
+        String userInput;
+        SaveData save = new SaveData();
+
+        do {
+            System.out.print("Set '" + varID + "' to (true/false): ");
+            userInput = input.nextLine();
+            if (!userInput.equals("true") && !userInput.equals("false")) {
+                System.out.println("ERROR: Invalid input. Boolean must be equal to either \"true\" or \"false\"");
+            }
+        } while (!userInput.equals("true") && !userInput.equals("false"));
+
+        if (userInput.equals("true")) {
+            save.saveBoolean(savePath, true);
+            System.out.println("Set '" + varID + "' to \"true\"");
+        } else {
+            save.saveBoolean(savePath, false);
+            System.out.println("Set '" + varID + "' to \"false\"");
+        }
+    }
+
+    public static void setIntTo(String varID, String savePath, Scanner input) {
+        int userInt = -1325476980;
+        SaveData save = new SaveData();
+
+        do {
+            System.out.print("Set '" + varID + "' to: ");
+            if (input.hasNextInt()) {
+                userInt = input.nextInt();
+            } else {
+                System.out.println("ERROR: Input must be in form \"integer\"");
+            }
+        } while (userInt == -1325476980);
+
+        System.out.println("Saved '" + varID + "' as: " + userInt);
+        save.saveInt(savePath, userInt);
+        input.nextLine();
+    }
+
+    public static void addTo(String varID, String savePath, Scanner input) {
+        int userInt = -1325476980;
+        SaveData save = new SaveData();
+        int variable = save.loadInt(savePath);
+
+        do {
+            System.out.print("Add to '" + varID + "': ");
+            if (input.hasNextInt()) {
+                userInt = input.nextInt();
+            } else {
+                System.out.println("ERROR: Input must be in form \"integer\"");
+            }
+        } while (userInt == -1325476980);
+
+        System.out.println("Added " + userInt + " to '" + varID + "'.");
+        variable = variable + userInt;
+        save.saveInt(savePath, variable);
+        input.nextLine();
     }
 }

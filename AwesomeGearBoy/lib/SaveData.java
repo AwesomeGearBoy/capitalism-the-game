@@ -22,6 +22,8 @@ import java.io.*;
  * }
  * <p>
  * Enjoy the easy way to writing and reading from file!
+ * 
+ * <p>ALL ASSETS IN THIS LIBRARY WERE CODED BY AND BELONG TO AWESOMEGEARBOY AND ARE PROTECTED BY COPYRIGHT.
  */
 
 public class SaveData {

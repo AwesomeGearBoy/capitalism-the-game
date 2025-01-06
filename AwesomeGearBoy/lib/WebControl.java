@@ -6,6 +6,8 @@ import java.net.*;
 
 /**
  * This class simplifies opening up a webpage from the browser by simply allowing you to type in String data with the link.
+ * 
+ * <p>ALL ASSETS IN THIS LIBRARY WERE CODED BY AND BELONG TO AWESOMEGEARBOY AND ARE PROTECTED BY COPYRIGHT.
  */
 
 public class WebControl {
