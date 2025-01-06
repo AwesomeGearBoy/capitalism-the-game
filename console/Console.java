@@ -1,4 +1,3 @@
-package uncolored;
 import java.util.*;
 import AwesomeGearBoy.lib.SaveData;
 
@@ -110,30 +109,48 @@ public class Console {
                     addTo("stock", STOCK_SAVE_PATH, input);
                     break;
                 case 25:
-                    /// money
+                    subtractFrom("money", MONEY_SAVE_PATH, input);
+                    break;
                 case 26:
-                    /// level
+                    subtractFrom("level", LEVEL_SAVE_PATH, input);
+                    break;
                 case 27:
-                    /// auto level
+                    subtractFrom("auto_level", AUTO_LEVEL_SAVE_PATH, input);
+                    break;
                 case 28:
-                    /// warehouses
+                    subtractFrom("warehouses", WARES_SAVE_PATH, input);
+                    break;
                 case 29:
-                    /// luck level
+                    subtractFrom("luck_level", LUCK_SAVE_PATH, input);
+                    break;
                 case 30:
-                    /// level cost
+                    subtractFrom("level_cost", LEVEL_COST_SAVE_PATH, input);
+                    break;
                 case 31:
-                    /// auto cost
+                    subtractFrom("auto_cost", AUTO_COST_SAVE_PATH, input);
+                    break;
                 case 32:
-                    /// wares cost
+                    subtractFrom("wares_cost", WARES_COST_SAVE_PATH, input);
+                    break;
                 case 33:
-                    /// level cost
+                    subtractFrom("luck_cost", LUCK_COST_SAVE_PATH, input);
+                    break;
                 case 34:
-                    /// stock
+                    subtractFrom("stock", STOCK_SAVE_PATH, input);
+                    break;
+                case 35:
+                    consoleRunning = false;
+                    break;
+                case 36:
+                    // Next cases should get data from file locations to see what it is equal to.
                 default:
                     System.out.println("ERROR: Something went wrong.");
                     break;
             }
         } while (consoleRunning == true);
+
+        input.close();
+        System.exit(0);
     }
 
     public static int getOutput(String command) {
@@ -185,6 +202,28 @@ public class Console {
             return 23;
         } else if (command.equals("/add stock")) {
             return 24;
+        } else if (command.equals("/subtract money")) {
+            return 25;
+        } else if (command.equals("/subtract level")) {
+            return 26;
+        } else if (command.equals("/subtract auto_level")) {
+            return 27;
+        } else if (command.equals("/subtract warehouses")) {
+            return 28;
+        } else if (command.equals("/subtract luck_level")) {
+            return 29;
+        } else if (command.equals("/subtract level_cost")) {
+            return 30;
+        } else if (command.equals("/subtract auto_cost")) {
+            return 31;
+        } else if (command.equals("/subtract wares_cost")) {
+            return 32;
+        } else if (command.equals("/subtract luck_cost")) {
+            return 33;
+        } else if (command.equals("/subtract stock")) {
+            return 34;
+        } else if (command.equals("/exit")) {
+            return 35;
         } else {
             System.out.println("ERROR: \"" + command + "\" is not a valid command. Please enter a valid command.");
             return 0;
@@ -246,6 +285,26 @@ public class Console {
 
         System.out.println("Added " + userInt + " to '" + varID + "'.");
         variable = variable + userInt;
+        save.saveInt(savePath, variable);
+        input.nextLine();
+    }
+
+    public static void subtractFrom(String varID, String savePath, Scanner input) {
+        int userInt = -1325476980;
+        SaveData save = new SaveData();
+        int variable = save.loadInt(savePath);
+
+        do {
+            System.out.print("Subtract from '" + varID + "': ");
+            if (input.hasNextInt()) {
+                userInt = input.nextInt();
+            } else {
+                System.out.println("ERROR: Input must be in form \"integer\"");
+            }
+        } while (userInt == -1325476980);
+
+        System.out.println("Subtracted " + userInt + " from '" + varID + "'.");
+        variable = variable - userInt;
         save.saveInt(savePath, variable);
         input.nextLine();
     }
