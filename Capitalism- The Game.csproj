@@ -6,4 +6,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>CapitalismTheGame</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="scripts/classes/KeyControl.cs" />
+  </ItemGroup>
 </Project>

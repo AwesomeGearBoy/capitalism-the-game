@@ -1,8 +1,9 @@
 extends Sprite2D
 
 func _process(_delta):
-	var key := KeyControl.new()
-	if key.went_down("space"):
+	var KeyControl = load("res://scripts/classes/KeyControl.cs")
+	var key = KeyControl.new()
+	if key.WentDown("space"):
 		hide()
 
 func _on_exit_pressed():

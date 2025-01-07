@@ -68,3 +68,4 @@
 
 # CHANGELOG ver 1.3.0:
  - Added a console application that can change most variables in the game. Basically, you can now have access to cheating. Do what you will with this new part of the code.
+ - C# support! I'm learning as I go!

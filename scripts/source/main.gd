@@ -34,8 +34,10 @@ var stock_selling_price : int
 
 var stock_status := "decent"
 
+var KeyControl = preload("res://scripts/classes/KeyControl.cs")
+
 var save := SaveData.new()
-var key := KeyControl.new()
+var key = KeyControl.new()
 var version := GameVersion.new()
 
 const UNLOCKED_AUTO_MODE_SAVE_PATH := "res://save/67ifvtq.data"
@@ -92,7 +94,7 @@ func new_game():
 func menu_handling():
 	if !menu:
 		if !err_too_rich:
-			if key.went_down("esc"):
+			if key.WentDown("esc"):
 				menu = true
 				start_load_game()
 	
@@ -108,9 +110,9 @@ func menu_handling():
 		game_running = false
 
 func handle_message_mode():
-	if key.went_down("F3") && !hide_messages:
+	if key.WentDown("F3") && !hide_messages:
 		hide_messages = true
-	elif key.went_down("F3") && hide_messages:
+	elif key.WentDown("F3") && hide_messages:
 		hide_messages = false
 
 func randomize_stock_status():
