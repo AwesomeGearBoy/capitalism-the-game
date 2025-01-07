@@ -1,5 +1,3 @@
-package AwesomeGearBoy.lib;
-
 /**
  * This object allows you to customize colors used in printing out text in the terminal by using ANSI Color Codes.
  * <p>

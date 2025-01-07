@@ -1,4 +1,3 @@
-package AwesomeGearBoy.lib;
 import java.io.*;
 
 /**

@@ -1,19 +1,19 @@
 [gd_scene load_steps=10 format=3 uid="uid://hkwnmy1glpiv"]
 
-[ext_resource type="PackedScene" uid="uid://ry2gx0ka87xl" path="res://scenes/backdrop.tscn" id="1_s1lcf"]
-[ext_resource type="Script" path="res://scripts/source/main.gd" id="1_vcd71"]
-[ext_resource type="Texture2D" uid="uid://domykc35fmee1" path="res://assets/icons/hint.png" id="2_3ofbb"]
-[ext_resource type="PackedScene" uid="uid://c6wofbnlu72ed" path="res://scenes/titlescreen.tscn" id="2_4nb71"]
-[ext_resource type="PackedScene" uid="uid://bpi2jsm6pfcum" path="res://scenes/emptymessage.tscn" id="3_n7en5"]
-[ext_resource type="PackedScene" uid="uid://dawxowl20v2a5" path="res://scenes/loadingscreen.tscn" id="5_1mnjo"]
-[ext_resource type="Texture2D" uid="uid://cn0t8ffgvmxb1" path="res://assets/backgrounds/black.png" id="5_va8hs"]
-[ext_resource type="PackedScene" uid="uid://bboyki73fpt34" path="res://scenes/stock_loading_screen.tscn" id="6_jbje3"]
-[ext_resource type="PackedScene" uid="uid://c24ljw0wr2k2y" path="res://scenes/stock_exiting_screen.tscn" id="7_a05ad"]
+[ext_resource type="Script" path="res://scripts/source/main.gd" id="1_j2rhj"]
+[ext_resource type="PackedScene" uid="uid://ry2gx0ka87xl" path="res://scenes/backdrops/backdrop.tscn" id="2_1ls7c"]
+[ext_resource type="Texture2D" uid="uid://domykc35fmee1" path="res://assets/icons/hint.png" id="3_dwe3d"]
+[ext_resource type="PackedScene" uid="uid://bpi2jsm6pfcum" path="res://scenes/backdrops/emptymessage.tscn" id="4_3shce"]
+[ext_resource type="Texture2D" uid="uid://cn0t8ffgvmxb1" path="res://assets/backgrounds/black.png" id="5_d41bb"]
+[ext_resource type="PackedScene" uid="uid://bboyki73fpt34" path="res://scenes/loadingscreens/stock_loading_screen.tscn" id="6_cpgsi"]
+[ext_resource type="PackedScene" uid="uid://c24ljw0wr2k2y" path="res://scenes/loadingscreens/stock_exiting_screen.tscn" id="7_mwysk"]
+[ext_resource type="PackedScene" uid="uid://c6wofbnlu72ed" path="res://scenes/main/titlescreen.tscn" id="8_fuxkb"]
+[ext_resource type="PackedScene" uid="uid://dawxowl20v2a5" path="res://scenes/loadingscreens/loadingscreen.tscn" id="9_bvmy2"]
 
 [node name="Main" type="Node"]
-script = ExtResource("1_vcd71")
+script = ExtResource("1_j2rhj")
 
-[node name="Backdrop" parent="." instance=ExtResource("1_s1lcf")]
+[node name="Backdrop" parent="." instance=ExtResource("2_1ls7c")]
 
 [node name="AutoButton" type="Button" parent="."]
 offset_left = 27.0
@@ -114,11 +114,11 @@ offset_left = 1339.0
 offset_top = 22.0
 offset_right = 1429.0
 offset_bottom = 114.0
-texture_normal = ExtResource("2_3ofbb")
-texture_pressed = ExtResource("2_3ofbb")
-texture_hover = ExtResource("2_3ofbb")
-texture_disabled = ExtResource("2_3ofbb")
-texture_focused = ExtResource("2_3ofbb")
+texture_normal = ExtResource("3_dwe3d")
+texture_pressed = ExtResource("3_dwe3d")
+texture_hover = ExtResource("3_dwe3d")
+texture_disabled = ExtResource("3_dwe3d")
+texture_focused = ExtResource("3_dwe3d")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -200,7 +200,7 @@ offset_right = 291.0
 offset_bottom = 74.0
 text = "HIDE POP-UPS: ON"
 
-[node name="VendingMachine" parent="." instance=ExtResource("3_n7en5")]
+[node name="VendingMachine" parent="." instance=ExtResource("4_3shce")]
 visible = false
 
 [node name="Label" type="Label" parent="VendingMachine"]
@@ -213,7 +213,7 @@ theme_override_font_sizes/font_size = 13
 text = "You discover an old vending machine that somehow still accepts pennies. Oh heck yeah, baby."
 autowrap_mode = 3
 
-[node name="LostUncle" parent="." instance=ExtResource("3_n7en5")]
+[node name="LostUncle" parent="." instance=ExtResource("4_3shce")]
 visible = false
 
 [node name="Label" type="Label" parent="LostUncle"]
@@ -226,7 +226,7 @@ theme_override_font_sizes/font_size = 13
 text = "You lost an uncle you never really knew. Which is too bad, but at least you got some inheritance money!"
 autowrap_mode = 3
 
-[node name="LawsuitWin" parent="." instance=ExtResource("3_n7en5")]
+[node name="LawsuitWin" parent="." instance=ExtResource("4_3shce")]
 visible = false
 
 [node name="Label" type="Label" parent="LawsuitWin"]
@@ -244,7 +244,7 @@ You got into a lawsuit...
 And won!"
 autowrap_mode = 3
 
-[node name="RandomDude" parent="." instance=ExtResource("3_n7en5")]
+[node name="RandomDude" parent="." instance=ExtResource("4_3shce")]
 visible = false
 
 [node name="Label" type="Label" parent="RandomDude"]
@@ -259,7 +259,7 @@ text = "A mysterious stranger randomly gives you a wad of cash. It's not suspici
 You take it happily."
 autowrap_mode = 3
 
-[node name="PennyRain" parent="." instance=ExtResource("3_n7en5")]
+[node name="PennyRain" parent="." instance=ExtResource("4_3shce")]
 visible = false
 
 [node name="Label" type="Label" parent="PennyRain"]
@@ -276,7 +276,7 @@ Don't ask how, just be happy that it happened.
 I mean, it's normal for pennies to fall directly out of the sky, right?"
 autowrap_mode = 3
 
-[node name="CatVideo" parent="." instance=ExtResource("3_n7en5")]
+[node name="CatVideo" parent="." instance=ExtResource("4_3shce")]
 visible = false
 
 [node name="Label" type="Label" parent="CatVideo"]
@@ -291,7 +291,7 @@ text = "A cat video you uploaded went viral.
 Yep. That's pretty cool."
 autowrap_mode = 3
 
-[node name="TvFame" parent="." instance=ExtResource("3_n7en5")]
+[node name="TvFame" parent="." instance=ExtResource("4_3shce")]
 visible = false
 
 [node name="Label" type="Label" parent="TvFame"]
@@ -306,7 +306,7 @@ text = "A local TV station decided to feature you as \"Entreprenuer of the Year!
 Fame and fortune follow soon after."
 autowrap_mode = 3
 
-[node name="FindMotivation" parent="." instance=ExtResource("3_n7en5")]
+[node name="FindMotivation" parent="." instance=ExtResource("4_3shce")]
 visible = false
 
 [node name="Label" type="Label" parent="FindMotivation"]
@@ -323,7 +323,7 @@ I mean, it works, but now you're a little bit poorer.
 Just believe in yourself, I guess?"
 autowrap_mode = 3
 
-[node name="DogBurial" parent="." instance=ExtResource("3_n7en5")]
+[node name="DogBurial" parent="." instance=ExtResource("4_3shce")]
 visible = false
 
 [node name="Label" type="Label" parent="DogBurial"]
@@ -342,7 +342,7 @@ Thought you found them once, but it was a rock.
 You never saw those savings again."
 autowrap_mode = 3
 
-[node name="CashFire" parent="." instance=ExtResource("3_n7en5")]
+[node name="CashFire" parent="." instance=ExtResource("4_3shce")]
 visible = false
 
 [node name="Label" type="Label" parent="CashFire"]
@@ -357,7 +357,7 @@ text = "You accidently set your cash pile on fire whilst trying to light a candl
 What a waste of money!"
 autowrap_mode = 3
 
-[node name="LawsuitLoss" parent="." instance=ExtResource("3_n7en5")]
+[node name="LawsuitLoss" parent="." instance=ExtResource("4_3shce")]
 visible = false
 
 [node name="Label" type="Label" parent="LawsuitLoss"]
@@ -375,7 +375,7 @@ You got into a lawsuit...
 And lost..."
 autowrap_mode = 3
 
-[node name="GlitterMess" parent="." instance=ExtResource("3_n7en5")]
+[node name="GlitterMess" parent="." instance=ExtResource("4_3shce")]
 visible = false
 
 [node name="Label" type="Label" parent="GlitterMess"]
@@ -392,7 +392,7 @@ Not only was this a waste of money, but the delivery guy dumped it straight into
 Now you need to clean up a sparkly mess..."
 autowrap_mode = 3
 
-[node name="RealEstate" parent="." instance=ExtResource("3_n7en5")]
+[node name="RealEstate" parent="." instance=ExtResource("4_3shce")]
 visible = false
 
 [node name="Label" type="Label" parent="RealEstate"]
@@ -407,7 +407,7 @@ text = "You were just scammed by someone selling \"invisible real estate.\"
 You... probably should've seen that one coming."
 autowrap_mode = 3
 
-[node name="LemonadeStand" parent="." instance=ExtResource("3_n7en5")]
+[node name="LemonadeStand" parent="." instance=ExtResource("4_3shce")]
 visible = false
 
 [node name="Label" type="Label" parent="LemonadeStand"]
@@ -422,7 +422,7 @@ text = "You attempted to open a lemonade stand and it causes a national shortage
 Massive PR costs."
 autowrap_mode = 3
 
-[node name="ShinyPebbleCoin" parent="." instance=ExtResource("3_n7en5")]
+[node name="ShinyPebbleCoin" parent="." instance=ExtResource("4_3shce")]
 visible = false
 
 [node name="Label" type="Label" parent="ShinyPebbleCoin"]
@@ -437,7 +437,7 @@ text = "You invested in a new crypto currency known as ShinyPebbleCoin!
 It's now worth less than an actual shiny pebble."
 autowrap_mode = 3
 
-[node name="RosesRed" parent="." instance=ExtResource("3_n7en5")]
+[node name="RosesRed" parent="." instance=ExtResource("4_3shce")]
 visible = false
 
 [node name="Label" type="Label" parent="RosesRed"]
@@ -453,7 +453,7 @@ I'm pretty poor...
 And now so are you..."
 autowrap_mode = 3
 
-[node name="SalvageMessage" parent="." instance=ExtResource("3_n7en5")]
+[node name="SalvageMessage" parent="." instance=ExtResource("4_3shce")]
 visible = false
 
 [node name="Label" type="Label" parent="SalvageMessage"]
@@ -486,7 +486,7 @@ offset_right = -96.1697
 offset_bottom = 158.407
 text = "SALVAGE"
 
-[node name="Help" parent="." instance=ExtResource("3_n7en5")]
+[node name="Help" parent="." instance=ExtResource("4_3shce")]
 visible = false
 
 [node name="Label" type="Label" parent="Help"]
@@ -505,7 +505,7 @@ autowrap_mode = 3
 visible = false
 position = Vector2(724.75, 406)
 scale = Vector2(5.42929, 4.77647)
-texture = ExtResource("5_va8hs")
+texture = ExtResource("5_d41bb")
 
 [node name="StockMarketStatus" type="Label" parent="StockMarket"]
 offset_left = -130.726
@@ -630,7 +630,7 @@ text = "QUIT PROGRAM"
 visible = false
 position = Vector2(724.5, 406)
 scale = Vector2(5.43098, 4.77647)
-texture = ExtResource("5_va8hs")
+texture = ExtResource("5_d41bb")
 
 [node name="Welcome" type="Label" parent="StockTitle"]
 offset_left = -133.0
@@ -702,16 +702,16 @@ theme_override_font_sizes/font_size = 6
 text = "Ba. Inc. 
 est. 3026"
 
-[node name="StockLoadingScreen" parent="." instance=ExtResource("6_jbje3")]
+[node name="StockLoadingScreen" parent="." instance=ExtResource("6_cpgsi")]
 visible = false
 
-[node name="StockExitingScreen" parent="." instance=ExtResource("7_a05ad")]
+[node name="StockExitingScreen" parent="." instance=ExtResource("7_mwysk")]
 visible = false
 
-[node name="Menu" parent="." instance=ExtResource("2_4nb71")]
+[node name="Menu" parent="." instance=ExtResource("8_fuxkb")]
 visible = false
 
-[node name="LoadingScreen" parent="." instance=ExtResource("5_1mnjo")]
+[node name="LoadingScreen" parent="." instance=ExtResource("9_bvmy2")]
 visible = false
 
 [connection signal="pressed" from="AutoButton" to="." method="_on_auto_button_pressed"]

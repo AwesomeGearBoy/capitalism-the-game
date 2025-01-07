@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dawxowl20v2a5"]
 
-[ext_resource type="PackedScene" uid="uid://ry2gx0ka87xl" path="res://scenes/backdrop.tscn" id="1_4hq1x"]
+[ext_resource type="PackedScene" uid="uid://ry2gx0ka87xl" path="res://scenes/backdrops/backdrop.tscn" id="1_4hq1x"]
 
 [node name="Backdrop" instance=ExtResource("1_4hq1x")]
 

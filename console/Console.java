@@ -1,5 +1,4 @@
 import java.util.*;
-import AwesomeGearBoy.lib.SaveData;
 
 /**
  * <p>Console program for Capitalism: The Game
@@ -139,10 +138,47 @@ public class Console {
                     subtractFrom("stock", STOCK_SAVE_PATH, input);
                     break;
                 case 35:
-                    consoleRunning = false;
+                    System.out.println(getBool("unlocked_auto_mode", UNLOCKED_AUTO_MODE_SAVE_PATH));
                     break;
                 case 36:
-                    // Next cases should get data from file locations to see what it is equal to.
+                    System.out.println(getBool("unlocked_wares", UNLOCKED_WARES_SAVE_PATH));
+                    break;
+                case 37:
+                    System.out.println(getBool("unlocked_luck", UNLOCKED_LUCK_SAVE_PATH));
+                    break;
+                case 38:
+                    System.out.println(getBool("unlocked_stock_market", UNLOCKED_AUTO_MODE_SAVE_PATH));
+                    break;
+                case 39:
+                    System.out.println(getInt("money", MONEY_SAVE_PATH));
+                    break;
+                case 40:
+                    System.out.println(getInt("level", LEVEL_SAVE_PATH));
+                    break;
+                case 41:
+                    System.out.println(getInt("auto_level", AUTO_LEVEL_SAVE_PATH));
+                    break;
+                case 42:
+                    System.out.println(getInt("warehouses", WARES_SAVE_PATH));
+                    break;
+                case 43:
+                    System.out.println(getInt("luck_level", LUCK_SAVE_PATH));
+                    break;
+                case 44:
+                    System.out.println(getInt("level_cost", LEVEL_COST_SAVE_PATH));
+                    break;
+                case 45:
+                    System.out.println(getInt("auto_cost", AUTO_COST_SAVE_PATH));
+                    break;
+                case 46:
+                    System.out.println(getInt("wares_cost", WARES_COST_SAVE_PATH));
+                    break;
+                case 47:
+                    System.out.println(getInt("luck_cost", AUTO_LEVEL_SAVE_PATH));
+                    break;
+                case 48:
+                    System.out.println(getInt("stock", AUTO_LEVEL_SAVE_PATH));
+                    break;
                 default:
                     System.out.println("ERROR: Something went wrong.");
                     break;
@@ -222,8 +258,34 @@ public class Console {
             return 33;
         } else if (command.equals("/subtract stock")) {
             return 34;
-        } else if (command.equals("/exit")) {
+        } else if (command.equals("/get unlocked_auto_mode")) {
             return 35;
+        } else if (command.equals("/get unlocked_wares")) {
+            return 36;
+        } else if (command.equals("/get unlocked_luck")) {
+            return 37;
+        } else if (command.equals("/get unlocked_stock_market")) {
+            return 38;
+        } else if (command.equals("/get money")) {
+            return 39;
+        } else if (command.equals("/get level")) {
+            return 40;
+        } else if (command.equals("/get auto_level")) {
+            return 41;
+        } else if (command.equals("/get warehouses")) {
+            return 42;
+        } else if (command.equals("/get luck_level")) {
+            return 43;
+        } else if (command.equals("/get level_cost")) {
+            return 44;
+        } else if (command.equals("/get auto_cost")) {
+            return 45;
+        } else if (command.equals("/get wares_cost")) {
+            return 46;
+        } else if (command.equals("/get luck_cost")) {
+            return 47;
+        } else if (command.equals("/get stock")) {
+            return 48;
         } else {
             System.out.println("ERROR: \"" + command + "\" is not a valid command. Please enter a valid command.");
             return 0;
@@ -307,5 +369,17 @@ public class Console {
         variable = variable - userInt;
         save.saveInt(savePath, variable);
         input.nextLine();
+    }
+
+    public static String getBool(String varID, String savePath) {
+        SaveData save = new SaveData();
+
+        return "varID '" + varID + "' is equal to " + save.loadBoolean(savePath);
+    }
+
+    public static String getInt(String varID, String savePath) {
+        SaveData save = new SaveData();
+
+        return "varID '" + varID + "' is equal to " + save.loadInt(savePath);
     }
 }
