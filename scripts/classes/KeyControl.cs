@@ -1,52 +1,54 @@
 using Godot;
 using System;
 
-namespace CapitalismTheGame.scripts.classes;
-public partial class KeyControl : Node
+namespace CapitalismTheGame.scripts.classes
 {
-    public static bool Down(string input) 
+    public partial class KeyControl : Node
     {
-        if (Input.IsActionPressed(input)) 
+        public static bool Down(string input) 
         {
-            return true;
-        } 
-        else 
-        {
-            return false;
+            if (Input.IsActionPressed(input)) 
+            {
+                return true;
+            } 
+            else 
+            {
+                return false;
+            }
         }
-    }
 
-    public static bool WentDown(string input) 
-    {
-        if (Input.IsActionJustPressed(input)) 
+        public static bool WentDown(string input) 
         {
-            return true;
-        } 
-        else 
-        {
-            return false;
+            if (Input.IsActionJustPressed(input)) 
+            {
+                return true;
+            } 
+            else 
+            {
+                return false;
+            }
         }
-    }
 
-    public static bool WentUp(string input) {
-        if (Input.IsActionJustReleased(input)) 
-        {
-            return true;
-        } 
-        else 
-        {
-            return false;
+        public static bool WentUp(string input) {
+            if (Input.IsActionJustReleased(input)) 
+            {
+                return true;
+            } 
+            else 
+            {
+                return false;
+            }
         }
-    }
 
-    public static bool AnyDown() {
-        if (Input.IsAnythingPressed()) 
-        {
-            return true;
-        } 
-        else 
-        {
-            return false;
+        public static bool AnyDown() {
+            if (Input.IsAnythingPressed()) 
+            {
+                return true;
+            } 
+            else 
+            {
+                return false;
+            }
         }
     }
 }

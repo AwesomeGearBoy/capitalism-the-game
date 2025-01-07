@@ -34,7 +34,9 @@ var stock_selling_price : int
 
 var stock_status := "decent"
 
+var SaveData = preload("res://scripts/classes/SaveData.cs")
 var KeyControl = preload("res://scripts/classes/KeyControl.cs")
+var GameVersion = preload("res://scripts/classes/Version.cs")
 
 var save := SaveData.new()
 var key = KeyControl.new()
@@ -222,7 +224,7 @@ func process_text():
 	$StockMarket/StockPrice.text = "stockPrice = " + str(stock_price)
 	$StockMarket/StockSellingPrice.text = "stockSellingPrice = " + str(stock_selling_price)
 	$StockMarket/AutoLevel.text = "autoLevel = " + str(auto_level)
-	$StockMarket/StockVersion.text = version.get_stock_version()
+	$StockMarket/StockVersion.text = version.GetStockVersion()
 	
 	
 	if auto_level == 0:
@@ -298,36 +300,36 @@ func unlock_stuff():
 		unlocked_stock_market = true
 
 func save_data():
-	save.save_var(UNLOCKED_AUTO_MODE_SAVE_PATH, unlocked_auto_mode)
-	save.save_var(UNLOCKED_WARES_SAVE_PATH, unlocked_wares)
-	save.save_var(UNLOCKED_LUCK_SAVE_PATH, unlocked_luck)
-	save.save_var(UNLOCKED_STOCK_MARKET_SAVE_PATH, unlocked_stock_market)
-	save.save_var(MONEY_SAVE_PATH, money)
-	save.save_var(LEVEL_SAVE_PATH, level)
-	save.save_var(AUTO_LEVEL_SAVE_PATH, auto_level)
-	save.save_var(WARES_SAVE_PATH, warehouses)
-	save.save_var(LUCK_SAVE_PATH, luck_level)
-	save.save_var(LEVEL_COST_SAVE_PATH, level_cost)
-	save.save_var(AUTO_COST_SAVE_PATH, auto_cost)
-	save.save_var(WARES_COST_SAVE_PATH, wares_cost)
-	save.save_var(LUCK_COST_SAVE_PATH, luck_cost)
-	save.save_var(STOCK_SAVE_PATH, stock)
+	save.SaveBool(UNLOCKED_AUTO_MODE_SAVE_PATH, unlocked_auto_mode)
+	save.SaveBool(UNLOCKED_WARES_SAVE_PATH, unlocked_wares)
+	save.SaveBool(UNLOCKED_LUCK_SAVE_PATH, unlocked_luck)
+	save.SaveBool(UNLOCKED_STOCK_MARKET_SAVE_PATH, unlocked_stock_market)
+	save.SaveInt(MONEY_SAVE_PATH, money)
+	save.SaveInt(LEVEL_SAVE_PATH, level)
+	save.SaveInt(AUTO_LEVEL_SAVE_PATH, auto_level)
+	save.SaveInt(WARES_SAVE_PATH, warehouses)
+	save.SaveInt(LUCK_SAVE_PATH, luck_level)
+	save.SaveInt(LEVEL_COST_SAVE_PATH, level_cost)
+	save.SaveInt(AUTO_COST_SAVE_PATH, auto_cost)
+	save.SaveInt(WARES_COST_SAVE_PATH, wares_cost)
+	save.SaveInt(LUCK_COST_SAVE_PATH, luck_cost)
+	save.SaveInt(STOCK_SAVE_PATH, stock)
 
 func load_data():
-	unlocked_auto_mode = save.load_bool(UNLOCKED_AUTO_MODE_SAVE_PATH, false)
-	unlocked_wares = save.load_bool(UNLOCKED_WARES_SAVE_PATH, false)
-	unlocked_luck = save.load_bool(UNLOCKED_LUCK_SAVE_PATH, false)
-	unlocked_stock_market = save.load_bool(UNLOCKED_STOCK_MARKET_SAVE_PATH, false)
-	money = save.load_int(MONEY_SAVE_PATH, 0)
-	level = save.load_int(LEVEL_SAVE_PATH, 1)
-	auto_level = save.load_int(AUTO_LEVEL_SAVE_PATH, 0)
-	warehouses = save.load_int(WARES_SAVE_PATH, 0)
-	luck_level = save.load_int(LUCK_SAVE_PATH, 0)
-	level_cost = save.load_int(LEVEL_COST_SAVE_PATH, 50)
-	auto_cost = save.load_int(AUTO_COST_SAVE_PATH, 3000)
-	wares_cost = save.load_int(WARES_COST_SAVE_PATH, 30000)
-	luck_cost = save.load_int(LUCK_COST_SAVE_PATH, 1500125)
-	stock = save.load_int(STOCK_SAVE_PATH, 0)
+	unlocked_auto_mode = save.LoadBool(UNLOCKED_AUTO_MODE_SAVE_PATH, false)
+	unlocked_wares = save.LoadBool(UNLOCKED_WARES_SAVE_PATH, false)
+	unlocked_luck = save.LoadBool(UNLOCKED_LUCK_SAVE_PATH, false)
+	unlocked_stock_market = save.LoadBool(UNLOCKED_STOCK_MARKET_SAVE_PATH, false)
+	money = save.LoadInt(MONEY_SAVE_PATH, 0)
+	level = save.LoadInt(LEVEL_SAVE_PATH, 1)
+	auto_level = save.LoadInt(AUTO_LEVEL_SAVE_PATH, 0)
+	warehouses = save.LoadInt(WARES_SAVE_PATH, 0)
+	luck_level = save.LoadInt(LUCK_SAVE_PATH, 0)
+	level_cost = save.LoadInt(LEVEL_COST_SAVE_PATH, 50)
+	auto_cost = save.LoadInt(AUTO_COST_SAVE_PATH, 3000)
+	wares_cost = save.LoadInt(WARES_COST_SAVE_PATH, 30000)
+	luck_cost = save.LoadInt(LUCK_COST_SAVE_PATH, 1500125)
+	stock = save.LoadInt(STOCK_SAVE_PATH, 0)
 
 func collect_revenue():
 	var random_amount := 0

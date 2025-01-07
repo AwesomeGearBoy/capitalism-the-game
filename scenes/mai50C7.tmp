@@ -1,0 +1,736 @@
+[gd_scene load_steps=10 format=3 uid="uid://hkwnmy1glpiv"]
+
+[ext_resource type="PackedScene" uid="uid://ry2gx0ka87xl" path="res://scenes/backdrop.tscn" id="1_s1lcf"]
+[ext_resource type="Script" path="res://scripts/source/main.gd" id="1_vcd71"]
+[ext_resource type="Texture2D" uid="uid://domykc35fmee1" path="res://assets/hint.png" id="2_3ofbb"]
+[ext_resource type="PackedScene" uid="uid://c6wofbnlu72ed" path="res://scenes/titlescreen.tscn" id="2_4nb71"]
+[ext_resource type="PackedScene" uid="uid://bpi2jsm6pfcum" path="res://scenes/emptymessage.tscn" id="3_n7en5"]
+[ext_resource type="PackedScene" uid="uid://dawxowl20v2a5" path="res://scenes/loadingscreen.tscn" id="5_1mnjo"]
+[ext_resource type="Texture2D" uid="uid://cn0t8ffgvmxb1" path="res://assets/black.png" id="5_va8hs"]
+[ext_resource type="PackedScene" uid="uid://bboyki73fpt34" path="res://scenes/stock_loading_screen.tscn" id="6_jbje3"]
+[ext_resource type="PackedScene" uid="uid://c24ljw0wr2k2y" path="res://scenes/stock_exiting_screen.tscn" id="7_a05ad"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_vcd71")
+
+[node name="Backdrop" parent="." instance=ExtResource("1_s1lcf")]
+
+[node name="AutoButton" type="Button" parent="."]
+offset_left = 27.0
+offset_top = 86.0
+offset_right = 193.0
+offset_bottom = 161.0
+theme_override_font_sizes/font_size = 23
+text = "AUTO: OFF"
+
+[node name="RevenueButton" type="Button" parent="."]
+offset_left = 27.0
+offset_top = 167.0
+offset_right = 936.0
+offset_bottom = 786.0
+theme_override_colors/font_disabled_color = Color(0.607843, 0.45098, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.607843, 0.45098, 0, 1)
+theme_override_colors/font_hover_color = Color(0.607843, 0.45098, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.607843, 0.45098, 0, 1)
+theme_override_colors/font_focus_color = Color(0.607843, 0.45098, 0, 1)
+theme_override_colors/font_color = Color(0.607106, 0.44993, 5.77569e-07, 1)
+theme_override_font_sizes/font_size = 113
+text = "$$ 
+COLLECT REVENUE
+$$"
+autowrap_mode = 3
+
+[node name="UpgradeLevel" type="Button" parent="."]
+offset_left = 947.0
+offset_top = 127.0
+offset_right = 1433.0
+offset_bottom = 283.0
+theme_override_font_sizes/font_size = 50
+text = "UPGRADE LEVEL"
+
+[node name="UpgradeAuto" type="Button" parent="."]
+offset_left = 197.0
+offset_top = 86.0
+offset_right = 362.0
+offset_bottom = 161.0
+theme_override_font_sizes/font_size = 20
+text = "Upgrade Auto
+
+"
+
+[node name="BuyWarehouse" type="Button" parent="."]
+offset_left = 946.0
+offset_top = 294.0
+offset_right = 1433.0
+offset_bottom = 450.0
+theme_override_font_sizes/font_size = 50
+text = "BUY WAREHOUSE"
+autowrap_mode = 3
+
+[node name="UpgradeLuck" type="Button" parent="."]
+offset_left = 945.0
+offset_top = 460.0
+offset_right = 1432.0
+offset_bottom = 615.0
+theme_override_font_sizes/font_size = 50
+text = "UPGRADE LUCK"
+
+[node name="StockMarketButton" type="Button" parent="."]
+offset_left = 945.0
+offset_top = 627.0
+offset_right = 1431.0
+offset_bottom = 783.0
+theme_override_font_sizes/font_size = 50
+text = "STOCK MARKET"
+
+[node name="Salvage" type="Button" parent="."]
+offset_left = 947.0
+offset_top = 22.0
+offset_right = 1207.0
+offset_bottom = 117.0
+theme_override_font_sizes/font_size = 35
+text = "SALVAGE"
+
+[node name="HidePopups" type="Button" parent="."]
+offset_left = 1216.0
+offset_top = 21.0
+offset_right = 1334.0
+offset_bottom = 117.0
+theme_override_font_sizes/font_size = 23
+text = "HIDE POP-UPS"
+autowrap_mode = 3
+
+[node name="MenuButton" type="Button" parent="."]
+offset_left = 29.0
+offset_top = 14.0
+offset_right = 127.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 18
+text = "BACK TO MENU"
+autowrap_mode = 3
+
+[node name="Hint" type="TextureButton" parent="."]
+offset_left = 1339.0
+offset_top = 22.0
+offset_right = 1429.0
+offset_bottom = 114.0
+texture_normal = ExtResource("2_3ofbb")
+texture_pressed = ExtResource("2_3ofbb")
+texture_hover = ExtResource("2_3ofbb")
+texture_disabled = ExtResource("2_3ofbb")
+texture_focused = ExtResource("2_3ofbb")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="LevelCost" type="Label" parent="."]
+offset_left = 997.0
+offset_top = 236.0
+offset_right = 1074.0
+offset_bottom = 264.0
+theme_override_font_sizes/font_size = 20
+text = "Cost: $0"
+
+[node name="AutoCost" type="Label" parent="."]
+offset_left = 212.0
+offset_top = 128.0
+offset_right = 353.0
+offset_bottom = 151.0
+text = "Cost: $0"
+
+[node name="WaresCost" type="Label" parent="."]
+offset_left = 996.0
+offset_top = 401.0
+offset_right = 1073.0
+offset_bottom = 429.0
+theme_override_font_sizes/font_size = 20
+text = "Cost: $0"
+
+[node name="LuckCost" type="Label" parent="."]
+offset_left = 999.0
+offset_top = 570.0
+offset_right = 1076.0
+offset_bottom = 598.0
+theme_override_font_sizes/font_size = 20
+text = "Cost: $0"
+
+[node name="Money" type="Label" parent="."]
+offset_left = 146.0
+offset_top = 11.0
+offset_right = 306.0
+offset_bottom = 53.0
+theme_override_font_sizes/font_size = 30
+text = "MONEY: $0"
+
+[node name="Level" type="Label" parent="."]
+offset_left = 633.0
+offset_top = 14.0
+offset_right = 751.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 30
+text = "LEVEL: 0"
+
+[node name="AutoLevel" type="Label" parent="."]
+offset_left = 543.0
+offset_top = 45.0
+offset_right = 751.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 30
+text = "AUTO LEVEL: 0"
+
+[node name="Warehouses" type="Label" parent="."]
+offset_left = 516.0
+offset_top = 76.0
+offset_right = 751.0
+offset_bottom = 118.0
+theme_override_font_sizes/font_size = 30
+text = "WAREHOUSES: 0"
+
+[node name="LuckLevel" type="Label" parent="."]
+offset_left = 549.0
+offset_top = 107.0
+offset_right = 751.0
+offset_bottom = 149.0
+theme_override_font_sizes/font_size = 30
+text = "LUCK LEVEL: 0"
+
+[node name="MessageMode" type="Label" parent="."]
+offset_left = 147.0
+offset_top = 51.0
+offset_right = 291.0
+offset_bottom = 74.0
+text = "HIDE POP-UPS: ON"
+
+[node name="VendingMachine" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="VendingMachine"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "You discover an old vending machine that somehow still accepts pennies. Oh heck yeah, baby."
+autowrap_mode = 3
+
+[node name="LostUncle" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="LostUncle"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "You lost an uncle you never really knew. Which is too bad, but at least you got some inheritance money!"
+autowrap_mode = 3
+
+[node name="LawsuitWin" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="LawsuitWin"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "Uh oh!
+You got into a lawsuit...
+
+...
+
+And won!"
+autowrap_mode = 3
+
+[node name="RandomDude" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="RandomDude"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "A mysterious stranger randomly gives you a wad of cash. It's not suspicious where they got it from at all! 
+
+You take it happily."
+autowrap_mode = 3
+
+[node name="PennyRain" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="PennyRain"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "A rainstorm of pennies occurs directly over your house!
+
+Don't ask how, just be happy that it happened.
+
+I mean, it's normal for pennies to fall directly out of the sky, right?"
+autowrap_mode = 3
+
+[node name="CatVideo" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="CatVideo"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "A cat video you uploaded went viral.
+
+Yep. That's pretty cool."
+autowrap_mode = 3
+
+[node name="TvFame" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="TvFame"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "A local TV station decided to feature you as \"Entreprenuer of the Year!\"
+
+Fame and fortune follow soon after."
+autowrap_mode = 3
+
+[node name="FindMotivation" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="FindMotivation"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "A motivational speaker charges you some money to only tell you to believe in yourself.
+
+I mean, it works, but now you're a little bit poorer.
+
+Just believe in yourself, I guess?"
+autowrap_mode = 3
+
+[node name="DogBurial" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="DogBurial"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "Your dog somehow got to your savings and buried them.
+
+You dug everywhere in your backyard.
+
+Thought you found them once, but it was a rock.
+
+You never saw those savings again."
+autowrap_mode = 3
+
+[node name="CashFire" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="CashFire"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "You accidently set your cash pile on fire whilst trying to light a candle.
+
+What a waste of money!"
+autowrap_mode = 3
+
+[node name="LawsuitLoss" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="LawsuitLoss"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "Uh oh!
+You got into a lawsuit...
+
+...
+
+And lost..."
+autowrap_mode = 3
+
+[node name="GlitterMess" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="GlitterMess"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "You accidently bought 1'000 packs of glitter instead of stock shares.
+
+Not only was this a waste of money, but the delivery guy dumped it straight into your living room.
+
+Now you need to clean up a sparkly mess..."
+autowrap_mode = 3
+
+[node name="RealEstate" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="RealEstate"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "You were just scammed by someone selling \"invisible real estate.\"
+
+You... probably should've seen that one coming."
+autowrap_mode = 3
+
+[node name="LemonadeStand" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="LemonadeStand"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "You attempted to open a lemonade stand and it causes a national shortage in lemons.
+
+Massive PR costs."
+autowrap_mode = 3
+
+[node name="ShinyPebbleCoin" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="ShinyPebbleCoin"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "You invested in a new crypto currency known as ShinyPebbleCoin!
+
+It's now worth less than an actual shiny pebble."
+autowrap_mode = 3
+
+[node name="RosesRed" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="RosesRed"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "Roses are red...
+Violets are blue...
+I'm pretty poor...
+And now so are you..."
+autowrap_mode = 3
+
+[node name="SalvageMessage" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="SalvageMessage"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 10
+text = "Are you sure you want to salvage? Salvaging is very good for upgrading everything. By salvaging you will obtain the following:
+ - $75000 per warehouse bought
+ - $35000 per auto level gained
+
+All of which are multiplied by your level and luck level.
+
+However, you will lose:
+ - All levels (level, auto, luck)
+ - All warehouses
+
+But will keep:
+ - All of your money + money gained from salvage.
+
+Click the salvage button to salvage, or just close this message to cancel."
+autowrap_mode = 3
+
+[node name="ConfirmSalvage" type="Button" parent="SalvageMessage"]
+offset_left = -174.17
+offset_top = 127.407
+offset_right = -96.1697
+offset_bottom = 158.407
+text = "SALVAGE"
+
+[node name="Help" parent="." instance=ExtResource("3_n7en5")]
+visible = false
+
+[node name="Label" type="Label" parent="Help"]
+offset_left = -176.0
+offset_top = -175.0
+offset_right = 139.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
+theme_override_font_sizes/font_size = 13
+text = "Hello! Welcome to Capitalism: The Game! This message exists to help you get started. Use money you earn from collecting revenue to upgrade your level. The higher your level, the more money you earn, but the more risk you take when you collect that revenue. If you have the money, buy warehouses that store stock that you can sell to people. The money will always come back to you when you collect revenue, which increases the amount of money you can earn significantly, without any added risk!
+
+Also see README.md for more game info!"
+autowrap_mode = 3
+
+[node name="StockMarket" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(724.75, 406)
+scale = Vector2(5.42929, 4.77647)
+texture = ExtResource("5_va8hs")
+
+[node name="StockMarketStatus" type="Label" parent="StockMarket"]
+offset_left = -130.726
+offset_top = -85.6281
+offset_right = -18.7261
+offset_bottom = -74.6281
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 7
+text = "marketStatus = \"status\""
+
+[node name="Money" type="Label" parent="StockMarket"]
+offset_left = -131.463
+offset_top = -77.4631
+offset_right = -74.4629
+offset_bottom = -65.4631
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 7
+text = "money = 0"
+
+[node name="Stock" type="Label" parent="StockMarket"]
+offset_left = -131.094
+offset_top = -67.8325
+offset_right = -90.0945
+offset_bottom = -54.8325
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 7
+text = "stock = 0"
+
+[node name="StockPrice" type="Label" parent="StockMarket"]
+offset_left = -130.91
+offset_top = -58.8301
+offset_right = -61.9107
+offset_bottom = -43.8301
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 7
+text = "stockPrice = 0"
+
+[node name="StockSellingPrice" type="Label" parent="StockMarket"]
+offset_left = -131.279
+offset_top = -50.0369
+offset_right = 11.7216
+offset_bottom = -36.0369
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 7
+text = "stockSellingPrice = 0"
+
+[node name="AutoLevel" type="Label" parent="StockMarket"]
+offset_left = -130.726
+offset_top = -41.4532
+offset_right = -71.7261
+offset_bottom = -30.4532
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 7
+text = "autoLevel = 0"
+
+[node name="StockVersion" type="Label" parent="StockMarket"]
+offset_left = -133.0
+offset_top = 73.0
+offset_right = 131.0
+offset_bottom = 85.0
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 7
+text = "S.T.O.C.K system v1.722.2008"
+horizontal_alignment = 2
+
+[node name="LikeToDo" type="Label" parent="StockMarket"]
+offset_left = -130.726
+offset_top = -24.4951
+offset_right = 74.2736
+offset_bottom = -9.49512
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 7
+text = "what task do you wish to complete?"
+autowrap_mode = 3
+
+[node name="SystemError" type="Label" parent="StockMarket"]
+visible = false
+offset_left = -130.726
+offset_top = 30.1478
+offset_right = 132.274
+offset_bottom = 79.1478
+theme_override_colors/font_color = Color(1, 0, 0.0901961, 1)
+theme_override_font_sizes/font_size = 6
+text = "SYSTEM ERR: java.lang.personIsTooRich
+System crashing in 10 seconds
+final String LOCAL = \"Local man is too rich; breaking economy. The world can't handle it. Goodbye, sweet Earth. See you on the other side. - Mr. Bachman\""
+autowrap_mode = 3
+
+[node name="BuyStock" type="Button" parent="StockMarket"]
+offset_left = -130.726
+offset_top = -12.7709
+offset_right = -53.7261
+offset_bottom = 8.22906
+theme_override_font_sizes/font_size = 9
+text = "BUY STOCK"
+
+[node name="SellStock" type="Button" parent="StockMarket"]
+offset_left = -53.1838
+offset_top = -12.7709
+offset_right = 23.8162
+offset_bottom = 8.22906
+theme_override_font_sizes/font_size = 9
+text = "SELL STOCK"
+
+[node name="Exchange" type="Button" parent="StockMarket"]
+offset_left = -131.0
+offset_top = 9.0
+offset_right = 102.0
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 9
+text = "EXCHANGE  STOCK FOR AUTO LEV."
+
+[node name="QuitProgram" type="Button" parent="StockMarket"]
+offset_left = 24.9112
+offset_top = -12.5616
+offset_right = 101.911
+offset_bottom = 8.43842
+theme_override_font_sizes/font_size = 9
+text = "QUIT PROGRAM"
+
+[node name="StockTitle" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(724.5, 406)
+scale = Vector2(5.43098, 4.77647)
+texture = ExtResource("5_va8hs")
+
+[node name="Welcome" type="Label" parent="StockTitle"]
+offset_left = -133.0
+offset_top = -82.0
+offset_right = 132.0
+offset_bottom = -66.0
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "welcome to"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="StockTitle"]
+offset_left = -133.954
+offset_top = -69.9261
+offset_right = 132.046
+offset_bottom = -27.9261
+theme_override_colors/font_color = Color(0, 0.517593, 3.85046e-07, 1)
+theme_override_font_sizes/font_size = 30
+text = ">> S.T.O.C.K <<"
+horizontal_alignment = 1
+
+[node name="OnlyProgram" type="Label" parent="StockTitle"]
+offset_left = -135.059
+offset_top = -31.1946
+offset_right = 130.941
+offset_bottom = -17.1946
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "(the only program to use for stock market purposes)"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DollarSigns" type="Label" parent="StockTitle"]
+offset_left = -133.033
+offset_top = -24.7044
+offset_right = 131.967
+offset_bottom = 24.2956
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "$$$$"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClickBelow" type="Label" parent="StockTitle"]
+offset_left = -133.586
+offset_top = 21.3547
+offset_right = 132.414
+offset_bottom = 33.3547
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "click button below to continue"
+horizontal_alignment = 1
+
+[node name="Enter" type="Button" parent="StockTitle"]
+offset_left = -56.4355
+offset_top = 41.0345
+offset_right = 54.5645
+offset_bottom = 66.0345
+theme_override_font_sizes/font_size = 12
+text = "ENTER S.T.O.C.K"
+
+[node name="BachIndustries" type="Label" parent="StockTitle"]
+offset_left = 104.125
+offset_top = 61.9704
+offset_right = 130.125
+offset_bottom = 82.9704
+theme_override_colors/font_color = Color(0, 0.517647, 0, 1)
+theme_override_font_sizes/font_size = 6
+text = "Ba. Inc. 
+est. 3026"
+
+[node name="StockLoadingScreen" parent="." instance=ExtResource("6_jbje3")]
+visible = false
+
+[node name="StockExitingScreen" parent="." instance=ExtResource("7_a05ad")]
+visible = false
+
+[node name="Menu" parent="." instance=ExtResource("2_4nb71")]
+visible = false
+
+[node name="LoadingScreen" parent="." instance=ExtResource("5_1mnjo")]
+visible = false
+
+[connection signal="pressed" from="AutoButton" to="." method="_on_auto_button_pressed"]
+[connection signal="pressed" from="RevenueButton" to="." method="_on_revenue_button_pressed"]
+[connection signal="pressed" from="UpgradeLevel" to="." method="_on_upgrade_level_pressed"]
+[connection signal="pressed" from="UpgradeAuto" to="." method="_on_upgrade_auto_pressed"]
+[connection signal="pressed" from="BuyWarehouse" to="." method="_on_buy_warehouse_pressed"]
+[connection signal="pressed" from="UpgradeLuck" to="." method="_on_upgrade_luck_pressed"]
+[connection signal="pressed" from="StockMarketButton" to="." method="_on_stock_market_button_pressed"]
+[connection signal="pressed" from="Salvage" to="." method="_on_salvage_pressed"]
+[connection signal="pressed" from="HidePopups" to="." method="_on_hide_popups_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="Hint" to="." method="_on_hint_pressed"]
+[connection signal="pressed" from="SalvageMessage/ConfirmSalvage" to="." method="_on_confirm_salvage_pressed"]
+[connection signal="pressed" from="StockMarket/BuyStock" to="." method="_on_buy_stock_pressed"]
+[connection signal="pressed" from="StockMarket/SellStock" to="." method="_on_sell_stock_pressed"]
+[connection signal="pressed" from="StockMarket/Exchange" to="." method="_on_exchange_pressed"]
+[connection signal="pressed" from="StockMarket/QuitProgram" to="." method="_on_quit_program_pressed"]
+[connection signal="pressed" from="StockTitle/Enter" to="." method="_on_enter_pressed"]
+[connection signal="gift_collected" from="Menu" to="." method="_on_event_gift_collected"]
+[connection signal="new_game" from="Menu" to="." method="_on_menu_new_game"]
+[connection signal="play" from="Menu" to="." method="_on_menu_play"]

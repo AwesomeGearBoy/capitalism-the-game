@@ -1,8 +1,12 @@
 extends Sprite2D
 
+var SaveData = preload("res://scripts/classes/SaveData.cs")
+var GameVersion = preload("res://scripts/classes/Version.cs")
+
 var collected_event_present := true
 var save := SaveData.new()
 var EVENT_GIFT_SAVE_PATH := "res://save/"
+
 signal play
 signal new_game
 signal gift_collected
@@ -16,7 +20,7 @@ func _process(_delta):
 	else:
 		$EventGift.show()
 	var system = GameVersion.new()
-	$Version.text = system.get_version()
+	$Version.text = system.GetVersion()
 
 func _on_new_game_pressed():
 	$NewGameWarning.show()

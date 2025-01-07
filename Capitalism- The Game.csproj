@@ -7,6 +7,8 @@
     <RootNamespace>CapitalismTheGame</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="scripts/classes/SaveData.cs" />
     <Compile Include="scripts/classes/KeyControl.cs" />
+    <Compile Include="scripts/classes/Version.cs" />
   </ItemGroup>
 </Project>
