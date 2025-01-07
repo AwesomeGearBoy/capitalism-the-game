@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bboyki73fpt34"]
 
-[ext_resource type="Texture2D" uid="uid://cn0t8ffgvmxb1" path="res://assets/black.png" id="1_ywbpc"]
+[ext_resource type="Texture2D" uid="uid://cn0t8ffgvmxb1" path="res://assets/backgrounds/black.png" id="1_ywbpc"]
 
 [node name="StockLoadingScreen" type="Sprite2D"]
 position = Vector2(723.125, 405.25)

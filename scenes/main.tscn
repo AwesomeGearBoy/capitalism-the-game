@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://ry2gx0ka87xl" path="res://scenes/backdrop.tscn" id="1_s1lcf"]
 [ext_resource type="Script" path="res://scripts/source/main.gd" id="1_vcd71"]
-[ext_resource type="Texture2D" uid="uid://domykc35fmee1" path="res://assets/hint.png" id="2_3ofbb"]
+[ext_resource type="Texture2D" uid="uid://domykc35fmee1" path="res://assets/icons/hint.png" id="2_3ofbb"]
 [ext_resource type="PackedScene" uid="uid://c6wofbnlu72ed" path="res://scenes/titlescreen.tscn" id="2_4nb71"]
 [ext_resource type="PackedScene" uid="uid://bpi2jsm6pfcum" path="res://scenes/emptymessage.tscn" id="3_n7en5"]
 [ext_resource type="PackedScene" uid="uid://dawxowl20v2a5" path="res://scenes/loadingscreen.tscn" id="5_1mnjo"]
-[ext_resource type="Texture2D" uid="uid://cn0t8ffgvmxb1" path="res://assets/black.png" id="5_va8hs"]
+[ext_resource type="Texture2D" uid="uid://cn0t8ffgvmxb1" path="res://assets/backgrounds/black.png" id="5_va8hs"]
 [ext_resource type="PackedScene" uid="uid://bboyki73fpt34" path="res://scenes/stock_loading_screen.tscn" id="6_jbje3"]
 [ext_resource type="PackedScene" uid="uid://c24ljw0wr2k2y" path="res://scenes/stock_exiting_screen.tscn" id="7_a05ad"]
 

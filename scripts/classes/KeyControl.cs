@@ -5,7 +5,7 @@ namespace CapitalismTheGame.scripts.classes
 {
     public partial class KeyControl : Node
     {
-        public static bool Down(string input) 
+        public bool Down(string input) 
         {
             if (Input.IsActionPressed(input)) 
             {
@@ -17,7 +17,7 @@ namespace CapitalismTheGame.scripts.classes
             }
         }
 
-        public static bool WentDown(string input) 
+        public bool WentDown(string input) 
         {
             if (Input.IsActionJustPressed(input)) 
             {
@@ -29,7 +29,7 @@ namespace CapitalismTheGame.scripts.classes
             }
         }
 
-        public static bool WentUp(string input) {
+        public bool WentUp(string input) {
             if (Input.IsActionJustReleased(input)) 
             {
                 return true;
@@ -40,7 +40,7 @@ namespace CapitalismTheGame.scripts.classes
             }
         }
 
-        public static bool AnyDown() {
+        public bool AnyDown() {
             if (Input.IsAnythingPressed()) 
             {
                 return true;

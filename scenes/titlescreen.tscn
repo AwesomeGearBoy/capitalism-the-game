@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://ry2gx0ka87xl" path="res://scenes/backdrop.tscn" id="1_4l4qo"]
 [ext_resource type="Script" path="res://scripts/source/titlescreen.gd" id="2_1bssa"]
 [ext_resource type="PackedScene" uid="uid://bpi2jsm6pfcum" path="res://scenes/emptymessage.tscn" id="3_uemik"]
-[ext_resource type="Texture2D" uid="uid://cvuuehu255im5" path="res://assets/warning.png" id="4_0kgrh"]
-[ext_resource type="Texture2D" uid="uid://b66x5qax7xdvk" path="res://assets/gift.png" id="4_xxtu0"]
+[ext_resource type="Texture2D" uid="uid://cvuuehu255im5" path="res://assets/icons/warning.png" id="4_0kgrh"]
+[ext_resource type="Texture2D" uid="uid://b66x5qax7xdvk" path="res://assets/icons/gift.png" id="4_xxtu0"]
 
 [node name="TitleScreen" instance=ExtResource("1_4l4qo")]
 script = ExtResource("2_1bssa")

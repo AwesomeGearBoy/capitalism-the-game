@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c24ljw0wr2k2y"]
 
-[ext_resource type="Texture2D" uid="uid://cn0t8ffgvmxb1" path="res://assets/black.png" id="1_313uq"]
+[ext_resource type="Texture2D" uid="uid://cn0t8ffgvmxb1" path="res://assets/backgrounds/black.png" id="1_313uq"]
 
 [node name="StockExitingScreen" type="Sprite2D"]
 position = Vector2(723.125, 405.25)

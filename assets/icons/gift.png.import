@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbqj5of617vcg"
-path="res://.godot/imported/transluscent.png-6fca330a051e27fd20f4c51e509c2260.ctex"
+uid="uid://b66x5qax7xdvk"
+path="res://.godot/imported/gift.png-73cd35f6002d1e2303c1d7e70a42b875.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/transluscent.png"
-dest_files=["res://.godot/imported/transluscent.png-6fca330a051e27fd20f4c51e509c2260.ctex"]
+source_file="res://assets/icons/gift.png"
+dest_files=["res://.godot/imported/gift.png-73cd35f6002d1e2303c1d7e70a42b875.ctex"]
 
 [params]
 

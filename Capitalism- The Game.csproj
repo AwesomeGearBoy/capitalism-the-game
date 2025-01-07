@@ -10,5 +10,7 @@
     <Compile Include="scripts/classes/SaveData.cs" />
     <Compile Include="scripts/classes/KeyControl.cs" />
     <Compile Include="scripts/classes/Version.cs" />
+
+    <Compile Include="scripts/source/Message.cs" />
   </ItemGroup>
 </Project>
