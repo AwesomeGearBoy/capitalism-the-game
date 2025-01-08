@@ -332,34 +332,35 @@ func load_data():
 	stock = save.LoadInt(STOCK_SAVE_PATH, 0)
 
 func collect_revenue():
-	var random_amount := 0
-	
-	if luck_level == 0:
-		random_amount = randi_range(200, 300)
-	elif luck_level == 1:
-		random_amount = randi_range(210, 310)
-	elif luck_level == 2:
-		random_amount = randi_range(220, 320)
-	elif luck_level == 3:
-		random_amount = randi_range(230, 330)
-	elif luck_level == 4:
-		random_amount = randi_range(240, 340)
-	elif luck_level == 5:
-		random_amount = randi_range(250, 350)
-	elif luck_level == 6:
-		random_amount = randi_range(260, 360)
-	elif luck_level == 7:
-		random_amount = randi_range(270, 370)
-	elif luck_level == 8:
-		random_amount = randi_range(280, 380)
-	elif luck_level == 9:
-		random_amount = randi_range(290, 390)
-	elif luck_level == 10:
-		random_amount = randi_range(300, 400)
-	
-	money += (random_amount + (warehouses * 1000)) * level
-	randomize_stock_status()
-	check_for_event()
+	if money <= 10000000000:
+		var random_amount := 0
+		
+		if luck_level == 0:
+			random_amount = randi_range(200, 300)
+		elif luck_level == 1:
+			random_amount = randi_range(210, 310)
+		elif luck_level == 2:
+			random_amount = randi_range(220, 320)
+		elif luck_level == 3:
+			random_amount = randi_range(230, 330)
+		elif luck_level == 4:
+			random_amount = randi_range(240, 340)
+		elif luck_level == 5:
+			random_amount = randi_range(250, 350)
+		elif luck_level == 6:
+			random_amount = randi_range(260, 360)
+		elif luck_level == 7:
+			random_amount = randi_range(270, 370)
+		elif luck_level == 8:
+			random_amount = randi_range(280, 380)
+		elif luck_level == 9:
+			random_amount = randi_range(290, 390)
+		elif luck_level == 10:
+			random_amount = randi_range(300, 400)
+		
+		money += (random_amount + (warehouses * 1000)) * level
+		randomize_stock_status()
+		check_for_event()
 
 func check_for_event():
 	var chance : int
@@ -519,7 +520,7 @@ func buy_stock():
 		check_for_err()
 
 func check_for_err():
-	var event = randi_range(1, 4096)
+	var event = randi_range(1, 10)
 	
 	if event == 1:
 		err_happened()
@@ -534,7 +535,7 @@ func err_crash(delta):
 		err_timeout = err_timeout - 1 * delta
 		
 		if err_timeout <= 0:
-			save.save_var(MONEY_SAVE_PATH, 0)
+			save.SaveInt(MONEY_SAVE_PATH, 0)
 			get_tree().quit()
 
 func sell_stock():

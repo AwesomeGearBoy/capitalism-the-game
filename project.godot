@@ -10,9 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Capitalism: The Game"
+config/name="capitalism_the_game"
 run/main_scene="res://scenes/main/main.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
+config/icon="res://assets/icons/capitalism.ico"
 
 [display]
 
