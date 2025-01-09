@@ -76,3 +76,6 @@
 # CHANGELOG ver.1.3.2:
  - `.exe` icon WORKS!!
  - HECK YEAH! You guys seriously have no idea how long it took me to figure out how to do that.
+
+# CHANGELOG ver.1.3.3:
+ - Oops! Added Godot console by accident to project. I'd rather you not see all the errors happening lol.
