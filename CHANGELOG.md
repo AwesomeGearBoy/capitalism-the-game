@@ -79,3 +79,6 @@
 
 # CHANGELOG ver.1.3.3:
  - Oops! Added Godot console by accident to project. I'd rather you not see all the errors happening lol.
+
+# CHANGELOG ver.1.3.4:
+ - More fixes.
