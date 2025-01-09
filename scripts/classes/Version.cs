@@ -7,7 +7,7 @@ namespace CapitalismTheGame.scripts.classes
 	{
 		int Release = 1;
 		int Update = 3;
-		int Bugfixes = 4;
+		int Bugfixes = 5;
 
 		public string GetVersion() 
 		{

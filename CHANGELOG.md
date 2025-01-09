@@ -82,3 +82,6 @@
 
 # CHANGELOG ver.1.3.4:
  - More fixes.
+
+# CHANGELOG ver.1.3.5:
+ - Fixed release not being in fullscreen
