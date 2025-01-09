@@ -85,3 +85,6 @@
 
 # CHANGELOG ver.1.3.5:
  - Fixed release not being in fullscreen
+
+# CHANGELOG ver.1.3.6:
+ - Fixed bug leftover from testing a while back that made the secret in S.T.O.C.K program pop up way too much.

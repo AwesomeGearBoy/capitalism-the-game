@@ -520,7 +520,7 @@ func buy_stock():
 		check_for_err()
 
 func check_for_err():
-	var event = randi_range(1, 10)
+	var event = randi_range(1, 4096)
 	
 	if event == 1:
 		err_happened()
