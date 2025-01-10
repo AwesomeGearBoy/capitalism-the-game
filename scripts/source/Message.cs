@@ -6,8 +6,8 @@ public partial class Message : Sprite2D
 {
 	public override void _Ready()
 	{
-		Button Exit = GetNode<Button>("Exit");
-		Exit.Connect(Button.SignalName.Pressed, new Callable(this, nameof(OnExitPressed)));
+		TextureButton exit = GetNode<TextureButton>("Exit");
+		exit.Connect(TextureButton.SignalName.Pressed, new Callable(this, nameof(OnExitPressed)));
 	}
 
 	public override void _Process(double _delta) 

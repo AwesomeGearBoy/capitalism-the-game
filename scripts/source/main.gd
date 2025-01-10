@@ -148,13 +148,13 @@ func randomize_stock_status():
 		stock_selling_price = randi_range(150, 1050)
 
 func start_load_game():
-	load_timeout = randi_range(1.2, 3.3)
+	load_timeout = randi_range(1, 3)
 
 func start_load_stock():
-	stock_load_timeout = randi_range(1.2, 3.3)
+	stock_load_timeout = randi_range(1, 3)
 
 func start_exit_stock():
-	stock_exit_timeout = randi_range(1.2, 3.3)
+	stock_exit_timeout = randi_range(1, 3)
 
 func load_stock(delta):
 	stock_load_timeout = stock_load_timeout - 1 * delta
@@ -304,63 +304,62 @@ func save_data():
 	save.SaveBool(UNLOCKED_WARES_SAVE_PATH, unlocked_wares)
 	save.SaveBool(UNLOCKED_LUCK_SAVE_PATH, unlocked_luck)
 	save.SaveBool(UNLOCKED_STOCK_MARKET_SAVE_PATH, unlocked_stock_market)
-	save.SaveInt(MONEY_SAVE_PATH, money)
-	save.SaveInt(LEVEL_SAVE_PATH, level)
-	save.SaveInt(AUTO_LEVEL_SAVE_PATH, auto_level)
-	save.SaveInt(WARES_SAVE_PATH, warehouses)
-	save.SaveInt(LUCK_SAVE_PATH, luck_level)
-	save.SaveInt(LEVEL_COST_SAVE_PATH, level_cost)
-	save.SaveInt(AUTO_COST_SAVE_PATH, auto_cost)
-	save.SaveInt(WARES_COST_SAVE_PATH, wares_cost)
-	save.SaveInt(LUCK_COST_SAVE_PATH, luck_cost)
-	save.SaveInt(STOCK_SAVE_PATH, stock)
+	save.SaveLong(MONEY_SAVE_PATH, money)
+	save.SaveLong(LEVEL_SAVE_PATH, level)
+	save.SaveLong(AUTO_LEVEL_SAVE_PATH, auto_level)
+	save.SaveLong(WARES_SAVE_PATH, warehouses)
+	save.SaveLong(LUCK_SAVE_PATH, luck_level)
+	save.SaveLong(LEVEL_COST_SAVE_PATH, level_cost)
+	save.SaveLong(AUTO_COST_SAVE_PATH, auto_cost)
+	save.SaveLong(WARES_COST_SAVE_PATH, wares_cost)
+	save.SaveLong(LUCK_COST_SAVE_PATH, luck_cost)
+	save.SaveLong(STOCK_SAVE_PATH, stock)
 
 func load_data():
 	unlocked_auto_mode = save.LoadBool(UNLOCKED_AUTO_MODE_SAVE_PATH, false)
 	unlocked_wares = save.LoadBool(UNLOCKED_WARES_SAVE_PATH, false)
 	unlocked_luck = save.LoadBool(UNLOCKED_LUCK_SAVE_PATH, false)
 	unlocked_stock_market = save.LoadBool(UNLOCKED_STOCK_MARKET_SAVE_PATH, false)
-	money = save.LoadInt(MONEY_SAVE_PATH, 0)
-	level = save.LoadInt(LEVEL_SAVE_PATH, 1)
-	auto_level = save.LoadInt(AUTO_LEVEL_SAVE_PATH, 0)
-	warehouses = save.LoadInt(WARES_SAVE_PATH, 0)
-	luck_level = save.LoadInt(LUCK_SAVE_PATH, 0)
-	level_cost = save.LoadInt(LEVEL_COST_SAVE_PATH, 50)
-	auto_cost = save.LoadInt(AUTO_COST_SAVE_PATH, 3000)
-	wares_cost = save.LoadInt(WARES_COST_SAVE_PATH, 30000)
-	luck_cost = save.LoadInt(LUCK_COST_SAVE_PATH, 1500125)
-	stock = save.LoadInt(STOCK_SAVE_PATH, 0)
+	money = save.LoadLong(MONEY_SAVE_PATH, 0)
+	level = save.LoadLong(LEVEL_SAVE_PATH, 1)
+	auto_level = save.LoadLong(AUTO_LEVEL_SAVE_PATH, 0)
+	warehouses = save.LoadLong(WARES_SAVE_PATH, 0)
+	luck_level = save.LoadLong(LUCK_SAVE_PATH, 0)
+	level_cost = save.LoadLong(LEVEL_COST_SAVE_PATH, 50)
+	auto_cost = save.LoadLong(AUTO_COST_SAVE_PATH, 3000)
+	wares_cost = save.LoadLong(WARES_COST_SAVE_PATH, 30000)
+	luck_cost = save.LoadLong(LUCK_COST_SAVE_PATH, 1500125)
+	stock = save.LoadLong(STOCK_SAVE_PATH, 0)
 
 func collect_revenue():
-	if money <= 10000000000:
-		var random_amount := 0
-		
-		if luck_level == 0:
-			random_amount = randi_range(200, 300)
-		elif luck_level == 1:
-			random_amount = randi_range(210, 310)
-		elif luck_level == 2:
-			random_amount = randi_range(220, 320)
-		elif luck_level == 3:
-			random_amount = randi_range(230, 330)
-		elif luck_level == 4:
-			random_amount = randi_range(240, 340)
-		elif luck_level == 5:
-			random_amount = randi_range(250, 350)
-		elif luck_level == 6:
-			random_amount = randi_range(260, 360)
-		elif luck_level == 7:
-			random_amount = randi_range(270, 370)
-		elif luck_level == 8:
-			random_amount = randi_range(280, 380)
-		elif luck_level == 9:
-			random_amount = randi_range(290, 390)
-		elif luck_level == 10:
-			random_amount = randi_range(300, 400)
-		
-		money += (random_amount + (warehouses * 1000)) * level
-		randomize_stock_status()
-		check_for_event()
+	var random_amount := 0
+	
+	if luck_level == 0:
+		random_amount = randi_range(200, 300)
+	elif luck_level == 1:
+		random_amount = randi_range(210, 310)
+	elif luck_level == 2:
+		random_amount = randi_range(220, 320)
+	elif luck_level == 3:
+		random_amount = randi_range(230, 330)
+	elif luck_level == 4:
+		random_amount = randi_range(240, 340)
+	elif luck_level == 5:
+		random_amount = randi_range(250, 350)
+	elif luck_level == 6:
+		random_amount = randi_range(260, 360)
+	elif luck_level == 7:
+		random_amount = randi_range(270, 370)
+	elif luck_level == 8:
+		random_amount = randi_range(280, 380)
+	elif luck_level == 9:
+		random_amount = randi_range(290, 390)
+	elif luck_level == 10:
+		random_amount = randi_range(300, 400)
+	
+	money += (random_amount + (warehouses * 1000)) * level
+	randomize_stock_status()
+	check_for_event()
 
 func check_for_event():
 	var chance : int
@@ -535,7 +534,8 @@ func err_crash(delta):
 		err_timeout = err_timeout - 1 * delta
 		
 		if err_timeout <= 0:
-			save.SaveInt(MONEY_SAVE_PATH, 0)
+			money = money * 0
+			save.SaveLong(MONEY_SAVE_PATH, money)
 			get_tree().quit()
 
 func sell_stock():

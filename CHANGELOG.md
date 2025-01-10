@@ -88,3 +88,8 @@
 
 # CHANGELOG ver.1.3.6:
  - Fixed bug leftover from testing a while back that made the secret in S.T.O.C.K program pop up way too much.
+
+# CHANGELOG ver.1.3.7:
+ - Fixed all KNOWN bugs having to do with game saving. Apologies to those whose game data went corrupt.
+ - More bugs fixed everywhere.
+ - Refactoring changes done to C# scripts.

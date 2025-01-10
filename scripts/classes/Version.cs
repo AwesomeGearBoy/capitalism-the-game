@@ -5,24 +5,24 @@ namespace CapitalismTheGame.scripts.classes
 {
 	public partial class Version : Node
 	{
-		int Release = 1;
-		int Update = 3;
-		int Bugfixes = 6;
+		int release = 1;
+		int update = 3;
+		int bugfixes = 7;
 
 		public string GetVersion() 
 		{
-			string Version = "ver." + Release + "." + Update + "." + Bugfixes;
-			return Version;
+			string version = "ver." + release + "." + update + "." + bugfixes;
+			return version;
 		}
 
 		public string GetStockVersion() 
 		{
-			int StockRelease = 7;
-			int StockUpdate = 22;
-			int StockBugfixes = 2008;
+			int stockRelease = 7;
+			int stockUpdate = 22;
+			int stockBugfixes = 2008;
 
-			string StockVersion = "S.T.O.C.K v" + StockRelease + "." + StockUpdate + "." + StockBugfixes;
-			return StockVersion;
+			string stockVersion = "S.T.O.C.K v" + stockRelease + "." + stockUpdate + "." + stockBugfixes;
+			return stockVersion;
 		}
 	}
 }

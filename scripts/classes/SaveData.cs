@@ -6,187 +6,235 @@ namespace CapitalismTheGame.scripts.classes
 {
 	public partial class SaveData : Node
 	{
-		public static void SaveVar(string FilePath, string Variable) 
+		public void SaveVar(string filePath, string variable) 
 		{
-			FileAccess File = FileAccess.Open(FilePath, FileAccess.ModeFlags.Write);
-			File.StoreLine(Variable);
+			FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Write);
+			file.StoreLine(variable);
 		}
 
-		public static void SaveVar(string FilePath, int Variable) 
+		public void SaveVar(string filePath, int variable) 
 		{
-			FileAccess File = FileAccess.Open(FilePath, FileAccess.ModeFlags.Write);
-			File.StoreLine(Variable.ToString());
+			FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Write);
+			file.StoreLine(variable.ToString());
 		}
 
-		public static void SaveVar(string FilePath, float Variable) 
+		public void SaveVar(string filePath, float variable) 
 		{
-			FileAccess File = FileAccess.Open(FilePath, FileAccess.ModeFlags.Write);
-			File.StoreLine(Variable.ToString());
+			FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Write);
+			file.StoreLine(variable.ToString());
 		}
 
-		public static void SaveVar(string FilePath, bool Variable) 
+		public void SaveVar(string filePath, bool variable) 
 		{
-			FileAccess File = FileAccess.Open(FilePath, FileAccess.ModeFlags.Write);
-			File.StoreLine(Variable.ToString());
+			FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Write);
+			file.StoreLine(variable.ToString());
 		}
 
-		public static void SaveString(string FilePath, string Variable) 
+		public void SaveString(string filePath, string variable) 
 		{
-			FileAccess File = FileAccess.Open(FilePath, FileAccess.ModeFlags.Write);
-			File.StoreLine(Variable);
+			FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Write);
+			file.StoreLine(variable);
 		}
 
-		public static void SaveInt(string FilePath, int Variable) 
+		public void SaveInt(string filePath, int variable) 
 		{
-			FileAccess File = FileAccess.Open(FilePath, FileAccess.ModeFlags.Write);
-			File.StoreLine(Variable.ToString());
+			FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Write);
+			file.StoreLine(variable.ToString());
 		}
 
-		public static void SaveFloat(string FilePath, float Variable) 
+		public void SaveLong(string filePath, long variable) 
 		{
-			FileAccess File = FileAccess.Open(FilePath, FileAccess.ModeFlags.Write);
-			File.StoreLine(Variable.ToString());
+			FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Write);
+			file.StoreLine(variable.ToString());
 		}
 
-		public static void SaveBool(string FilePath, bool Variable) 
+		public void SaveFloat(string filePath, long variable) 
 		{
-			FileAccess File = FileAccess.Open(FilePath, FileAccess.ModeFlags.Write);
-			File.StoreLine(Variable.ToString());
+			FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Write);
+			file.StoreLine(variable.ToString());
 		}
 
-		public static string LoadString(string FilePath, string DefaultValue) 
+		public void SaveFloat(string filePath, float variable) 
 		{
-			if (FileAccess.FileExists(FilePath)) 
+			FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Write);
+			file.StoreLine(variable.ToString());
+		}
+
+		public void SaveBool(string filePath, bool variable) 
+		{
+			if (variable == true) 
 			{
-				FileAccess File = FileAccess.Open(FilePath, FileAccess.ModeFlags.Read);
-				return File.GetLine();
+				FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Write);
+				file.StoreLine("true");
 			} 
 			else 
 			{
-				return DefaultValue;
+				FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Write);
+				file.StoreLine("false");
 			}
 		}
 
-		public static string LoadString(string FilePath) 
+		public string LoadString(string filePath, string defaultValue) 
 		{
-			string DefaultValue = "";
-
-			if (FileAccess.FileExists(FilePath)) 
+			if (FileAccess.FileExists(filePath)) 
 			{
-				FileAccess File = FileAccess.Open(FilePath, FileAccess.ModeFlags.Read);
-				return File.GetLine();
+				FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Read);
+				return file.GetLine();
 			} 
 			else 
 			{
-				return DefaultValue;
+				return defaultValue;
 			}
 		}
 
-		public static int LoadInt(string FilePath, int DefaultValue) 
+		public string LoadString(string filePath) 
 		{
-			if (FileAccess.FileExists(FilePath)) 
+			string defaultValue = "";
+
+			if (FileAccess.FileExists(filePath)) 
 			{
-				FileAccess File = FileAccess.Open(FilePath, FileAccess.ModeFlags.Read);
-				return File.GetLine().ToInt();
+				FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Read);
+				return file.GetLine();
 			} 
 			else 
 			{
-				return DefaultValue;
+				return defaultValue;
 			}
 		}
 
-		public static int LoadInt(string FilePath) {
-			int DefaultValue = 0;
-
-			if (FileAccess.FileExists(FilePath)) 
-			{
-				FileAccess File = FileAccess.Open(FilePath, FileAccess.ModeFlags.Read);
-				return File.GetLine().ToInt();
-			} 
-			else 
-			{
-				return DefaultValue;
-			}
-		}
-
-		public static float LoadFloat(string FilePath, float DefaultValue) 
+		public int LoadInt(string filePath, int defaultValue) 
 		{
-			if (FileAccess.FileExists(FilePath)) 
+			if (FileAccess.FileExists(filePath)) 
 			{
-				FileAccess File = FileAccess.Open(FilePath, FileAccess.ModeFlags.Read);
-				return File.GetLine().ToFloat();
+				FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Read);
+				return file.GetLine().ToInt();
 			} 
 			else 
 			{
-				return DefaultValue;
+				return defaultValue;
 			}
 		}
 
-		public static float LoadFloat(string FilePath) {
-			float DefaultValue = 0;
+		public int LoadInt(string filePath) {
+			int defaultValue = 0;
 
-			if (FileAccess.FileExists(FilePath)) 
+			if (FileAccess.FileExists(filePath)) 
 			{
-				FileAccess File = FileAccess.Open(FilePath, FileAccess.ModeFlags.Read);
-				return File.GetLine().ToInt();
+				FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Read);
+				return file.GetLine().ToInt();
 			} 
 			else 
 			{
-				return DefaultValue;
+				return defaultValue;
 			}
 		}
 
-		public static bool LoadBool(string FilePath, bool DefaultValue) 
+		public long LoadLong(string filePath, long defaultValue) 
 		{
-			if (FileAccess.FileExists(FilePath)) 
+			if (FileAccess.FileExists(filePath)) 
 			{
-				FileAccess File = FileAccess.Open(FilePath, FileAccess.ModeFlags.Read);
-				string Boolean = File.GetLine();
+				FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Read);
+				return long.Parse(file.GetLine());
+			} 
+			else 
+			{
+				return defaultValue;
+			}
+		}
 
-				if (Boolean.Equals("true")) 
+		public long LoadLong(string filePath) 
+		{
+			long defaultValue = 0;
+
+			if (FileAccess.FileExists(filePath)) 
+			{
+				FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Read);
+				return file.GetLine().ToInt();
+			} 
+			else 
+			{
+				return defaultValue;
+			}
+		}
+
+		public float LoadFloat(string filePath, float defaultValue) 
+		{
+			if (FileAccess.FileExists(filePath)) 
+			{
+				FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Read);
+				return file.GetLine().ToFloat();
+			} 
+			else 
+			{
+				return defaultValue;
+			}
+		}
+
+		public float LoadFloat(string filePath) {
+			float defaultValue = 0;
+
+			if (FileAccess.FileExists(filePath)) 
+			{
+				FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Read);
+				return file.GetLine().ToFloat();
+			} 
+			else 
+			{
+				return defaultValue;
+			}
+		}
+
+		public bool LoadBool(string filePath, bool defaultValue) 
+		{
+			if (FileAccess.FileExists(filePath)) 
+			{
+				FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Read);
+				string boolean = file.GetLine();
+
+				if (boolean.Equals("true")) 
 				{
 					return true;
 				}
-				else if (Boolean.Equals("false")) 
+				else if (boolean.Equals("false")) 
 				{
 					return false;
 				} 
 				else 
 				{
-					return DefaultValue;
+					return defaultValue;
 				}
 			} 
 			else 
 			{
-				return DefaultValue;
+				return defaultValue;
 			}
 		}
 
-		public static bool LoadBool(string FilePath) 
+		public bool LoadBool(string filePath) 
 		{
-			bool DefaultValue = false;
-
-			if (FileAccess.FileExists(FilePath)) 
+			bool defaultValue = false;
+		
+			if (FileAccess.FileExists(filePath)) 
 			{
-				FileAccess File = FileAccess.Open(FilePath, FileAccess.ModeFlags.Read);
-				string Boolean = File.GetLine();
+				FileAccess file = FileAccess.Open(filePath, FileAccess.ModeFlags.Read);
+				string boolean = file.GetLine();
 
-				if (Boolean.Equals("true")) 
+				if (boolean.Equals("true")) 
 				{
 					return true;
 				} 
-				else if (Boolean.Equals("false")) 
+				else if (boolean.Equals("false")) 
 				{
 					return false;
 				} 
 				else 
 				{
-					return DefaultValue;
+					return defaultValue;
 				}
 			} 
 			else 
 			{
-				return DefaultValue;
+				return defaultValue;
 			}
 		}
 	}
